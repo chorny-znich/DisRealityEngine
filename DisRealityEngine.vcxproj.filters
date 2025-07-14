@@ -13,5 +13,66 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Файлы заголовков\Screen">
+      <UniqueIdentifier>{6c60edc4-c187-4d61-b63e-9e3a2b947396}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\engine">
+      <UniqueIdentifier>{2d294414-0027-4e2e-8f89-5513a5ffd12c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\engine">
+      <UniqueIdentifier>{cb5546b7-1ff3-4f01-8b71-69882dcdfc8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\asset">
+      <UniqueIdentifier>{de363888-ccd7-4e3e-bf08-ec6e972a854d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Utility">
+      <UniqueIdentifier>{23f5ab9c-dd9f-48d2-8b80-f66ee40d9f6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utility">
+      <UniqueIdentifier>{21a84600-5b0e-42cc-abe2-4610d73ddce9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="screen.h">
+      <Filter>Файлы заголовков\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="screen_manager.h">
+      <Filter>Файлы заголовков\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="disreality_engine.h">
+      <Filter>Файлы заголовков\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="game_state.h">
+      <Filter>Файлы заголовков\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine_data.h">
+      <Filter>Файлы заголовков\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine.h">
+      <Filter>Файлы заголовков\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="asset_manager.h">
+      <Filter>Файлы заголовков\asset</Filter>
+    </ClInclude>
+    <ClInclude Include="ini_parser.h">
+      <Filter>Файлы заголовков\Utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="game_state.cpp">
+      <Filter>Исходные файлы\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="handle_event.cpp">
+      <Filter>Исходные файлы\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="render.cpp">
+      <Filter>Исходные файлы\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine.cpp">
+      <Filter>Исходные файлы\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ini_parser.cpp">
+      <Filter>Исходные файлы\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

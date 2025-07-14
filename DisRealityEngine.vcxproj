@@ -103,6 +103,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>D:\vargar\repository\lib\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,6 +119,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>D:\vargar\repository\lib\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -125,6 +127,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="asset_manager.h" />
+    <ClInclude Include="disreality_engine.h" />
+    <ClInclude Include="engine.h" />
+    <ClInclude Include="engine_data.h" />
+    <ClInclude Include="game_state.h" />
+    <ClInclude Include="ini_parser.h" />
+    <ClInclude Include="screen.h" />
+    <ClInclude Include="screen_manager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="engine.cpp" />
+    <ClCompile Include="game_state.cpp" />
+    <ClCompile Include="handle_event.cpp" />
+    <ClCompile Include="ini_parser.cpp" />
+    <ClCompile Include="render.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

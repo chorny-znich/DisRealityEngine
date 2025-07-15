@@ -66,6 +66,12 @@
     <ClInclude Include="button.h">
       <Filter>Файлы заголовков\UI</Filter>
     </ClInclude>
+    <ClInclude Include="text_button.h">
+      <Filter>Файлы заголовков\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="image_button.h">
+      <Filter>Файлы заголовков\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_state.cpp">
@@ -84,6 +90,12 @@
       <Filter>Исходные файлы\Utility</Filter>
     </ClCompile>
     <ClCompile Include="button.cpp">
+      <Filter>Исходные файлы\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="text_button.cpp">
+      <Filter>Исходные файлы\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="image_button.cpp">
       <Filter>Исходные файлы\UI</Filter>
     </ClCompile>
   </ItemGroup>

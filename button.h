@@ -6,6 +6,12 @@
  * @brief Base class for the UI element - button
 */
 namespace dr {
+  enum class ButtonTypes
+  {
+    TEXT,
+    IMAGE
+  };
+
   class Button
   {
   protected:

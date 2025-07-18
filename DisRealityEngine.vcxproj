@@ -135,6 +135,7 @@
     <ClInclude Include="game_state.h" />
     <ClInclude Include="image_button.h" />
     <ClInclude Include="ini_parser.h" />
+    <ClInclude Include="panel.h" />
     <ClInclude Include="screen.h" />
     <ClInclude Include="screen_manager.h" />
     <ClInclude Include="text_button.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="handle_event.cpp" />
     <ClCompile Include="image_button.cpp" />
     <ClCompile Include="ini_parser.cpp" />
+    <ClCompile Include="panel.cpp" />
     <ClCompile Include="render.cpp" />
     <ClCompile Include="text_button.cpp" />
   </ItemGroup>

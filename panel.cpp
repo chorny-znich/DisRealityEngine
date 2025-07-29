@@ -1,4 +1,5 @@
 #include "panel.h"
+#include "image_button.h"
 
 namespace dr
 {
@@ -29,9 +30,10 @@ namespace dr
     mShape.setFillColor(color);
   }
 
-  void Panel::addButton(std::shared_ptr<Button> btn)
+  void Panel::addImageButton(sf::Vector2f size, std::string textureId)
   {
-    btn->setPosition({ mPosition.x + 10, mPosition.y + 10 });
-    mButtons.push_back(btn);
+    std::shared_ptr<ImageButton> imageButton = std::make_shared<ImageButton>(size, textureId);
+    imageButton->setPosition({ mPosition.x + (mSize.x - size.x) / 2, mPosition.y + (mSize.y - size.y) / 2 });
+    mButtons.push_back(imageButton);
   }
 }

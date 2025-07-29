@@ -1,6 +1,7 @@
 #pragma once
 #include "button.h"
 #include <vector>
+#include <string>
 #include <memory>
 #include <SFML/Graphics.hpp>
 
@@ -17,7 +18,7 @@ namespace dr
     void setPosition(sf::Vector2f pos);
     void setColor(sf::Color color);
 
-    void addButton(std::shared_ptr<Button> btn);
+    void addImageButton(sf::Vector2f size, std::string textureId);
   private:
     sf::Vector2f mPosition;
     sf::Vector2f mSize;

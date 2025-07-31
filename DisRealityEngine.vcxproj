@@ -145,6 +145,7 @@
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="game_state.cpp" />
     <ClCompile Include="handle_event.cpp" />
+    <ClCompile Include="handle_input.cpp" />
     <ClCompile Include="image_button.cpp" />
     <ClCompile Include="ini_parser.cpp" />
     <ClCompile Include="panel.cpp" />

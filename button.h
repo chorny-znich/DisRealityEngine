@@ -20,7 +20,9 @@ namespace dr {
     
   public:
     Button(sf::Vector2f size);
-    void setPosition(sf::Vector2f pos);
+    virtual void setPosition(sf::Vector2f pos);
+    sf::Vector2f getPosition() const;
+    sf::Vector2f getSize() const;
     virtual void render(sf::RenderWindow& window) = 0;
     virtual bool isClicked(sf::Vector2f pos) = 0;
   };

@@ -11,4 +11,13 @@ namespace dr {
   {
     mPosition = pos;
   }
+  sf::Vector2f Button::getPosition() const
+  {
+    return mPosition;
+  }
+
+  sf::Vector2f Button::getSize() const
+  {
+    return mSize;
+  }
 }

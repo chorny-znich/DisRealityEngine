@@ -18,6 +18,9 @@ namespace dr
 					mWindow.close();
 				}
 				break;
+			case sf::Event::MouseButtonPressed:
+				handleInput(event.mouseButton.button, true, sf::Mouse::getPosition(), &mWindow);
+				break;
 			}
 		}
 	}

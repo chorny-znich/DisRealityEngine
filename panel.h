@@ -14,6 +14,7 @@ namespace dr
   {
   public:
     Panel(sf::Vector2f size);
+    int handleInput(sf::Vector2f pos);
     void render(sf::RenderWindow& window);
     void setPosition(sf::Vector2f pos);
     void setColor(sf::Color color);
@@ -26,5 +27,7 @@ namespace dr
     sf::Color mColor;
 
     std::vector<std::shared_ptr<Button>> mButtons;
+
+    void reorderButtons();
   };
 }

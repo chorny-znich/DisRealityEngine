@@ -12,7 +12,7 @@ namespace dr {
 
   public:
     ImageButton(sf::Vector2f size, const std::string& id);
-    void setPosition(sf::Vector2f pos);
+    virtual void setPosition(sf::Vector2f pos) override;
     virtual void render(sf::RenderWindow& window) override;
     virtual bool isClicked(sf::Vector2f pos) override;
   };

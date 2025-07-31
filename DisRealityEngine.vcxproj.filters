@@ -104,5 +104,8 @@
     <ClCompile Include="panel.cpp">
       <Filter>Исходные файлы\UI</Filter>
     </ClCompile>
+    <ClCompile Include="handle_input.cpp">
+      <Filter>Исходные файлы\engine</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

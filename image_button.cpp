@@ -9,6 +9,7 @@ namespace dr {
   }
   void ImageButton::setPosition(sf::Vector2f pos)
   {
+    Button::setPosition(pos);
     mImage.setPosition(pos);
   }
   void ImageButton::render(sf::RenderWindow& window)

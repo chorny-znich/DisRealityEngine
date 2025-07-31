@@ -19,6 +19,7 @@ namespace dr
 		GameState mGameState;
 
 		void handleEvent();
+		void handleInput(sf::Mouse::Button button, bool isPressed, sf::Vector2i position, sf::RenderWindow* window);
 		void render();
 	protected:
 		Textures mTextureManager;

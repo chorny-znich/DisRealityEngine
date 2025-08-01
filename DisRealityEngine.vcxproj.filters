@@ -37,6 +37,9 @@
     <Filter Include="Исходные файлы\UI">
       <UniqueIdentifier>{106fa6c1-93b2-4ce8-ba2e-c739800c3726}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\asset">
+      <UniqueIdentifier>{e9985a87-42f7-4fe8-958b-b760a47661a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="screen.h">
@@ -75,6 +78,9 @@
     <ClInclude Include="panel.h">
       <Filter>Файлы заголовков\UI</Filter>
     </ClInclude>
+    <ClInclude Include="text_manager.h">
+      <Filter>Файлы заголовков\asset</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_state.cpp">
@@ -106,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="handle_input.cpp">
       <Filter>Исходные файлы\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="text_manager.cpp">
+      <Filter>Исходные файлы\asset</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

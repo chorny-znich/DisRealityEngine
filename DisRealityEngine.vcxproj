@@ -139,6 +139,7 @@
     <ClInclude Include="screen.h" />
     <ClInclude Include="screen_manager.h" />
     <ClInclude Include="text_button.h" />
+    <ClInclude Include="text_manager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="button.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="panel.cpp" />
     <ClCompile Include="render.cpp" />
     <ClCompile Include="text_button.cpp" />
+    <ClCompile Include="text_manager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,6 +2,7 @@
 #include "asset_manager.h"
 #include "engine_data.h"
 #include "game_state.h"
+#include "text_manager.h"
 #include <SFML/Graphics.hpp>
 
 namespace dr
@@ -25,6 +26,7 @@ namespace dr
 		Textures mTextureManager;
 		Sounds mSoundManager;
 		Fonts mFontManager;
+		TextManager mTextManager;
 
 		virtual void createStartScreen() = 0;
 		virtual void init() = 0;

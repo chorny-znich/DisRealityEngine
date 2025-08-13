@@ -9,3 +9,4 @@
 #include "panel.h"
 #include "screen.h"
 #include "screen_manager.h"
+#include "text_manager.h"

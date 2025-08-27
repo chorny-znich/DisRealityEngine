@@ -17,11 +17,17 @@ namespace dr
 		sf::VideoMode mVideoMode;
 		sf::RenderWindow mWindow;
 
+		EngineConfig mEngineConfig;
+		WindowConfig mWindowConfig;
+
 		GameState mGameState;
 
 		void handleEvent();
 		void handleInput(sf::Mouse::Button button, bool isPressed, sf::Vector2i position, sf::RenderWindow* window);
 		void render();
+
+		void createWindow();
+		std::pair<EngineConfig, WindowConfig> parseEngineConfig();
 	protected:
 		Textures mTextureManager;
 		Sounds mSoundManager;

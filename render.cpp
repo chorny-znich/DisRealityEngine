@@ -11,6 +11,7 @@ namespace dr
       mWindow.clear(sf::Color::White);
       //ImGui::SFML::Render(mWindow);
       mGameState.getCurrent()->render(mWindow);
+      ImGui::SFML::Render(mWindow);
       mWindow.display();
     }
   }

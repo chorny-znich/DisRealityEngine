@@ -9,6 +9,7 @@ namespace dr
 	{
 		sf::Event event;
 		while (mWindow.pollEvent(event)) {
+			ImGui::SFML::ProcessEvent(event);
 			switch (event.type) {
 			case sf::Event::Closed:
 				mWindow.close();

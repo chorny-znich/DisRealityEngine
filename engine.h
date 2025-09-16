@@ -4,6 +4,8 @@
 #include "game_state.h"
 #include "text_manager.h"
 #include <SFML/Graphics.hpp>
+#include <imgui.h>
+#include <imgui-SFML.h>
 
 namespace dr
 {
@@ -24,6 +26,7 @@ namespace dr
 
 		void handleEvent();
 		void handleInput(sf::Mouse::Button button, bool isPressed, sf::Vector2i position, sf::RenderWindow* window);
+		void update(sf::Time dt);
 		void render();
 
 		void createWindow();

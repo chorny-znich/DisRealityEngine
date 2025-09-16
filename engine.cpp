@@ -19,12 +19,17 @@ namespace dr
   */
   void Engine::run()
   {
+    sf::Clock clock;
     init();
+    ImGui::SFML::Init(mWindow);
     createStartScreen();
     while (mWindow.isOpen() && !mGameState.isEmpty()) {
+      sf::Time dt = clock.restart();
       handleEvent();
+      update(dt);
       render();
     }
+    ImGui::SFML::Shutdown();
   }
 
   /**

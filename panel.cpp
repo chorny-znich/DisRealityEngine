@@ -79,6 +79,10 @@ namespace dr
         CENTER_POINT_PANEL + (SHIFT + mButtons[0]->getSize().y) * (i - (CENTER_POINT_POS + 1)) });
       }
     }
+    else if (CONTAINER_SIZE % 2 != 0 && CONTAINER_SIZE != 1) {
+
+    }
+
     /*const size_t middleElement =
     for (auto& btn : mButtons) {
 

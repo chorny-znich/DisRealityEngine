@@ -52,6 +52,11 @@ namespace dr
     reorderButtons();
   }
 
+  const std::vector<std::shared_ptr<Button>>& Panel::getButtons() const
+  {
+    return mButtons;
+  }
+
   /**
    * @brief Change the order of buttons in the container
    */
@@ -80,7 +85,27 @@ namespace dr
       }
     }
     else if (CONTAINER_SIZE % 2 != 0 && CONTAINER_SIZE != 1) {
+      const float POS_X = mPosition.x;
+      const float POS_Y = mPosition.y;
+      const int CENTER_POINT_POS = CONTAINER_SIZE / 2;
+      const float CENTER_POINT_PANEL = POS_Y + mSize.y / 2;
+      const float CENTER_POINT_PANEL_TOP = CENTER_POINT_PANEL - (mButtons[CENTER_POINT_POS]->getSize().y / 2);
+      const float CENTER_POINT_PANEL_BOTTOM = CENTER_POINT_PANEL + (mButtons[CENTER_POINT_POS]->getSize().y / 2);
 
+      // reorder the button at the center of the container
+      mButtons[CENTER_POINT_POS]->setPosition({ POS_X + (mSize.x - mButtons[CENTER_POINT_POS]->getSize().x) / 2,
+        CENTER_POINT_PANEL_TOP });
+
+      // reorder buttons in the top half of the container
+      for (int i{ CENTER_POINT_POS - 1 }; i >= 0; i--) {
+        mButtons[i]->setPosition({ mPosition.x + (mSize.x - mButtons[0]->getSize().x) / 2,
+        CENTER_POINT_PANEL_TOP - (SHIFT + mButtons[0]->getSize().y) * (CENTER_POINT_POS - i) });
+      }
+      // reorder buttons in the bottom half of the container
+      for (int i{ CENTER_POINT_POS + 1 }; i < CONTAINER_SIZE; i++) {
+        mButtons[i]->setPosition({ mPosition.x + (mSize.x - mButtons[0]->getSize().x) / 2,
+        CENTER_POINT_PANEL_BOTTOM + (SHIFT + mButtons[0]->getSize().y) * (i - (CENTER_POINT_POS)) });
+      }
     }
 
     /*const size_t middleElement =

@@ -104,7 +104,7 @@ namespace dr
       // reorder buttons in the bottom half of the container
       for (int i{ CENTER_POINT_POS + 1 }; i < CONTAINER_SIZE; i++) {
         mButtons[i]->setPosition({ mPosition.x + (mSize.x - mButtons[0]->getSize().x) / 2,
-        CENTER_POINT_PANEL_BOTTOM + (SHIFT + mButtons[0]->getSize().y) * (i - (CENTER_POINT_POS)) });
+        CENTER_POINT_PANEL_BOTTOM + (SHIFT + (mButtons[0]->getSize().y) * (i - (CENTER_POINT_POS + 1))) });
       }
     }
 

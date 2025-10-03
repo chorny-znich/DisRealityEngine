@@ -1,5 +1,6 @@
 #include "panel.h"
 #include "image_button.h"
+#include "text_button.h"
 
 namespace dr
 {
@@ -49,6 +50,13 @@ namespace dr
   {
     std::shared_ptr<ImageButton> imageButton = std::make_shared<ImageButton>(size, textureId);
     mButtons.push_back(imageButton);
+    reorderButtons();
+  }
+
+  void Panel::addTextButton(sf::Vector2f size, sf::Text& text)
+  {
+    std::shared_ptr<TextButton> textButton = std::make_shared<TextButton>(size, text);
+    mButtons.push_back(textButton);
     reorderButtons();
   }
 

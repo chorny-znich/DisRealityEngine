@@ -46,6 +46,12 @@
     <Filter Include="Исходные файлы\imgui">
       <UniqueIdentifier>{f3d5bc68-09e3-4833-808c-0c2360ae8ba1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\map">
+      <UniqueIdentifier>{73f4a2b4-db41-46be-ab94-453018923057}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\map">
+      <UniqueIdentifier>{7791265f-107b-4fc5-805e-e3ea88a9c3d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="screen.h">
@@ -114,6 +120,9 @@
     <ClInclude Include="imgui\imstb_truetype.h">
       <Filter>Файлы заголовков\imgui</Filter>
     </ClInclude>
+    <ClInclude Include="location.h">
+      <Filter>Файлы заголовков\map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_state.cpp">
@@ -166,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="update.cpp">
       <Filter>Исходные файлы\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="location.cpp">
+      <Filter>Исходные файлы\map</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

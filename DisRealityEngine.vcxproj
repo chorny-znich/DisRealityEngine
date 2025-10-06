@@ -144,6 +144,7 @@
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="ini_parser.h" />
+    <ClInclude Include="location.h" />
     <ClInclude Include="panel.h" />
     <ClInclude Include="screen.h" />
     <ClInclude Include="screen_manager.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="ini_parser.cpp" />
+    <ClCompile Include="location.cpp" />
     <ClCompile Include="panel.cpp" />
     <ClCompile Include="render.cpp" />
     <ClCompile Include="text_button.cpp" />

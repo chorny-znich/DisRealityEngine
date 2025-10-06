@@ -126,6 +126,9 @@
     <ClInclude Include="map_entry.h">
       <Filter>Файлы заголовков\map</Filter>
     </ClInclude>
+    <ClInclude Include="map.h">
+      <Filter>Файлы заголовков\map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_state.cpp">
@@ -183,6 +186,9 @@
       <Filter>Исходные файлы\map</Filter>
     </ClCompile>
     <ClCompile Include="map_entry.cpp">
+      <Filter>Исходные файлы\map</Filter>
+    </ClCompile>
+    <ClCompile Include="map.cpp">
       <Filter>Исходные файлы\map</Filter>
     </ClCompile>
   </ItemGroup>

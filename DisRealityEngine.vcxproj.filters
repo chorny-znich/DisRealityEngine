@@ -58,6 +58,12 @@
     <Filter Include="Исходные файлы\object">
       <UniqueIdentifier>{f656271b-1948-4781-917b-9dc2bb13a371}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\data">
+      <UniqueIdentifier>{a9d7b1fd-0acc-479b-9e6f-de1393cd5005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\database">
+      <UniqueIdentifier>{7558e1eb-6446-4602-9369-6d76c3f90ad6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="screen.h">
@@ -141,6 +147,9 @@
     <ClInclude Include="static_object.h">
       <Filter>Файлы заголовков\object</Filter>
     </ClInclude>
+    <ClInclude Include="database.h">
+      <Filter>Файлы заголовков\data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_state.cpp">
@@ -208,6 +217,9 @@
     </ClCompile>
     <ClCompile Include="static_object.cpp">
       <Filter>Исходные файлы\object</Filter>
+    </ClCompile>
+    <ClCompile Include="database.cpp">
+      <Filter>Исходные файлы\database</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

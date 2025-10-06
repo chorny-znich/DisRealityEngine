@@ -16,6 +16,8 @@ namespace dr
 	inline namespace path 
 	{
 		const std::string EngineConfigFile{ R"(config/engine_config.ini)" };
+		const std::string TextureMap{ R"(data/texture_map.ini)" };
+		const std::string MapsFolder{ R"(data/maps/)" };
 	}
 
 	/**
@@ -60,4 +62,6 @@ namespace dr
 		sf::Vector2u mResolution;
 		WindowMode mWindowMode;
 	};
+
+	const sf::Vector2f TILE_SIZE{ 128.f, 128.f };
 }

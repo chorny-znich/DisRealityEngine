@@ -138,6 +138,9 @@
     <ClInclude Include="level_object.h">
       <Filter>Файлы заголовков\object</Filter>
     </ClInclude>
+    <ClInclude Include="static_object.h">
+      <Filter>Файлы заголовков\object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_state.cpp">
@@ -201,6 +204,9 @@
       <Filter>Исходные файлы\map</Filter>
     </ClCompile>
     <ClCompile Include="level_object.cpp">
+      <Filter>Исходные файлы\object</Filter>
+    </ClCompile>
+    <ClCompile Include="static_object.cpp">
       <Filter>Исходные файлы\object</Filter>
     </ClCompile>
   </ItemGroup>

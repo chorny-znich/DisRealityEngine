@@ -10,3 +10,5 @@
 #include "screen.h"
 #include "screen_manager.h"
 #include "text_manager.h"
+#include "map_manager.h"
+#include "map.h"

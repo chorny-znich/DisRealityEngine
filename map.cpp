@@ -4,6 +4,7 @@
 #include "database.h"
 #include "engine_data.h"
 #include <fstream>
+#include <format>
 
 namespace dr
 {
@@ -187,16 +188,16 @@ namespace dr
   // load a map from the ini file
   void Map::loadFromFile(const std::string& filename)
   {
-      ini::Document doc = ini::load(filename);
-      ini::Section mapInfoSection = doc.getSection("map_info");
+      IniDocument doc = loadIniDocument(filename);
+      Section mapInfoSection = doc.getSection("map_info");
       mMapIndex = std::stoul(mapInfoSection.at("id"));
-      ini::Section section = doc.getSection("map_size");
+      Section section = doc.getSection("map_size");
       mMapSize.x = std::stoul(section.at("width"));
       mMapSize.y = std::stoul(section.at("height"));
 
       for (size_t y = 0; y < mMapSize.y; y++) {
           for (size_t x = 0; x < mMapSize.x; x++) {
-              ini::Section section = doc.getSection("loc_" + std::to_string(y) + "_" + std::to_string(x));
+              Section section = doc.getSection("loc_" + std::to_string(y) + "_" + std::to_string(x));
               Location loc;
               loc.setId(y * mMapSize.x + x);
               loc.setPosition({ static_cast<unsigned int>(x), static_cast<unsigned int>(y) });

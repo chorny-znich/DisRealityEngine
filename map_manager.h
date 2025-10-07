@@ -1,15 +1,16 @@
 #pragma once
-#include "map.h"
 #include <memory>
 #include <unordered_map>
 #include <SFML/System.hpp>
 
 namespace dr
 {
+	class Map;
+
 	class MapManager
 	{
 	private:
-		const size_t NUMBER_OF_MAPS = 1;
+		const size_t NUMBER_OF_MAPS;
 		const sf::Vector2f TILE_SIZE{ 128.f, 128.f };
 		size_t mCurrentMapIndex{ 0 };
 		std::unordered_map<size_t, std::shared_ptr<Map>> mMaps;

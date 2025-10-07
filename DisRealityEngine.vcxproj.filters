@@ -150,6 +150,9 @@
     <ClInclude Include="database.h">
       <Filter>Файлы заголовков\data</Filter>
     </ClInclude>
+    <ClInclude Include="map_manager.h">
+      <Filter>Файлы заголовков\map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_state.cpp">
@@ -220,6 +223,9 @@
     </ClCompile>
     <ClCompile Include="database.cpp">
       <Filter>Исходные файлы\database</Filter>
+    </ClCompile>
+    <ClCompile Include="map_manager.cpp">
+      <Filter>Исходные файлы\map</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

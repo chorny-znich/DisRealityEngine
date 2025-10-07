@@ -149,6 +149,7 @@
     <ClInclude Include="location.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="map_entry.h" />
+    <ClInclude Include="map_manager.h" />
     <ClInclude Include="panel.h" />
     <ClInclude Include="screen.h" />
     <ClInclude Include="screen_manager.h" />
@@ -174,6 +175,7 @@
     <ClCompile Include="location.cpp" />
     <ClCompile Include="map.cpp" />
     <ClCompile Include="map_entry.cpp" />
+    <ClCompile Include="map_manager.cpp" />
     <ClCompile Include="panel.cpp" />
     <ClCompile Include="render.cpp" />
     <ClCompile Include="static_object.cpp" />

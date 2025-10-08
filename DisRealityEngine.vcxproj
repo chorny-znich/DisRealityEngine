@@ -151,6 +151,7 @@
     <ClInclude Include="map_entry.h" />
     <ClInclude Include="map_manager.h" />
     <ClInclude Include="panel.h" />
+    <ClInclude Include="render_component.h" />
     <ClInclude Include="screen.h" />
     <ClInclude Include="screen_manager.h" />
     <ClInclude Include="static_object.h" />
@@ -178,6 +179,7 @@
     <ClCompile Include="map_manager.cpp" />
     <ClCompile Include="panel.cpp" />
     <ClCompile Include="render.cpp" />
+    <ClCompile Include="render_component.cpp" />
     <ClCompile Include="static_object.cpp" />
     <ClCompile Include="text_button.cpp" />
     <ClCompile Include="text_manager.cpp" />

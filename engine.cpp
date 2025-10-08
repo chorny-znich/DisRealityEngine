@@ -8,6 +8,7 @@ namespace dr
   */
   Engine::Engine()
   {
+    mDatabase.init();
     auto p = parseEngineConfig();
     mEngineConfig = p.first;
     mWindowConfig = p.second;

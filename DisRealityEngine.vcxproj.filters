@@ -64,6 +64,12 @@
     <Filter Include="Исходные файлы\database">
       <UniqueIdentifier>{7558e1eb-6446-4602-9369-6d76c3f90ad6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\component">
+      <UniqueIdentifier>{f4869f94-72f7-4d20-bca5-882132b0f423}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\component">
+      <UniqueIdentifier>{1b5aae67-93ba-452d-8950-0eba831474bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="screen.h">
@@ -153,6 +159,9 @@
     <ClInclude Include="map_manager.h">
       <Filter>Файлы заголовков\map</Filter>
     </ClInclude>
+    <ClInclude Include="render_component.h">
+      <Filter>Файлы заголовков\component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_state.cpp">
@@ -226,6 +235,9 @@
     </ClCompile>
     <ClCompile Include="map_manager.cpp">
       <Filter>Исходные файлы\map</Filter>
+    </ClCompile>
+    <ClCompile Include="render_component.cpp">
+      <Filter>Исходные файлы\component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

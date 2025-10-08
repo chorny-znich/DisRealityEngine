@@ -3,6 +3,7 @@
 #include "engine_data.h"
 #include "game_state.h"
 #include "text_manager.h"
+#include "database.h"
 #include <SFML/Graphics.hpp>
 #include <imgui.h>
 #include <imgui-SFML.h>
@@ -36,6 +37,7 @@ namespace dr
 		Sounds mSoundManager;
 		Fonts mFontManager;
 		TextManager mTextManager;
+		Database mDatabase;
 
 		virtual void createStartScreen() = 0;
 		virtual void init() = 0;

@@ -13,3 +13,4 @@
 #include "map_manager.h"
 #include "map.h"
 #include "render_component.h"
+#include "input_component.h"

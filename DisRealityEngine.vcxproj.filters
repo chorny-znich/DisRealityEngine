@@ -162,6 +162,9 @@
     <ClInclude Include="render_component.h">
       <Filter>Файлы заголовков\component</Filter>
     </ClInclude>
+    <ClInclude Include="input_component.h">
+      <Filter>Файлы заголовков\component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_state.cpp">
@@ -237,6 +240,9 @@
       <Filter>Исходные файлы\map</Filter>
     </ClCompile>
     <ClCompile Include="render_component.cpp">
+      <Filter>Исходные файлы\component</Filter>
+    </ClCompile>
+    <ClCompile Include="input_component.cpp">
       <Filter>Исходные файлы\component</Filter>
     </ClCompile>
   </ItemGroup>

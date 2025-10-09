@@ -22,6 +22,8 @@ namespace dr
 			case sf::Event::MouseButtonPressed:
 				handleInput(event.mouseButton.button, true, sf::Mouse::getPosition(), &mWindow);
 				break;
+			case sf::Event::MouseMoved:
+				handleInput(sf::Mouse::XButton1, false, sf::Mouse::getPosition(), &mWindow);
 			}
 		}
 	}

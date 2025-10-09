@@ -63,5 +63,13 @@ namespace dr
 		WindowMode mWindowMode;
 	};
 
+	/**
+	 * @brief Different tile's cursor states for the Input component
+	*/
+	enum class CursorMode {
+		MOVE,
+		EDIT
+	};
+
 	const sf::Vector2f TILE_SIZE{ 128.f, 128.f };
 }

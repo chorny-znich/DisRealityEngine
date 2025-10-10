@@ -19,4 +19,7 @@ namespace dr
     virtual void update(sf::Time dt);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
   };
+
+  using StaticObjectPtr = std::shared_ptr<StaticObject>;
+  using StaticObjects = std::vector<std::shared_ptr<StaticObject>>;
 }

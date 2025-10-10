@@ -1,5 +1,4 @@
 #include "map.h"
-#include "level_object.h"
 #include "static_object.h"
 #include "database.h"
 #include "engine_data.h"
@@ -91,11 +90,16 @@ namespace dr
   {
       return mFloorMap;
   }
+  const LevelObjects& Map::getLevelObjects() const
+  {
+  
+    return mLevelObjects;
+  }
   size_t Map::getMapIndex() const
   {
       return mMapIndex;
   }
-  sf::Vector2i Map::getMapSize()
+  sf::Vector2i Map::getMapSize() const
   {
       return mMapSize;
   }
@@ -103,7 +107,7 @@ namespace dr
   {
       return mLocations.at(id);
   }
-  std::unique_ptr<LevelObject> Map::createLevelObject(size_t id)
+  std::shared_ptr<LevelObject> Map::createLevelObject(size_t id)
   {
       Location loc = getLocation(id);
       Tile tile = dr::Database::getTile(loc.getLevelLayerId());
@@ -113,11 +117,23 @@ namespace dr
         static_cast<int>(dr::Database::getSprite(tile.mSpriteId).y), static_cast<int>(TILE_SIZE.x),
         static_cast<int>(TILE_SIZE.y) });
       sprite.setPosition({ loc.getPosition().x * TILE_SIZE.x, loc.getPosition().y * TILE_SIZE.y });
-      std::unique_ptr<LevelObject> pLevelObject = std::make_unique<LevelObject>(sprite);
+      std::shared_ptr<LevelObject> pLevelObject = std::make_shared<LevelObject>(sprite);
       pLevelObject->setId(id);
 
-      return std::move(pLevelObject);
+      return pLevelObject;
   }
+  void Map::addLevelObject(LevelObjectPtr lop)
+  {
+    mLevelObjects.push_back(lop);
+  }
+
+  void Map::deleteLevelObject(size_t id)
+  {
+    mLevelObjects.erase(std::remove_if(mLevelObjects.begin(), mLevelObjects.end(), [id](auto& obj) {
+      return obj->getId() == id;
+      }), mLevelObjects.end());
+  }
+
   std::unique_ptr<StaticObject> Map::createStaticObject(size_t id)
   {
       Location loc = getLocation(id);
@@ -163,6 +179,8 @@ namespace dr
       const std::string FILENAME = path::MapsFolder + filename + ".ini";
       std::ofstream ofs(FILENAME);
       if (ofs) {
+        ofs << "[map_info]\n";
+        ofs << "id=" << mMapIndex << '\n';
           ofs << "[map_size]\n";
           ofs << "width=" << mMapSize.x << '\n';
           ofs << "height=" << mMapSize.y << '\n';
@@ -203,6 +221,9 @@ namespace dr
               loc.setPosition({ static_cast<unsigned int>(x), static_cast<unsigned int>(y) });
               loc.setFloorLayerId(section.at("floor_layer"));
               loc.setObjectLayerId(section.at("objects_layer"));
+              if (loc.getObjectLayerId() != "none") {
+                mLevelObjects.push_back(std::move(createLevelObject(loc.getId())));
+              }
               loc.setPassability(std::stoi(section.at("passable")));
               mLocations.push_back(std::move(loc));
           }

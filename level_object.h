@@ -18,4 +18,7 @@ namespace dr
         size_t getId() const;
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     };
+
+    using LevelObjectPtr = std::shared_ptr<LevelObject>;
+    using LevelObjects = std::vector<std::shared_ptr<LevelObject>>;
 }

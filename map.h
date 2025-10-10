@@ -1,6 +1,7 @@
 #pragma once
 #include "location.h"
 #include "map_entry.h"
+#include "level_object.h"
 #include <unordered_map>
 #include <SFML/Graphics.hpp>
 
@@ -11,7 +12,6 @@
 */
 namespace dr
 {
-  class LevelObject;
   class StaticObject;
 
   class Map
@@ -20,6 +20,7 @@ namespace dr
     int mMapIndex{ 0 };
     sf::Vector2i mMapSize{ 3, 3 };
     sf::VertexArray mFloorMap;
+    LevelObjects mLevelObjects;
     std::vector<Location> mLocations;
     std::unordered_map<size_t, MapEntry> mEntries;
 
@@ -32,11 +33,14 @@ namespace dr
     void createFloorMap();
     void updateFloorMap(size_t index, const std::string& id);
     const sf::VertexArray& getFloorMap() const;
+    const LevelObjects& getLevelObjects() const;
     //void update(sf::Time dt);
     size_t getMapIndex() const;
-    sf::Vector2i getMapSize();
+    sf::Vector2i getMapSize() const;
     Location& getLocation(size_t id);
-    std::unique_ptr<LevelObject> createLevelObject(size_t id);
+    LevelObjectPtr createLevelObject(size_t id);
+    void addLevelObject(LevelObjectPtr lop);
+    void deleteLevelObject(size_t id);
     std::unique_ptr<StaticObject> createStaticObject(size_t id);
     void createEntry(size_t id, MapEntry entry);
     void deleteEntry(size_t id);
@@ -49,3 +53,23 @@ namespace dr
     void loadFromFile(const std::string& filename);
   };
 }
+
+/*
+
+    
+    void addStaticObject(std::unique_ptr<StaticObject> obj);
+    void deleteStaticObject(size_t id);
+
+
+    void RenderComponent::addStaticObject(std::unique_ptr<StaticObject> obj)
+    {
+        mStaticLayer.push_back(std::move(obj));
+    }
+
+    void RenderComponent::deleteStaticObject(size_t id)
+    {
+        mStaticLayer.erase(std::remove_if(mStaticLayer.begin(), mStaticLayer.end(), [id](auto& obj) {
+            return obj->getId() == id;
+            }), mStaticLayer.end());
+    }
+*/

@@ -33,7 +33,8 @@ namespace dr
     void createFloorMap();
     void updateFloorMap(size_t index, const std::string& id);
     const sf::VertexArray& getFloorMap() const;
-    const LevelObjects& getLevelObjects() const;
+    void createLevelObjects();
+    LevelObjects& getLevelObjects();
     //void update(sf::Time dt);
     size_t getMapIndex() const;
     sf::Vector2i getMapSize() const;

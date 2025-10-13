@@ -14,10 +14,11 @@ namespace dr
 	{
 	private:
 		sf::VertexArray mFloorLayer;
-		const LevelObjects mLevelLayer;
+		LevelObjects mLevelLayer;
 		//StaticObjects& mStaticLayer;
 	public:
 		void updateFloorLayer(const sf::VertexArray& arr);
+		void updateLevelLayer(LevelObjects& objs);
 		void render(sf::RenderWindow& window);
 	};
 }

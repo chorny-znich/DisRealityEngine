@@ -90,9 +90,18 @@ namespace dr
   {
       return mFloorMap;
   }
-  const LevelObjects& Map::getLevelObjects() const
+
+  void Map::createLevelObjects()
   {
-  
+    for (const auto& loc : mLocations) {
+      if (loc.getLevelLayerId() != "none") {
+        mLevelObjects.push_back(std::move(createLevelObject(loc.getId())));
+      }
+    }
+  }
+
+  LevelObjects& Map::getLevelObjects()
+  {
     return mLevelObjects;
   }
   size_t Map::getMapIndex() const
@@ -188,7 +197,7 @@ namespace dr
               for (size_t j = 0; j < mMapSize.x; j++) {
                   ofs << std::format("[loc_{}_{}]\n", i, j);
                   ofs << std::format("floor_layer={}\n", mLocations[i * mMapSize.x + j].getFloorLayerId());
-                  ofs << std::format("objects_layer={}\n", mLocations[i * mMapSize.x + j].getLevelLayerId());
+                  ofs << std::format("level_object={}\n", mLocations[i * mMapSize.x + j].getLevelLayerId());
                   if (mLocations[i * mMapSize.x + j].isPassable()) {
                       ofs << std::format("passable=1\n");
                   }
@@ -220,10 +229,7 @@ namespace dr
               loc.setId(y * mMapSize.x + x);
               loc.setPosition({ static_cast<unsigned int>(x), static_cast<unsigned int>(y) });
               loc.setFloorLayerId(section.at("floor_layer"));
-              loc.setObjectLayerId(section.at("objects_layer"));
-              if (loc.getObjectLayerId() != "none") {
-                mLevelObjects.push_back(std::move(createLevelObject(loc.getId())));
-              }
+              loc.setLevelLayerId(section.at("level_object"));
               loc.setPassability(std::stoi(section.at("passable")));
               mLocations.push_back(std::move(loc));
           }

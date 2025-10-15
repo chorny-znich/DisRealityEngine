@@ -1,5 +1,4 @@
 #include "map.h"
-#include "static_object.h"
 #include "database.h"
 #include "engine_data.h"
 #include <fstream>
@@ -7,10 +6,6 @@
 
 namespace dr
 {
-  Map::Map()
-  {
-  }
-
   void Map::createMap(int index, sf::Vector2i size, const std::string& groundLayerId)
   {
       setMapIndex(index);
@@ -100,9 +95,22 @@ namespace dr
     }
   }
 
+  void Map::createStaticObjects()
+  {
+    for (const auto& loc : mLocations) {
+      if (loc.getObjectLayerId() != "none") {
+        mStaticObjects.push_back(std::move(createStaticObject(loc.getId())));
+      }
+    }
+  }
+
   LevelObjects& Map::getLevelObjects()
   {
     return mLevelObjects;
+  }
+  StaticObjects& Map::getStaticObjects()
+  {
+    return mStaticObjects;
   }
   size_t Map::getMapIndex() const
   {
@@ -142,8 +150,8 @@ namespace dr
       return obj->getId() == id;
       }), mLevelObjects.end());
   }
-
-  std::unique_ptr<StaticObject> Map::createStaticObject(size_t id)
+  
+  StaticObjectPtr Map::createStaticObject(size_t id)
   {
       Location loc = getLocation(id);
       Tile tile = dr::Database::getTile(loc.getObjectLayerId());
@@ -153,11 +161,24 @@ namespace dr
         static_cast<int>(dr::Database::getSprite(tile.mSpriteId).y), static_cast<int>(TILE_SIZE.x),
         static_cast<int>(TILE_SIZE.y) });
       sprite.setPosition({ loc.getPosition().x * TILE_SIZE.x, loc.getPosition().y * TILE_SIZE.y });
-      std::unique_ptr<StaticObject> pStaticObject = std::make_unique<StaticObject>(sprite);
+      std::shared_ptr<StaticObject> pStaticObject = std::make_shared<StaticObject>(sprite);
       pStaticObject->setId(id);
 
-      return std::move(pStaticObject);
+      return pStaticObject;
   }
+  
+  void Map::addStaticObject(StaticObjectPtr sop)
+  {
+    mStaticObjects.push_back(sop);
+  }
+  
+  void Map::deleteStaticObject(size_t id)
+  {
+    mStaticObjects.erase(std::remove_if(mStaticObjects.begin(), mStaticObjects.end(), [id](auto& obj) {
+      return obj->getId() == id;
+      }), mStaticObjects.end());
+  }
+  
   void Map::createEntry(size_t id, MapEntry entry)
   {
       mEntries.emplace(id, entry);
@@ -166,23 +187,7 @@ namespace dr
   {
       mEntries.erase(id);
   }
- /* std::vector<sf::Sprite> Map::getStaticActors() const
-  {
-      std::vector<sf::Sprite> result;
-      for (const auto loc : mLocations) {
-          if (loc.getLevelLayerId() != "none") {
-              dr::Tile tile = dr::Database::getTile(loc.getLevelLayerId());
-              sf::Sprite sprite;
-              sprite.setTexture(Textures::get(tile.mTextureId));
-              sprite.setTextureRect({ static_cast<int>(dr::Database::getSprite(tile.mSpriteId).x),
-                static_cast<int>(dr::Database::getSprite(tile.mSpriteId).y), static_cast<int>(TILE_SIZE.x),
-                static_cast<int>(TILE_SIZE.y) });
-              sprite.setPosition({ loc.getPosition().x * TILE_SIZE.x, loc.getPosition().y * TILE_SIZE.y });
-              result.push_back(std::move(sprite));
-          }
-      }
-      return result;
-  }*/
+ 
   void Map::saveMap(const std::string& filename)
   {
       const std::string FILENAME = path::MapsFolder + filename + ".ini";
@@ -198,6 +203,7 @@ namespace dr
                   ofs << std::format("[loc_{}_{}]\n", i, j);
                   ofs << std::format("floor_layer={}\n", mLocations[i * mMapSize.x + j].getFloorLayerId());
                   ofs << std::format("level_object={}\n", mLocations[i * mMapSize.x + j].getLevelLayerId());
+                  ofs << std::format("static_object={}\n", mLocations[i * mMapSize.x + j].getObjectLayerId());
                   if (mLocations[i * mMapSize.x + j].isPassable()) {
                       ofs << std::format("passable=1\n");
                   }
@@ -230,6 +236,7 @@ namespace dr
               loc.setPosition({ static_cast<unsigned int>(x), static_cast<unsigned int>(y) });
               loc.setFloorLayerId(section.at("floor_layer"));
               loc.setLevelLayerId(section.at("level_object"));
+              loc.setObjectLayerId(section.at("static_object"));
               loc.setPassability(std::stoi(section.at("passable")));
               mLocations.push_back(std::move(loc));
           }

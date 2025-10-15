@@ -14,14 +14,19 @@ namespace dr
     mLevelLayer = objs;
   }
 
+  void RenderComponent::updateStaticLayer(StaticObjects& objs)
+  {
+    mStaticLayer = objs;
+  }
+
   void RenderComponent::render(sf::RenderWindow& window)
   {
     window.draw(mFloorLayer, &(Textures::get("floor_texture")));
     for (const auto& ll : mLevelLayer) {
       window.draw(*ll);
     }
-    /*for (const auto& sl : mStaticLayer) {
+    for (const auto& sl : mStaticLayer) {
       window.draw(*sl);
-    }*/
+    }
   }
 }

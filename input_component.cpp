@@ -43,10 +43,10 @@ namespace dr
     }
 
     void InputComponent::inputHandler(sf::Mouse::Button button, bool isPressed, sf::Vector2i position, sf::RenderWindow* window)
-    {/*
+    {
       mMousePosition = window->mapPixelToCoords(position, mGameView);
       mTilePosition = { static_cast<int>(mMousePosition.x) / 128, static_cast<int>(mMousePosition.y / 128) };
-      if (mPlayerNear && !mPlayerMove) {
+      /*if (mPlayerNear && !mPlayerMove) {
         mPlayerMove = true;
       }*/
         if (button == sf::Mouse::Right && mCursorMode == CursorMode::MOVE) {

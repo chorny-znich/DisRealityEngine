@@ -12,14 +12,14 @@ namespace dr
 	{
 	private:
 		const float TILE_SIZE = 128.f;
-		
-		sf::View& mGameView;
+	
 		sf::Vector2i mMapSize;
-		sf::Vector2f mMousePosition;
-		sf::Vector2i mTilePosition;
 		std::array<sf::RectangleShape, 4> mSquareCursor;
 		CursorMode mCursorMode{ CursorMode::MOVE };
-		
+	protected:
+		sf::View& mGameView;
+		sf::Vector2f mMousePosition;
+		sf::Vector2i mTilePosition;
 	public:
 		InputComponent(sf::View& view);
 		void inputHandler(sf::Vector2i position, sf::RenderWindow* window);

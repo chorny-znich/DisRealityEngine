@@ -210,6 +210,12 @@ namespace dr
                   else {
                       ofs << std::format("passable=0\n");
                   }
+                  if (mLocations[i * mMapSize.x + j].isEntry()) {
+                    ofs << std::format("entry=1\n");
+                  }
+                  else {
+                    ofs << std::format("entry=0");
+                  }
               }
           }
       }
@@ -238,6 +244,7 @@ namespace dr
               loc.setLevelLayerId(section.at("level_object"));
               loc.setObjectLayerId(section.at("static_object"));
               loc.setPassability(std::stoi(section.at("passable")));
+              loc.setEntry(std::stoi(section.at("entry")));
               mLocations.push_back(std::move(loc));
           }
       }

@@ -61,7 +61,7 @@ namespace dr
   void Map::updateFloorMap(size_t index, const std::string& id)
   {
       sf::Vector2f textCoord = dr::Database::getSprite(id);
-      int pos = index * 4;
+      int pos = static_cast<int>(index) * 4;
       mFloorMap[pos + 0].texCoords = sf::Vector2f(textCoord.x, textCoord.y);
       mFloorMap[pos + 1].texCoords = sf::Vector2f(textCoord.x + TILE_SIZE.x,
           textCoord.y);
@@ -214,7 +214,7 @@ namespace dr
                     ofs << std::format("entry=1\n");
                   }
                   else {
-                    ofs << std::format("entry=0");
+                    ofs << std::format("entry=0\n");
                   }
               }
           }
@@ -270,6 +270,24 @@ namespace dr
       else {
           std::cerr << std::format("can't open file: {}\n\n", FILENAME);
       }
+  }
+  void Map::loadEntries(const std::string& filename)
+  {
+    IniDocument doc = loadIniDocument(filename);
+    Section general = doc.getSection("general");
+    size_t entriesNumber = std::stoul(general.at("number_of_entries"));
+
+    for (size_t x = 1; x <= entriesNumber; x++) {
+        Section section = doc.getSection("entry_" + std::to_string(x));
+        MapEntry entry;
+        entry.setId(section.at("id"));
+        entry.setMapId(std::stoul(section.at("map_id")));
+        size_t posX = std::stoul(section.at("position_x"));
+        size_t posY = std::stoul(section.at("position_y"));
+        entry.setPosition({ static_cast<unsigned int>(posX), static_cast<unsigned int>(posY) });
+        entry.setLinkedEntryId(section.at("linked_entry_id"));
+        createEntry(x, entry);
+    }
   }
   MapEntry& Map::getEntry(size_t id)
   {

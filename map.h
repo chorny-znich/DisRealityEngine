@@ -51,6 +51,7 @@ namespace dr
     void createEntry(size_t id, MapEntry entry);
     void deleteEntry(size_t id);
     void saveEntries(const std::string& filename);
+    void loadEntries(const std::string& filename);
     MapEntry& getEntry(size_t id);
     size_t getNumberOfEntries() const;
     void saveMap(const std::string& filename);

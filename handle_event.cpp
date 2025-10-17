@@ -18,12 +18,17 @@ namespace dr
 				if (event.key.code == sf::Keyboard::Escape) {
 					mWindow.close();
 				}
+				handleInput(event.key.code, true);
+				break;
+			case sf::Event::KeyReleased:
+				handleInput(event.key.code, false);
 				break;
 			case sf::Event::MouseButtonPressed:
 				handleInput(event.mouseButton.button, true, sf::Mouse::getPosition(), &mWindow);
 				break;
 			case sf::Event::MouseMoved:
 				handleInput(sf::Mouse::XButton1, false, sf::Mouse::getPosition(), &mWindow);
+				break;
 			}
 		}
 	}

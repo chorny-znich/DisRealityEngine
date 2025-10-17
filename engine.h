@@ -27,6 +27,7 @@ namespace dr
 
 		void handleEvent();
 		void handleInput(sf::Mouse::Button button, bool isPressed, sf::Vector2i position, sf::RenderWindow* window);
+		void handleInput(sf::Keyboard::Key key, bool isPressed);
 		void update(sf::Time dt);
 		void render();
 

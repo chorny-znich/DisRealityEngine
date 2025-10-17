@@ -8,4 +8,11 @@ namespace dr
 			mGameState.getCurrent()->inputHandler(button, isPressed, position, window);
 		}
 	}
+
+	void Engine::handleInput(sf::Keyboard::Key key, bool isPressed)
+	{
+		if (!mGameState.isEmpty()) {
+			mGameState.getCurrent()->inputHandler(key, isPressed);
+		}
+	}
 }

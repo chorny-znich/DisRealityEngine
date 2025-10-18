@@ -24,10 +24,12 @@ namespace dr
     LevelObjects mLevelObjects;
     StaticObjects mStaticObjects;
     std::vector<Location> mLocations;
-    std::unordered_map<size_t, MapEntry> mEntries;
+    std::unordered_map<std::string, MapEntry> mEntries;
 
     void setMapIndex(int index);
     void setMapSize(sf::Vector2i size);
+
+    const std::string findEntryId(sf::Vector2u pos) const;
   
   public:
     void createMap(int index, sf::Vector2i size, const std::string& groundLayerId);
@@ -48,34 +50,15 @@ namespace dr
     StaticObjectPtr createStaticObject(size_t id);
     void addStaticObject(StaticObjectPtr sop);
     void deleteStaticObject(size_t id);
-    void createEntry(size_t id, MapEntry entry);
-    void deleteEntry(size_t id);
+    void createEntry(std::string id, MapEntry entry);
+    void deleteEntry(std::string id);
     void saveEntries(const std::string& filename);
     void loadEntries(const std::string& filename);
-    MapEntry& getEntry(size_t id);
+    MapEntry& getEntry(sf::Vector2u pos);
+    MapEntry& getEntry(const std::string& id);
     size_t getNumberOfEntries() const;
     void saveMap(const std::string& filename);
     //sf::Vector2f getTileSize() const;
     void loadFromFile(const std::string& filename);
   };
 }
-
-/*
-
-    
-    void addStaticObject(std::unique_ptr<StaticObject> obj);
-    void deleteStaticObject(size_t id);
-
-
-    void RenderComponent::addStaticObject(std::unique_ptr<StaticObject> obj)
-    {
-        mStaticLayer.push_back(std::move(obj));
-    }
-
-    void RenderComponent::deleteStaticObject(size_t id)
-    {
-        mStaticLayer.erase(std::remove_if(mStaticLayer.begin(), mStaticLayer.end(), [id](auto& obj) {
-            return obj->getId() == id;
-            }), mStaticLayer.end());
-    }
-*/

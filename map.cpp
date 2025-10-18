@@ -3,6 +3,7 @@
 #include "engine_data.h"
 #include <fstream>
 #include <format>
+#include <algorithm>
 
 namespace dr
 {
@@ -79,6 +80,14 @@ namespace dr
   void Map::setMapSize(sf::Vector2i size)
   {
       mMapSize = size;
+  }
+
+  const std::string Map::findEntryId(sf::Vector2u pos) const
+  {
+    auto iter = std::find_if(mEntries.begin(), mEntries.end(), [pos](const auto& entry) {
+      return pos == entry.second.getPosition();
+      });
+    return iter->second.getId();
   }
 
   const sf::VertexArray& Map::getFloorMap() const
@@ -179,11 +188,11 @@ namespace dr
       }), mStaticObjects.end());
   }
   
-  void Map::createEntry(size_t id, MapEntry entry)
+  void Map::createEntry(std::string id, MapEntry entry)
   {
       mEntries.emplace(id, entry);
   }
-  void Map::deleteEntry(size_t id)
+  void Map::deleteEntry(std::string id)
   {
       mEntries.erase(id);
   }
@@ -286,13 +295,19 @@ namespace dr
         size_t posY = std::stoul(section.at("position_y"));
         entry.setPosition({ static_cast<unsigned int>(posX), static_cast<unsigned int>(posY) });
         entry.setLinkedEntryId(section.at("linked_entry_id"));
-        createEntry(x, entry);
+        createEntry(entry.getId(), entry);
     }
   }
-  MapEntry& Map::getEntry(size_t id)
+  MapEntry& Map::getEntry(sf::Vector2u pos)
   {
-      return mEntries.at(id);
+      return mEntries.at(findEntryId(pos));
   }
+
+  MapEntry& Map::getEntry(const std::string& id)
+  {
+    return mEntries.at(id);
+  }
+
   size_t Map::getNumberOfEntries() const
   {
       return mEntries.size();

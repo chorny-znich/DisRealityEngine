@@ -6,6 +6,7 @@
 namespace dr
 {
 	class Map;
+	class MapEntry;
 
 	class MapManager
 	{

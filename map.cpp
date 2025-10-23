@@ -310,6 +310,11 @@ namespace dr
     return mEntries.at(id);
   }
 
+  const std::map<size_t, MapEntry>& Map::getEntries() const
+  {
+    return mEntries;
+  }
+
   size_t Map::getNumberOfEntries() const
   {
       return mEntries.size();

@@ -57,6 +57,7 @@ namespace dr
     void loadEntries(const std::string& filename);
     MapEntry& getEntry(sf::Vector2u pos);
     MapEntry& getEntry(size_t id);
+    const std::map<size_t, MapEntry>& getEntries() const;
     size_t getNumberOfEntries() const;
     void saveMap(const std::string& filename);
     //sf::Vector2f getTileSize() const;

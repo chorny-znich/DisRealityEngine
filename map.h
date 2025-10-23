@@ -4,6 +4,7 @@
 #include "level_object.h"
 #include "static_object.h"
 #include <unordered_map>
+#include <map>
 #include <SFML/Graphics.hpp>
 
 /**
@@ -24,12 +25,12 @@ namespace dr
     LevelObjects mLevelObjects;
     StaticObjects mStaticObjects;
     std::vector<Location> mLocations;
-    std::unordered_map<std::string, MapEntry> mEntries;
+    std::map<size_t, MapEntry> mEntries;
 
     void setMapIndex(int index);
     void setMapSize(sf::Vector2i size);
 
-    const std::string findEntryId(sf::Vector2u pos) const;
+    size_t findEntryId(sf::Vector2u pos) const;
   
   public:
     void createMap(int index, sf::Vector2i size, const std::string& groundLayerId);
@@ -50,12 +51,12 @@ namespace dr
     StaticObjectPtr createStaticObject(size_t id);
     void addStaticObject(StaticObjectPtr sop);
     void deleteStaticObject(size_t id);
-    void createEntry(std::string id, MapEntry entry);
-    void deleteEntry(std::string id);
+    void createEntry(size_t id, MapEntry entry);
+    void deleteEntry(size_t id);
     void saveEntries(const std::string& filename);
     void loadEntries(const std::string& filename);
     MapEntry& getEntry(sf::Vector2u pos);
-    MapEntry& getEntry(const std::string& id);
+    MapEntry& getEntry(size_t id);
     size_t getNumberOfEntries() const;
     void saveMap(const std::string& filename);
     //sf::Vector2f getTileSize() const;

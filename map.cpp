@@ -82,12 +82,14 @@ namespace dr
       mMapSize = size;
   }
 
-  const std::string Map::findEntryId(sf::Vector2u pos) const
+  size_t Map::findEntryId(sf::Vector2u pos) const
   {
     auto iter = std::find_if(mEntries.begin(), mEntries.end(), [pos](const auto& entry) {
       return pos == entry.second.getPosition();
       });
-    return iter->second.getId();
+    size_t id = iter->second.getPosition().y * mMapSize.x + iter->second.getPosition().x;
+    return id;
+    
   }
 
   const sf::VertexArray& Map::getFloorMap() const
@@ -188,11 +190,11 @@ namespace dr
       }), mStaticObjects.end());
   }
   
-  void Map::createEntry(std::string id, MapEntry entry)
+  void Map::createEntry(size_t id, MapEntry entry)
   {
       mEntries.emplace(id, entry);
   }
-  void Map::deleteEntry(std::string id)
+  void Map::deleteEntry(size_t id)
   {
       mEntries.erase(id);
   }
@@ -273,7 +275,7 @@ namespace dr
               ofs << std::format("position_x={}\n", value.getPosition().x);
               ofs << std::format("position_y={}\n", value.getPosition().y);
               ofs << std::format("linked_entry_id={}\n", value.getLinkedEntryId());
-              //ofs << std::format("visibility={}\n", value.getVisibility());
+              ofs << std::format("visibility={}\n", value.getVisibility());
           }
       }
       else {
@@ -295,7 +297,7 @@ namespace dr
         size_t posY = std::stoul(section.at("position_y"));
         entry.setPosition({ static_cast<unsigned int>(posX), static_cast<unsigned int>(posY) });
         entry.setLinkedEntryId(section.at("linked_entry_id"));
-        createEntry(entry.getId(), entry);
+        createEntry(posY * mMapSize.x + posX , entry);
     }
   }
   MapEntry& Map::getEntry(sf::Vector2u pos)
@@ -303,7 +305,7 @@ namespace dr
       return mEntries.at(findEntryId(pos));
   }
 
-  MapEntry& Map::getEntry(const std::string& id)
+  MapEntry& Map::getEntry(size_t id)
   {
     return mEntries.at(id);
   }

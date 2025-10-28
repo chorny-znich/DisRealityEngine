@@ -14,3 +14,4 @@
 #include "map.h"
 #include "render_component.h"
 #include "input_component.h"
+#include "game_object.h"

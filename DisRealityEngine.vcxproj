@@ -133,6 +133,7 @@
     <ClInclude Include="disreality_engine.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="engine_data.h" />
+    <ClInclude Include="engine_utility.h" />
     <ClInclude Include="game_object.h" />
     <ClInclude Include="game_object_type.h" />
     <ClInclude Include="game_state.h" />
@@ -165,6 +166,7 @@
     <ClCompile Include="button.cpp" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="engine_utility.cpp" />
     <ClCompile Include="game_object.cpp" />
     <ClCompile Include="game_state.cpp" />
     <ClCompile Include="handle_event.cpp" />

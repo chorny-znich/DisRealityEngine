@@ -171,6 +171,9 @@
     <ClInclude Include="game_object.h">
       <Filter>Файлы заголовков\object</Filter>
     </ClInclude>
+    <ClInclude Include="engine_utility.h">
+      <Filter>Файлы заголовков\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_state.cpp">
@@ -253,6 +256,9 @@
     </ClCompile>
     <ClCompile Include="game_object.cpp">
       <Filter>Исходные файлы\object</Filter>
+    </ClCompile>
+    <ClCompile Include="engine_utility.cpp">
+      <Filter>Исходные файлы\Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -19,6 +19,11 @@ namespace dr
     mStaticLayer = objs;
   }
 
+  void RenderComponent::updateGameLayer(GameObjects& objs)
+  {
+    mGameLayer = objs;
+  }
+
   void RenderComponent::render(sf::RenderWindow& window)
   {
     window.draw(mFloorLayer, &(Textures::get("floor_texture")));
@@ -27,6 +32,9 @@ namespace dr
     }
     for (const auto& sl : mStaticLayer) {
       window.draw(*sl);
+    }
+    for (const auto& gl : mGameLayer) {
+      window.draw(*gl);
     }
   }
 }

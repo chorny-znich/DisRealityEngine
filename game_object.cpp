@@ -3,7 +3,6 @@
 namespace dr
 {
   GameObject::GameObject(GameObjectType type, GameObjectSubType subType) :
-    mImage{},
     mType{ type },
     mSubType{ subType },
     mPrice{ 0 },
@@ -11,6 +10,15 @@ namespace dr
     mVisibility{ 0 },
     mAmount{ 0 }
   {
+  }
+
+  void update(sf::Time dt)
+  {
+  }
+
+  void GameObject::draw(sf::RenderTarget& target, sf::RenderStates states) const
+  {
+    target.draw(mCurrentSprite, states);
   }
 
   void GameObject::setId(size_t id)
@@ -61,16 +69,6 @@ namespace dr
   sf::Vector2i GameObject::getPosition() const
   {
     return mPosition;
-  }
-
-  void GameObject::setImage(char symbol)
-  {
-    mImage = symbol;
-  }
-
-  char GameObject::getImage() const
-  {
-    return mImage;
   }
 
   void GameObject::setPrice(size_t value)

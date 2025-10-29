@@ -3,17 +3,20 @@
 #include "game_object_type.h"
 //#include "game_data.h"
 #include <string>
-#include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
 
 namespace dr
 {
-  class GameObject
+  /**
+   * @brief A base class for all objects that represent 'loot'. The player can pick up them.
+   */
+  class GameObject : public sf::Drawable
   {
   private:
     size_t mId;
     std::string mName;
     sf::Vector2i mPosition;
-    char mImage;
+    
     size_t mPrice;
     bool mVisible;
     size_t mVisibility;
@@ -22,9 +25,14 @@ namespace dr
   protected:
     GameObjectType mType;
     GameObjectSubType mSubType;
+    sf::Sprite mCurrentSprite;
 
   public:
     GameObject(GameObjectType type, GameObjectSubType subType);
+
+    void update(sf::Time dt);
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+
     void setId(size_t id);
     size_t getId() const;
     void setType(GameObjectType type);
@@ -46,4 +54,7 @@ namespace dr
     void setAmount(size_t value);
     size_t getAmount() const;
   };
+
+  using GameObjectPtr = std::shared_ptr<GameObject>;
+  using GameObjects = std::vector<std::shared_ptr<GameObject>>;
 }

@@ -15,3 +15,4 @@
 #include "render_component.h"
 #include "input_component.h"
 #include "game_object.h"
+#include "game_object_type.h"

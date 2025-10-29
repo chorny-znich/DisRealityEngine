@@ -1,6 +1,7 @@
 #pragma once
 #include "level_object.h"
 #include "static_object.h"
+#include "game_object.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 
@@ -16,10 +17,12 @@ namespace dr
 		sf::VertexArray mFloorLayer;
 		LevelObjects mLevelLayer;
 		StaticObjects mStaticLayer;
+		GameObjects mGameLayer;
 	public:
 		void updateFloorLayer(const sf::VertexArray& arr);
 		void updateLevelLayer(LevelObjects& objs);
 		void updateStaticLayer(StaticObjects& objs);
+		void updateGameLayer(GameObjects& objs);
 		void render(sf::RenderWindow& window);
 	};
 }

@@ -261,6 +261,11 @@ namespace dr
       }
   }
 
+  const std::vector<Location>& Map::getLocations() const
+  {
+    return mLocations;
+  }
+
   void Map::saveEntries(const std::string& filename)
   {
       const std::string FILENAME = path::MapsFolder + filename + ".ini";

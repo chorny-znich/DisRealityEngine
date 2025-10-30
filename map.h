@@ -62,5 +62,6 @@ namespace dr
     void saveMap(const std::string& filename);
     //sf::Vector2f getTileSize() const;
     void loadFromFile(const std::string& filename);
+    const std::vector<Location>& getLocations() const;
   };
 }

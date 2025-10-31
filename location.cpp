@@ -69,4 +69,12 @@ namespace dr
 	{
 		return mEntry;
 	}
+	void Location::changePlacementStatus(bool status)
+	{
+		mPlaceRandomObject = status;
+	}
+	bool Location::getPlacementStatus() const
+	{
+		return mPlaceRandomObject;
+	}
 }

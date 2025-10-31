@@ -18,6 +18,7 @@ namespace dr
 		std::string mObjectLayerId;
 		bool mPassable{ true };
 		bool mEntry{ false };
+		bool mPlaceRandomObject{ true };
 	public:
 		void setId(size_t id);
 		size_t getId() const;
@@ -33,5 +34,7 @@ namespace dr
 		bool isPassable() const;
 		void setEntry(bool value);
 		bool isEntry() const;
+		void changePlacementStatus(bool status);
+		bool getPlacementStatus() const;
 	};
 }

@@ -1,4 +1,5 @@
 #include "game_object.h"
+#include "engine_data.h"
 
 namespace dr
 {
@@ -65,6 +66,7 @@ namespace dr
   void GameObject::setPosition(sf::Vector2i pos)
   {
     mPosition = pos;
+    mCurrentSprite.setPosition({ TILE_SIZE.x * mPosition.x, TILE_SIZE.y * mPosition.y });
   }
 
   sf::Vector2i GameObject::getPosition() const

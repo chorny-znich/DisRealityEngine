@@ -28,7 +28,7 @@ namespace dr
     sf::Sprite mCurrentSprite;
 
   public:
-    GameObject(GameObjectType type, GameObjectSubType subType);
+    GameObject(GameObjectType type, GameObjectSubType subType, sf::Sprite sprite);
 
     void update(sf::Time dt);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

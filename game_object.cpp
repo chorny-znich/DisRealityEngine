@@ -2,9 +2,10 @@
 
 namespace dr
 {
-  GameObject::GameObject(GameObjectType type, GameObjectSubType subType) :
+  GameObject::GameObject(GameObjectType type, GameObjectSubType subType, sf::Sprite sprite) :
     mType{ type },
     mSubType{ subType },
+    mCurrentSprite{sprite},
     mPrice{ 0 },
     mVisible{ false },
     mVisibility{ 0 },

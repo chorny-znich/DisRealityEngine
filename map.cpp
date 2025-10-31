@@ -99,8 +99,9 @@ namespace dr
 
   void Map::createLevelObjects()
   {
-    for (const auto& loc : mLocations) {
+    for (auto& loc : mLocations) {
       if (loc.getLevelLayerId() != "none") {
+        loc.changePlacementStatus(false);
         mLevelObjects.push_back(std::move(createLevelObject(loc.getId())));
       }
     }
@@ -108,8 +109,9 @@ namespace dr
 
   void Map::createStaticObjects()
   {
-    for (const auto& loc : mLocations) {
+    for (auto& loc : mLocations) {
       if (loc.getObjectLayerId() != "none") {
+        loc.changePlacementStatus(false);
         mStaticObjects.push_back(std::move(createStaticObject(loc.getId())));
       }
     }

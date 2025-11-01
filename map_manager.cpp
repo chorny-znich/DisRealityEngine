@@ -36,4 +36,13 @@ namespace dr
   {
     mCurrentMapIndex = index;
   }
+
+  /**
+   * @brief Return current msp index
+   * @return Current map index
+  */
+  size_t MapManager::getCurrentMapIndex() const
+  {
+      return mCurrentMapIndex;
+  }
 }

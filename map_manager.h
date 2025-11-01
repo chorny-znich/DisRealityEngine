@@ -25,6 +25,7 @@ namespace dr
 		//void setPlayerSpawnPosition(sf::Vector2u pos);
 		//sf::Vector2u getPlayerSpawnPosition();
 		void setCurrentMapIndex(size_t index);
+		size_t getCurrentMapIndex() const;
 		/*
 		void setVisited();
 		bool isVisited() const;*/

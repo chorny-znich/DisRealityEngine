@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="animation_component.h" />
     <ClInclude Include="asset_manager.h" />
     <ClInclude Include="button.h" />
     <ClInclude Include="database.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="text_manager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="animation_component.cpp" />
     <ClCompile Include="button.cpp" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="engine.cpp" />

@@ -53,9 +53,9 @@ namespace dr
     reorderButtons();
   }
 
-  void Panel::addTextButton(sf::Vector2f size, sf::Text& text)
+  void Panel::addTextButton(sf::Vector2f size, sf::Text& text, const std::string& str)
   {
-    std::shared_ptr<TextButton> textButton = std::make_shared<TextButton>(size, text);
+    std::shared_ptr<TextButton> textButton = std::make_shared<TextButton>(size, text, str);
     mButtons.push_back(textButton);
     reorderButtons();
   }

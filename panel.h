@@ -20,7 +20,7 @@ namespace dr
     void setColor(sf::Color color);
 
     void addImageButton(sf::Vector2f size, std::string textureId);
-    void addTextButton(sf::Vector2f size, sf::Text& text);
+    void addTextButton(sf::Vector2f size, sf::Text& text, const std::string& str);
     const std::vector<std::shared_ptr<Button>>& getButtons() const;
   private:
     sf::Vector2f mPosition;

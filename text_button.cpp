@@ -1,14 +1,16 @@
 #include "text_button.h"
 
 namespace dr {
-  TextButton::TextButton(sf::Vector2f size, sf::Text& text) :
+  TextButton::TextButton(sf::Vector2f size, sf::Text& text, const std::string& str) :
     Button(size),
     mText{ text },
+    mString{str},
     mShape{ size },
     mColor{ sf::Color::Color(230, 231, 232) }
   {
     mShape.setFillColor(mColor);
     setPosition(mPosition);
+    mText.setString(mString);
   }
 
   void TextButton::setPosition(sf::Vector2f pos)

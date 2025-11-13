@@ -9,11 +9,12 @@ namespace dr {
   {
   private:
     sf::Text& mText;
+    std::string mString;
     sf::RectangleShape mShape;
     sf::Color mColor;
 
   public:
-    TextButton(sf::Vector2f size, sf::Text& text);
+    TextButton(sf::Vector2f size, sf::Text& text, const std::string& str);
     void setPosition(sf::Vector2f pos);
     void setFillColor(sf::Color color);
     virtual void render(sf::RenderWindow& window) override;

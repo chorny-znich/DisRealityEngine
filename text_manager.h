@@ -8,12 +8,12 @@
 namespace dr
 {
 	/**
-	 * @brief SFML text objects manager singleton class
+	 * @brief Create SFML text object with given style
 	*/
 	class TextManager
 	{
 	private:
-		std::unordered_map<std::string, sf::Text>	mText;
+		std::unordered_map<std::string, sf::Text>	mStyle;
 
 		static TextManager* mpInstance;
 
@@ -22,6 +22,6 @@ namespace dr
 
 		static void init(const std::string& filename);
 		static void	load(const std::string& id, const sf::Text& text);
-		static sf::Text& get(const std::string& text);
+		static sf::Text get(const std::string& id);
 	};
 }

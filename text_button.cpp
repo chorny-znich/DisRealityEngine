@@ -1,7 +1,7 @@
 #include "text_button.h"
 
 namespace dr {
-  TextButton::TextButton(sf::Vector2f size, sf::Text& text, const std::string& str) :
+  TextButton::TextButton(sf::Vector2f size, sf::Text text, const std::string& str) :
     Button(size),
     mText{ text },
     mString{str},

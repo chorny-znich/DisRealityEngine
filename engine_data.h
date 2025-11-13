@@ -9,7 +9,7 @@ namespace dr
   using Textures = AssetManager<std::string, sf::Texture>;
   using Sounds = AssetManager<std::string, sf::SoundBuffer>;
   using Fonts = AssetManager<std::string, sf::Font>;
-
+	
 	/**
 	 * @brief All pathes to the framework's files
 	*/

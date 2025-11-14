@@ -114,4 +114,14 @@ namespace dr
     return mAmount;
   }
 
+  void GameObject::setInventoryIcon(sf::Sprite& sprite)
+  {
+    mInventoryIcon = sprite;
+  }
+
+  sf::Sprite& GameObject::getInventoryIcon()
+  {
+      return mInventoryIcon;
+  }
+
 }

@@ -26,6 +26,7 @@ namespace dr
     GameObjectType mType;
     GameObjectSubType mSubType;
     sf::Sprite mCurrentSprite;
+    sf::Sprite mInventoryIcon;
 
   public:
     GameObject(GameObjectType type, GameObjectSubType subType, sf::Sprite sprite);
@@ -43,8 +44,6 @@ namespace dr
     std::string getName() const;
     void setPosition(sf::Vector2i pos);
     sf::Vector2i getPosition() const;
-    void setImage(char symbol);
-    char getImage() const;
     void setPrice(size_t value);
     size_t getPrice() const;
     void setVisibleStatus(bool value);
@@ -53,6 +52,8 @@ namespace dr
     size_t getVisibility() const;
     void setAmount(size_t value);
     size_t getAmount() const;
+    void setInventoryIcon(sf::Sprite& sprite);
+    sf::Sprite& getInventoryIcon();
   };
 
   using GameObjectPtr = std::shared_ptr<GameObject>;

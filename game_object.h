@@ -52,8 +52,8 @@ namespace dr
     size_t getVisibility() const;
     void setAmount(size_t value);
     size_t getAmount() const;
-    void setInventoryIcon(sf::Sprite& sprite);
-    sf::Sprite& getInventoryIcon();
+    void setInventoryIcon(sf::Sprite sprite);
+    sf::Sprite getInventoryIcon();
   };
 
   using GameObjectPtr = std::shared_ptr<GameObject>;

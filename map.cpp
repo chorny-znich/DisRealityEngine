@@ -271,18 +271,20 @@ namespace dr
   void Map::saveEntries(const std::string& filename)
   {
       const std::string FILENAME = path::MapsFolder + filename + ".ini";
+      int index{ 1 };
       std::ofstream ofs(FILENAME);
       if (ofs) {
           ofs << "[general]\n";
           ofs << "number_of_entries=" << mEntries.size() << '\n';
           for (const auto& [key, value] : mEntries) {
-              ofs << std::format("[{}]\n", value.getId());
+              ofs << std::format("[entry_{}]\n", index);
               ofs << std::format("id={}\n", value.getId());
               ofs << std::format("map_id={}\n", value.getPosition().y);
               ofs << std::format("position_x={}\n", value.getPosition().x);
               ofs << std::format("position_y={}\n", value.getPosition().y);
               ofs << std::format("linked_entry_id={}\n", value.getLinkedEntryId());
               ofs << std::format("visibility={}\n", value.getVisibility());
+              index++;
           }
       }
       else {

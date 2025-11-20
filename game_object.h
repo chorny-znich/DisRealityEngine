@@ -52,6 +52,8 @@ namespace dr
     size_t getVisibility() const;
     void setAmount(size_t value);
     size_t getAmount() const;
+    void setSprite(sf::Sprite sprite);
+    sf::Sprite getSprite();
     void setInventoryIcon(sf::Sprite sprite);
     sf::Sprite getInventoryIcon();
   };

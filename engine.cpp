@@ -33,7 +33,7 @@ namespace dr
 	 */
 	bool Engine::isRunning() const
 	{
-		return false;
+		return mWindow.isOpen();
 	}
 
 	/**

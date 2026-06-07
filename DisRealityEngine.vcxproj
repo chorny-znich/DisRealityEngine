@@ -136,9 +136,11 @@ xcopy "$(OutDir)$(TargetName).lib" "D:\vargar\repository\lib\DisRealityEngine\li
   <ItemGroup>
     <ClInclude Include="engine.h" />
     <ClInclude Include="screen.h" />
+    <ClInclude Include="screen_manager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="screen_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="docs\engine.md" />

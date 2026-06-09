@@ -13,7 +13,8 @@ namespace dr
 	class ScreenManager
 	{
 	public:
-		ScreenManager();
+		ScreenManager(const ScreenManager&) = delete;
+		ScreenManager& operator=(const ScreenManager&) = delete;
 
 		/**
 		 * @brief Add game screen to stack
@@ -22,20 +23,28 @@ namespace dr
 		template <typename ScreenPointer>
 		static void addScreen(std::string screenId)
 		{
+			auto& manager = instance();
 			std::shared_ptr<ScreenPointer> pScreen = std::make_shared<ScreenPointer>();
 			pScreen->init();
 
-			auto& screens = mpManager->mScreens;
 			std::shared_ptr<Screen> pBaseScreen = std::static_pointer_cast<Screen>(pScreen);
-			screens.emplace(screenId, pBaseScreen);
+			manager.mScreens.emplace(screenId, pBaseScreen);
 		}
 
 		static void destroyScreen();
 		static std::shared_ptr<Screen> getCurrent();
 		static bool isEmpty();
 	private:
-		inline static ScreenManager* mpManager;
-		inline static std::stack<std::pair<std::string, std::shared_ptr<Screen>>> mScreens;
+		ScreenManager() = default;
+
+		// Only one instance available
+		static ScreenManager& instance()
+		{
+			static ScreenManager manager;
+			return manager;
+		}
+
+		std::stack<std::pair<std::string, std::shared_ptr<Screen>>> mScreens;
 	};
 }
 

@@ -17,8 +17,6 @@ namespace dr
 		virtual ~Engine() = default;
 
 		void run();
-	protected:
-		ScreenManager mScreenManager;
 	private:
 		sf::VideoMode mVideoMode;
 		sf::RenderWindow mWindow;

@@ -42,11 +42,16 @@ namespace dr
 	 */
 	void Engine::processEvents()
 	{
-		while (const auto& events = mWindow.pollEvent())
+		while (const auto& event = mWindow.pollEvent())
 		{
-			if (events->is<sf::Event::Closed>())
+			if (event->is<sf::Event::Closed>())
 			{
 				mWindow.close();
+				return;
+			}
+			if (!ScreenManager::isEmpty())
+			{
+				ScreenManager::getCurrent()->handleInput(*event);
 			}
 		}
 	}

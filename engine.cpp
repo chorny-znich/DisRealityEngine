@@ -18,6 +18,7 @@ namespace dr
 	{
 		sf::Clock clock;
 		init();
+		createStartScreen();
 		while (isRunning())
 		{
 			const float dt = clock.restart().asSeconds();
@@ -28,12 +29,12 @@ namespace dr
 	}
 
 	/**
-	 * @brief Check if the game is still running using SFML
+	 * @brief Check if the game is still running using SFML and check if there are any active screens in the stack
 	 * @return if the game is still running
 	 */
 	bool Engine::isRunning() const
 	{
-		return mWindow.isOpen();
+		return mWindow.isOpen() && !ScreenManager::isEmpty();
 	}
 
 	/**
@@ -55,6 +56,10 @@ namespace dr
 	 */
 	void Engine::update(float dt)
 	{
+		if (!ScreenManager::isEmpty())
+		{
+			ScreenManager::getCurrent()->update(dt);
+		}
 	}
 
 	/**
@@ -63,6 +68,10 @@ namespace dr
 	void Engine::render()
 	{
 		mWindow.clear(sf::Color::White);
+		if (!ScreenManager::isEmpty())
+		{
+			ScreenManager::getCurrent()->render(mWindow);
+		}
 		mWindow.display();
 	}
 }

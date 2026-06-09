@@ -26,7 +26,8 @@ namespace dr
 			pScreen->init();
 
 			auto& screens = mpManager->mScreens;
-			screens.push({ screenId, pScreen });
+			std::shared_ptr<Screen> pBaseScreen = std::static_pointer_cast<Screen>(pScreen);
+			screens.emplace(screenId, pBaseScreen);
 		}
 
 		static void destroyScreen();

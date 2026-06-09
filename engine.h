@@ -1,4 +1,5 @@
 #pragma once
+#include "screen_manager.h"
 #include <SFML/Graphics.hpp>
 
 namespace dr
@@ -16,12 +17,15 @@ namespace dr
 		virtual ~Engine() = default;
 
 		void run();
+	protected:
+		ScreenManager mScreenManager;
 	private:
 		sf::VideoMode mVideoMode;
 		sf::RenderWindow mWindow;
 
 		bool isRunning() const;
 		virtual void init() = 0;
+		virtual void createStartScreen() = 0;
 		void processEvents();
 		void update(float dt);
 		void render();

@@ -19,6 +19,9 @@
     <Filter Include="Исходные файлы\Engine">
       <UniqueIdentifier>{5b532cc3-8c69-4f0e-af98-791755cdd4cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Utility">
+      <UniqueIdentifier>{eb9adfd9-90e1-41ee-949a-2afdf4bf9b87}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -32,6 +35,9 @@
     </ClInclude>
     <ClInclude Include="disreality_engine.h">
       <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ini_parser.h">
+      <Filter>Файлы заголовков\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

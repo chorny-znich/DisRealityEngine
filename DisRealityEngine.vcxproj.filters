@@ -42,6 +42,9 @@
     <ClInclude Include="ini_parser.h">
       <Filter>Файлы заголовков\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="engine_data.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">

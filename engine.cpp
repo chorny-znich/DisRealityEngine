@@ -1,14 +1,18 @@
 #include "engine.h"
+#include "ini_parser.h"
+#include <iostream>
 
 namespace dr
 {
 	/**
 	 * @brief Default constructor.
 	 */
-	dr::Engine::Engine() :
-		mVideoMode({800, 600}),
-		mWindow(mVideoMode, "DisRealityEngine")
+	dr::Engine::Engine()
 	{
+		auto config = parseEngineConfig();
+		mEngineConfig = config.first;
+		mWindowConfig = config.second;
+		createWindow();
 	}
 
 	/**
@@ -78,5 +82,58 @@ namespace dr
 			ScreenManager::getCurrent()->render(mWindow);
 		}
 		mWindow.display();
+	}
+
+	/**
+	 * @brief Create a window according settings from the ini file
+	 */
+	void Engine::createWindow()
+	{
+		mVideoMode = mWindowConfig.mResolutionState == ResolutionState::NATIVE ?
+			sf::VideoMode::getDesktopMode() :
+			sf::VideoMode({ mWindowConfig.mResolution.x, mWindowConfig.mResolution.y });
+		sf::State windowState = mWindowConfig.mWindowMode == WindowMode::WINDOW ?
+			sf::State::Windowed : sf::State::Fullscreen;
+		mWindow.create(mVideoMode, mEngineConfig.mTitle, sf::Style::Default, windowState);
+	}
+
+	/**
+	 * @brief read the engine configuration settings from the file. The file must be at the 'config/engine_config.ini' path.
+	 * @return EngineConfig structure which contains engine settings and WindowConfig structure which contains window settings
+	*/
+	std::pair<EngineConfig, WindowConfig> Engine::parseEngineConfig()
+	{
+		EngineConfig engineConfig;
+		dr::IniDocument doc = dr::loadIniDocument(path::EngineConfigFile.data());
+
+			dr::Section generalSection = doc.getSection("general");
+			try 
+			{
+				engineConfig.mTitle = generalSection.at("title");
+			}
+			catch (const std::exception& e) 
+			{
+				std::cerr <<
+					std::format("Error in [general] section: {}\n", e.what());
+			}
+
+			WindowConfig windowConfig;
+			dr::Section windowSection = doc.getSection("window");
+			try 
+			{
+				windowConfig.mResolutionState = (windowSection.at("resolution_state") == "NATIVE") ?
+					ResolutionState::NATIVE : ResolutionState::CUSTOM;
+				windowConfig.mResolution.x = std::stoi(windowSection.at("resolution_x"));
+				windowConfig.mResolution.y = std::stoi(windowSection.at("resolution_y"));
+				windowConfig.mWindowMode = (windowSection.at("window_mode") == "WINDOW") ?
+					WindowMode::WINDOW : WindowMode::FULLSCREEN;
+			}
+			catch (const std::exception& e) 
+			{
+				std::cerr <<
+					std::format("Error in [window] section {}\n", e.what());
+			}
+
+			return { engineConfig, windowConfig };
 	}
 }

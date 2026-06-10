@@ -1,3 +1,16 @@
+# Project structure
+[parent_folder] -> config :
+	engine_config.ini - create window
+	```
+	[general]
+	title=DisReality Engine template application
+	[window]
+	resolution_state=NATIVE
+	resolution_x=1920
+	resolution_y=1080
+	window_mode=FULLSCREEN
+	```
+
 # Create the new app
 - Create an engine class (for example GameEngine)  derived from dr::Engine class
 - Override virtual methods from the base (dr::Engine) class: 

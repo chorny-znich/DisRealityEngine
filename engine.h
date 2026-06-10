@@ -1,5 +1,6 @@
 #pragma once
 #include "screen_manager.h"
+#include "engine_data.h"
 #include <SFML/Graphics.hpp>
 
 namespace dr
@@ -21,11 +22,17 @@ namespace dr
 		sf::VideoMode mVideoMode;
 		sf::RenderWindow mWindow;
 
+		EngineConfig mEngineConfig;
+		WindowConfig mWindowConfig;
+
 		bool isRunning() const;
 		virtual void init() = 0;
 		virtual void createStartScreen() = 0;
 		void processEvents();
 		void update(float dt);
 		void render();
+
+		void createWindow();
+		std::pair<EngineConfig, WindowConfig> parseEngineConfig();
 	};
 }

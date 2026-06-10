@@ -54,6 +54,9 @@
     <ClInclude Include="text_manager.h">
       <Filter>Файлы заголовков\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="asset_manager.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -66,6 +69,9 @@
       <Filter>Исходные файлы\Utility</Filter>
     </ClCompile>
     <ClCompile Include="text_manager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="asset_manager.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

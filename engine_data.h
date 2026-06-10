@@ -2,9 +2,21 @@
 #include <string>
 #include <string_view>
 #include <SFML/System/Vector2.hpp>
+#include "asset_manager.h"
+
+namespace sf
+{
+	class Texture;
+	class SoundBuffer;
+	class Font;
+}
 
 namespace dr
 {
+	using Textures = AssetManager<std::string, sf::Texture>;
+	using Sounds = AssetManager<std::string, sf::SoundBuffer>;
+	using Fonts = AssetManager<std::string, sf::Font>;
+
 	/**
 	 * @brief All pathes to the framework's files
 	*/

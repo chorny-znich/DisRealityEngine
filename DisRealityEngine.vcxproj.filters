@@ -25,6 +25,12 @@
     <Filter Include="Исходные файлы\Utility">
       <UniqueIdentifier>{0913d40b-c971-4898-8b3a-5bfb576c309c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Manager">
+      <UniqueIdentifier>{3107fd08-b788-4d3f-8996-f5c320b7328c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Manager">
+      <UniqueIdentifier>{98e78200-0872-4bb2-b696-8297b80284e8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -45,6 +51,9 @@
     <ClInclude Include="engine_data.h">
       <Filter>Файлы заголовков\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="text_manager.h">
+      <Filter>Файлы заголовков\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -55,6 +64,9 @@
     </ClCompile>
     <ClCompile Include="ini_parser.cpp">
       <Filter>Исходные файлы\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="text_manager.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

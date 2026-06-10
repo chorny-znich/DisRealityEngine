@@ -10,6 +10,8 @@
 	resolution_y=1080
 	window_mode=FULLSCREEN
 	```
+[parent_folder] -> ini files with game's data:
+	text-style.ini - styles for sf::Text object from the SFML3
 
 # Create the new app
 - Create an engine class (for example GameEngine)  derived from dr::Engine class
@@ -31,3 +33,6 @@ public:
 	void render(sf::RenderWindow& window) override;
 };
 ```
+# Managers
+## Text manager
+Ini file with text style is in: [parent_folder]/data/text-style.ini

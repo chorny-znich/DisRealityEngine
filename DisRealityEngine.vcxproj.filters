@@ -22,6 +22,9 @@
     <Filter Include="Файлы заголовков\Utility">
       <UniqueIdentifier>{eb9adfd9-90e1-41ee-949a-2afdf4bf9b87}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Utility">
+      <UniqueIdentifier>{0913d40b-c971-4898-8b3a-5bfb576c309c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -46,6 +49,9 @@
     </ClCompile>
     <ClCompile Include="screen_manager.cpp">
       <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ini_parser.cpp">
+      <Filter>Исходные файлы\Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -19,27 +19,26 @@ namespace dr
   {
   public:
     AssetManager(const AssetManager&) = delete;
-		AssetManager& operator=(AssetManager&) = delete;
-    static void init(const std::string& filename);
-
+	AssetManager& operator=(AssetManager&) = delete;
+    
+	static void init(const std::string& filename);
     static Asset& get(Id id);
   private:
-		AssetManager() = default;
+	AssetManager() = default;
+
+	static AssetManager& instance()
+	{
+		static AssetManager manager;
+		return manager;
+	}
     std::map<std::string, std::string> mAssetList;
     std::map<Id, std::unique_ptr<Asset>> mAssets;
-    static inline AssetManager<Id, Asset>* mpAssetManager = nullptr;
 
     static bool createAssetList(const std::string& path);
     static void load(Id id, const std::string& filename);
   };
 
 	// Realisation
-	template <typename Id, typename Asset>
-	AssetManager<Id, Asset>::AssetManager()
-	{
-		assert(mpAssetManager == nullptr);
-		mpAssetManager = this;
-	}
 
 	/**
 	 * @brief Initialize and load the assets' list from the file
@@ -49,7 +48,7 @@ namespace dr
 	*/
 	template <typename Id, typename Asset>
 	void AssetManager<Id, Asset>::init(const std::string& filename) {
-		auto& assetList = mpAssetManager->mAssetList;
+		auto& assetList = instance().mAssetList;
 		if (!createAssetList(filename)) {
 			throw std::runtime_error("Failed to open the file with the list of assets");
 		}
@@ -68,11 +67,11 @@ namespace dr
 	*/
 	template <typename Id, typename Asset>
 	void AssetManager<Id, Asset>::load(Id id, const std::string& filename) {
-		auto& assets = mpAssetManager->mAssets;
+		auto& assets = instance().mAssets;
 		std::unique_ptr<Asset> pAsset = std::make_unique<Asset>();
 		bool success = false;
 
-		if constexpr (std::is_same_v < Asset, sf::Font)
+		if constexpr (std::is_same_v<Asset, sf::Font>)
 		{
 			success = pAsset->openFromFile(filename);
 		}
@@ -97,7 +96,7 @@ namespace dr
 		*/
 	template <typename Id, typename Asset>
 	Asset& AssetManager<Id, Asset>::get(Id id) {
-		auto& assets = mpAssetManager->mAssets;
+		auto& assets = instance().mAssets;
 		auto iter = assets.find(id);
 		assert(iter != assets.end());
 
@@ -112,21 +111,25 @@ namespace dr
 	 * @return if the asset list successfully create
 	*/
 	template <typename Id, typename Asset>
-	bool AssetManager<Id, Asset>::createAssetList(const std::string& path) {
-		auto& assetList = mpAssetManager->mAssetList;
+	bool AssetManager<Id, Asset>::createAssetList(const std::string& path) 
+	{
+		auto& assetList = instance().mAssetList;
 
-		try {
+		try 
+		{
 			IniDocument doc = loadIniDocument(path);
 			Section section = doc.getSection("assets");
 
-			for (const auto& s : section) {
+			for (const auto& s : section) 
+			{
 				auto iter = assetList.insert(std::make_pair(s.first, s.second));
 				assert(iter.second);
 			}
 
 			return true;
 		}
-		catch (...) {
+		catch (...) 
+		{
 			std::cout << "File with the list of assets not found" << std::endl;
 		}
 

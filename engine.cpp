@@ -1,4 +1,5 @@
 #include "engine.h"
+#include "text_manager.h"
 #include "ini_parser.h"
 #include <iostream>
 
@@ -39,6 +40,22 @@ namespace dr
 	bool Engine::isRunning() const
 	{
 		return mWindow.isOpen() && !ScreenManager::isEmpty();
+	}
+
+	/**
+	 * @brief Initialize resources
+	 */
+	void Engine::init()
+	{
+		try
+		{
+			Fonts::init(path::FontsList.data());
+		}
+		catch (const std::runtime_error& err)
+		{
+			std::cout << err.what() << std::endl;
+		}
+		TextManager::init(path::TextStyle.data());
 	}
 
 	/**

@@ -18,6 +18,8 @@ namespace dr
 		virtual ~Engine() = default;
 
 		void run();
+	protected:
+		virtual void init();
 	private:
 		sf::VideoMode mVideoMode;
 		sf::RenderWindow mWindow;
@@ -26,7 +28,6 @@ namespace dr
 		WindowConfig mWindowConfig;
 
 		bool isRunning() const;
-		virtual void init() = 0;
 		virtual void createStartScreen() = 0;
 		void processEvents();
 		void update(float dt);

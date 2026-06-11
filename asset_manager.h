@@ -47,7 +47,8 @@ namespace dr
 	 * @param filename of the assets list
 	*/
 	template <typename Id, typename Asset>
-	void AssetManager<Id, Asset>::init(const std::string& filename) {
+	void AssetManager<Id, Asset>::init(const std::string& filename) 
+	{
 		auto& assetList = instance().mAssetList;
 		if (!createAssetList(filename)) {
 			throw std::runtime_error("Failed to open the file with the list of assets");

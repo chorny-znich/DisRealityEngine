@@ -1,0 +1,42 @@
+#include "text_button.h"
+
+namespace dr
+{
+  TextButton::TextButton(sf::Vector2f size, sf::Text text, const std::string& str) :
+    Button(size),
+    mText{ text },
+    mString{ str },
+    mShape{ size },
+    mColor{ sf::Color::Color(230, 231, 232) }
+  {
+    mShape.setFillColor(mColor);
+    setPosition(mPosition);
+    mText.setString(mString);
+  }
+
+  void TextButton::setPosition(sf::Vector2f pos)
+  {
+    mShape.setPosition(pos);
+    mText.setPosition({ pos.x + ((mSize.x - mText.getLocalBounds().size.x) / 2),
+    pos.y + ((mSize.y - mText.getLocalBounds().size.y) / 4) });
+  }
+
+  void TextButton::setFillColor(sf::Color color)
+  {
+    mShape.setFillColor(color);
+  }
+
+  void TextButton::render(sf::RenderWindow& window)
+  {
+    window.draw(mShape);
+    window.draw(mText);
+  }
+  bool TextButton::isClicked(sf::Vector2f pos)
+  {
+    return (mShape.getGlobalBounds().contains(pos)) ? true : false;
+  }
+  bool TextButton::isOverlap(sf::Vector2f pos)
+  {
+    return false;
+  }
+}

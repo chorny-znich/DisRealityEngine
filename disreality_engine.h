@@ -7,5 +7,6 @@
 #include "string_manager.h"
 #include "ini_parser.h"
 #include "button.h"
+#include "text_button.h"
 
 #include <SFML/Graphics.hpp>

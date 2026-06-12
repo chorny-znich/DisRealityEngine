@@ -1,26 +1,30 @@
 #include "string_manager.h"
 #include "ini_parser.h"
+#include <assert.h>
 
 namespace dr
 {
 	/**
- * @brief Load sf::Text objects from the file
+ * @brief Load list of strings from the ini file
  */
 	void StringManager::init(const std::string& filename)
 	{
 		IniDocument doc = loadIniDocument(filename);
-		Section section = doc.getSection("size");
-		const size_t size = std::stoul(section.at("size"));
-		for (size_t i = 0; i < size; i++) 
-		{
-			Section section = doc.getSection("string_" + std::to_string(i));
-			instance().mStrings.emplace(section.)
-		}
+		instance().mStrings = doc.getSection("strings");
 	}
 
-	static std::string_view get(const std::string& id)
+	/**
+	 * @brief get the text string
+	 * @param id - string
+	 * @return text string
+	 */
+	std::string StringManager::get(std::string id)
 	{
+		auto& strings = instance().mStrings;
 
+		auto iter = strings.find(id);
+		assert(iter != strings.end());
+
+		return iter->second;
 	}
 }
-

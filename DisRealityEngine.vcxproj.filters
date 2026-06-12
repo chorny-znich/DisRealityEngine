@@ -31,6 +31,12 @@
     <Filter Include="Исходные файлы\Manager">
       <UniqueIdentifier>{98e78200-0872-4bb2-b696-8297b80284e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\UI">
+      <UniqueIdentifier>{9b4eef1e-b7a0-469e-8db5-5d703c06744a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\UI">
+      <UniqueIdentifier>{97cbd5d9-125d-41cf-9e2c-0aea8582e1b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -55,10 +61,13 @@
       <Filter>Файлы заголовков\Manager</Filter>
     </ClInclude>
     <ClInclude Include="asset_manager.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>Файлы заголовков\UI</Filter>
     </ClInclude>
     <ClInclude Include="string_manager.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -71,14 +80,17 @@
     <ClCompile Include="ini_parser.cpp">
       <Filter>Исходные файлы\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="text_manager.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="string_manager.cpp">
+      <Filter>Исходные файлы\Manager</Filter>
     </ClCompile>
     <ClCompile Include="asset_manager.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="string_manager.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="text_manager.cpp">
+      <Filter>Исходные файлы\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>Исходные файлы\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

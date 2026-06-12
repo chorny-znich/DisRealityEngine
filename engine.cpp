@@ -1,5 +1,6 @@
 #include "engine.h"
 #include "text_manager.h"
+#include "string_manager.h"
 #include "ini_parser.h"
 #include <iostream>
 
@@ -50,12 +51,13 @@ namespace dr
 		try
 		{
 			Fonts::init(path::FontsList.data());
+			TextManager::init(path::TextStyle.data());
+			StringManager::init(path::Strings.data());
 		}
 		catch (const std::runtime_error& err)
 		{
 			std::cout << err.what() << std::endl;
 		}
-		TextManager::init(path::TextStyle.data());
 	}
 
 	/**

@@ -27,7 +27,7 @@ namespace dr
 		constexpr std::string_view MapsFolder{ "data/maps/" };
 		constexpr std::string_view FontsList{ "data/font_list.ini" };
 		constexpr std::string_view TextStyle{ "data/text_style.ini" };
-
+		constexpr std::string_view Strings{ "data/strings.ini" };
 	}
 
 	/**

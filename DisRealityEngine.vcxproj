@@ -151,6 +151,7 @@ xcopy "$(OutDir)$(TargetName).lib" "D:\vargar\repository\lib\DisRealityEngine\li
     <ClCompile Include="button.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="ini_parser.cpp" />
+    <ClCompile Include="process_events.cpp" />
     <ClCompile Include="screen_manager.cpp" />
     <ClCompile Include="string_manager.cpp" />
     <ClCompile Include="text_button.cpp" />

@@ -61,25 +61,6 @@ namespace dr
 	}
 
 	/**
-	 * @brief Process the system events like resizing a window, a mouse or keyboard clicking etc
-	 */
-	void Engine::processEvents()
-	{
-		while (const auto& event = mWindow.pollEvent())
-		{
-			if (event->is<sf::Event::Closed>())
-			{
-				mWindow.close();
-				return;
-			}
-			if (!ScreenManager::isEmpty())
-			{
-				ScreenManager::getCurrent()->handleInput(*event);
-			}
-		}
-	}
-
-	/**
 	 * @brief Update game's logic
 	 */
 	void Engine::update(float dt)

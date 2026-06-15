@@ -3,29 +3,35 @@
 namespace dr
 {
   Button::Button(sf::Vector2f size) :
-    mPosition{ 0, 0 },
-    mSize{ size },
-    mOverlap{ false }
+ //   mPosition{ 0, 0 },
+    mSize{ size }//,
+ //   mOverlap{ false }
   {
-    mArrowCursor->createFromSystem(sf::Cursor::Type::Arrow);
-    mHandCursor->createFromSystem(sf::Cursor::Type::Hand);
+   /* mArrowCursor->createFromSystem(sf::Cursor::Type::Arrow);
+    mHandCursor->createFromSystem(sf::Cursor::Type::Hand);*/
   }
 
-  void Button::setPosition(sf::Vector2f pos)
+  /**
+   * @brief 
+   * @return size of the button as sf::Vector2f 
+   */
+  sf::Vector2f Button::getSize() const
   {
-    mPosition = pos;
+    return mSize;
   }
+  
+  /**
+   * @brief 
+   * @return 
+   */
   sf::Vector2f Button::getPosition() const
   {
     return mPosition;
   }
 
-  sf::Vector2f Button::getSize() const
-  {
-    return mSize;
-  }
+  /*
   void Button::update(sf::Time dt)
   {
 
-  }
+  }*/
 }

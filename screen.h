@@ -12,7 +12,7 @@ namespace dr
 		virtual ~Screen() = default;
 
 		virtual void init() = 0;
-		virtual void handleInput(const sf::Event& event) {};
+		virtual void handleInput(const sf::Event& event, sf::RenderWindow& window) {};
 		virtual void update(float dt) = 0;
 		virtual void render(sf::RenderWindow& window) = 0;
 	};

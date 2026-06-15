@@ -35,5 +35,8 @@ namespace dr
 
 		void createWindow();
 		std::pair<EngineConfig, WindowConfig> parseEngineConfig();
+
+		void handleEvent(const sf::Event::Closed&);
+		void handleEvent(const auto&) {};
 	};
 }

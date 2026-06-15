@@ -2,18 +2,15 @@
 
 namespace dr
 {
-  TextButton::TextButton(sf::Vector2f size/*, sf::Text text, const std::string& str*/) :
+  TextButton::TextButton(sf::Vector2f size, sf::Text text) :
     Button(size),
     mShape{ size },
     mColor{ sf::Color::Color(230, 231, 232) },
-    mOverlapColor{ sf::Color(255, 160, 122) }
-    /*   mText{ text },
-    mString{ str },
-    */
+    mOverlapColor{ sf::Color(255, 160, 122) },
+    mText{ text }
   {
     setPosition(mPosition);
     mShape.setFillColor(mColor);
-    //mText.setString(mString);
   }
   
   /**
@@ -23,8 +20,8 @@ namespace dr
   void TextButton::setPosition(sf::Vector2f pos)
   {
     mShape.setPosition(pos);
-    /*mText.setPosition({pos.x + ((mSize.x - mText.getLocalBounds().size.x) / 2),
-    pos.y + ((mSize.y - mText.getLocalBounds().size.y) / 4) });*/
+    mText.setPosition({pos.x + ((mSize.x - mText.getLocalBounds().size.x) / 2),
+    pos.y + ((mSize.y - mText.getLocalBounds().size.y) / 4) });
   }
 
   /**
@@ -45,12 +42,20 @@ namespace dr
       return false;
     }
   }
-  /*
-  void TextButton::setFillColor(sf::Color color)
+  
+  void TextButton::setFillColor(sf::Color color, sf::Color overlapColor)
   {
+    mColor = color;
+    mOverlapColor = overlapColor;
     mShape.setFillColor(color);
   }
-  */
+
+  void TextButton::setString(const std::string& str)
+  {
+      mString = str;
+      mText.setString(mString);
+  }
+  
   /**
    * @brief 
    * @param window - sf::RenderWindow from SFML3 
@@ -58,7 +63,7 @@ namespace dr
   void TextButton::render(sf::RenderWindow& window)
   {
     window.draw(mShape);
-    //window.draw(mText);
+    window.draw(mText);
   }
 
   /*

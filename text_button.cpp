@@ -34,9 +34,16 @@ namespace dr
    */
   bool TextButton::isOverlap(sf::Vector2f pos)
   {
-    sf::Vector2i desktopMousePosition = sf::Mouse::getPosition();
-    //sf::Vector2f viewMousePosition = 
-    return false;
+    if (mShape.getGlobalBounds().contains(pos))
+    {
+      mShape.setFillColor(mOverlapColor);
+      return true;
+    }
+    else
+    {
+      mShape.setFillColor(mColor);
+      return false;
+    }
   }
   /*
   void TextButton::setFillColor(sf::Color color)

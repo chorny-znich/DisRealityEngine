@@ -7,8 +7,6 @@ namespace dr
     mSize{ size }//,
  //   mOverlap{ false }
   {
-   /* mArrowCursor->createFromSystem(sf::Cursor::Type::Arrow);
-    mHandCursor->createFromSystem(sf::Cursor::Type::Hand);*/
   }
 
   /**

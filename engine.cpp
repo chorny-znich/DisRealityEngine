@@ -1,6 +1,7 @@
 #include "engine.h"
 #include "text_manager.h"
 #include "string_manager.h"
+#include "cursor_manager.h"
 #include "ini_parser.h"
 #include <iostream>
 
@@ -48,11 +49,13 @@ namespace dr
 	 */
 	void Engine::init()
 	{
+		// load managers
 		try
 		{
 			Fonts::init(path::FontsList.data());
 			TextManager::init(path::TextStyle.data());
 			StringManager::init(path::Strings.data());
+			CursorManager::init();
 		}
 		catch (const std::runtime_error& err)
 		{

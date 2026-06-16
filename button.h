@@ -31,9 +31,5 @@ namespace dr
   protected:
     sf::Vector2f mSize;
     sf::Vector2f mPosition;  
-    
-    std::optional<sf::Cursor> mArrowCursor;
-    std::optional<sf::Cursor> mHandCursor;
-    //bool mOverlap;
   };
 }

@@ -45,9 +45,6 @@
     <ClInclude Include="screen.h">
       <Filter>Файлы заголовков\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="screen_manager.h">
-      <Filter>Файлы заголовков\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="disreality_engine.h">
       <Filter>Файлы заголовков\Engine</Filter>
     </ClInclude>
@@ -71,6 +68,12 @@
     </ClInclude>
     <ClInclude Include="text_button.h">
       <Filter>Файлы заголовков\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="screen_manager.h">
+      <Filter>Файлы заголовков\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="cursor_manager.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="process_events.cpp">
       <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="cursor_manager.cpp">
+      <Filter>Исходные файлы\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

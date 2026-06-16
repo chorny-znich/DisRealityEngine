@@ -12,9 +12,8 @@ namespace dr
     void setString(const std::string& str);
     
     virtual bool isOverlap(sf::Vector2f pos) override;
+    virtual bool isClicked(sf::Vector2f pos) override;
     virtual void render(sf::RenderWindow& window) override;
-
-    //virtual bool isClicked(sf::Vector2f pos) override;
   private:
     sf::RectangleShape mShape;
     sf::Color mColor;

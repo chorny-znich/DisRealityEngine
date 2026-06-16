@@ -43,6 +43,16 @@ namespace dr
     }
   }
   
+  /**
+   * @brief Check if the button overlap when clicked
+   * @param pos - mouse cursor in world coordinates
+   * @return 
+   */
+  bool TextButton::isClicked(sf::Vector2f pos)
+  {
+    return (mShape.getGlobalBounds().contains(pos)) ? true : false;
+  }
+
   void TextButton::setFillColor(sf::Color color, sf::Color overlapColor)
   {
     mColor = color;
@@ -67,10 +77,7 @@ namespace dr
   }
 
   /*
-  bool TextButton::isClicked(sf::Vector2f pos)
-  {
-    return (mShape.getGlobalBounds().contains(pos)) ? true : false;
-  }
+  
   bool TextButton::isOverlap(sf::Vector2f pos)
   {
     return false;

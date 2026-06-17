@@ -52,6 +52,7 @@ namespace dr
 		// load managers
 		try
 		{
+			Textures::init(path::TextureList.data());
 			Fonts::init(path::FontsList.data());
 			TextManager::init(path::TextStyle.data());
 			StringManager::init(path::Strings.data());

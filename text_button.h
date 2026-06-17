@@ -14,6 +14,8 @@ namespace dr
     virtual bool isOverlap(sf::Vector2f pos) override;
     virtual bool isClicked(sf::Vector2f pos) override;
     virtual void render(sf::RenderWindow& window) override;
+
+    void clearOverlap();
   private:
     sf::RectangleShape mShape;
     sf::Color mColor;

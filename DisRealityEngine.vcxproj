@@ -148,7 +148,6 @@ xcopy "$(OutDir)$(TargetName).lib" "D:\vargar\repository\lib\DisRealityEngine\li
     <ClInclude Include="text_manager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="asset_manager.cpp" />
     <ClCompile Include="button.cpp" />
     <ClCompile Include="cursor_manager.cpp" />
     <ClCompile Include="engine.cpp" />

@@ -76,6 +76,14 @@ namespace dr
     window.draw(mText);
   }
 
+  /**
+   * @brief button get it's default color
+   */
+  void TextButton::clearOverlap()
+  {
+    mShape.setFillColor(mColor);
+  }
+
   /*
   
   bool TextButton::isOverlap(sf::Vector2f pos)

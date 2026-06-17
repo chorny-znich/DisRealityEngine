@@ -114,7 +114,8 @@
 xcopy "$(ProjectDir)*.hpp" "D:\vargar\repository\lib\DisRealityEngine\include\" /Y /S /I 
 
 
-xcopy "$(OutDir)$(TargetName).lib" "D:\vargar\repository\lib\DisRealityEngine\lib$(Configuration)\" /Y</Command>
+xcopy "$(OutDir)$(TargetName).lib" "D:\vargar\repository\lib\DisRealityEngine\lib$(Configuration)\" /Y
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

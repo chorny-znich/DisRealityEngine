@@ -15,6 +15,7 @@ namespace dr
     CursorManager& operator=(const CursorManager&) = delete;
 
     static void init();
+    static sf::Cursor& get(const std::string& id);
   private:
     CursorManager() = default;
 

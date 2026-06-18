@@ -60,7 +60,7 @@ namespace dr
     mShape.setFillColor(color);
   }
 
-  void TextButton::setString(const std::string& str)
+  void TextButton::setString(sf::String str)
   {
       mString = str;
       mText.setString(mString);

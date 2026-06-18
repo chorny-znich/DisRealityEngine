@@ -161,6 +161,7 @@ xcopy "$(OutDir)$(TargetName).lib" "D:\vargar\repository\lib\DisRealityEngine\li
   </ItemGroup>
   <ItemGroup>
     <None Include="docs\engine.md" />
+    <None Include="docs\versions.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

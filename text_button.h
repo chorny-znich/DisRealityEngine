@@ -1,5 +1,6 @@
 #pragma once
 #include "button.h"
+#include <SFML/System/String.hpp>
 
 namespace dr
 {
@@ -9,7 +10,7 @@ namespace dr
     TextButton(sf::Vector2f size, sf::Text text);
     void setPosition(sf::Vector2f pos) override;
     void setFillColor(sf::Color color, sf::Color overlapColor);
-    void setString(const std::string& str);
+    void setString(sf::String str);
     
     virtual bool isOverlap(sf::Vector2f pos) override;
     virtual bool isClicked(sf::Vector2f pos) override;
@@ -21,6 +22,6 @@ namespace dr
     sf::Color mColor;
     sf::Color mOverlapColor;
     sf::Text mText;
-    std::string mString;
+    sf::String mString;
   };
 }

@@ -14,17 +14,18 @@ namespace dr
 	}
 
 	/**
-	 * @brief get the text string
-	 * @param id - string
-	 * @return text string
+	 * @brief Get a localized string converted to Unicode for SFML 3 text rendering
+	 * @param id The unique identifier of the string in the localization map
+	 * @return sf::String encoded in UTF-32, decoded from internal UTF-8 storage
+	 * @note Triggers an assertion if the requested ID does not exist in the map 
 	 */
-	std::string StringManager::get(std::string id)
+	sf::String StringManager::get(const std::string& id)
 	{
 		auto& strings = instance().mStrings;
 
 		auto iter = strings.find(id);
 		assert(iter != strings.end());
 
-		return iter->second;
+		return sf::String::fromUtf8(iter->second.begin(), iter->second.end());
 	}
 }

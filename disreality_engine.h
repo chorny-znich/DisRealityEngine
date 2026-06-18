@@ -1,5 +1,8 @@
 #pragma once
 
+// DisRealityEngine - a C++/SFML3-based game engine designed for 2D game development
+// version 0.2.0
+
 #include "engine.h"
 #include "screen.h"
 #include "screen_manager.h"

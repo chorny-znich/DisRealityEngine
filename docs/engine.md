@@ -1,5 +1,5 @@
 # Project structure
-[parent_folder] -> config :
+[parent_folder] -> [config] :
 	engine_config.ini - create window
 	```
 	[general]
@@ -10,17 +10,38 @@
 	resolution_y=1080
 	window_mode=FULLSCREEN
 	```
-[parent_folder] -> ini files with game's data:
+[parent_folder] -> [data] : ini files with game's data:
 	text-style.ini - styles for sf::Text object from the SFML3
+	```
+	[size]
+	size=10
+	[style_0]
+	id=main_button
+	font=main_font
+	character_size=50
+	color_component_red=0
+	color_component_green=0
+	color_component_blue=0
+	color_component_alpha=255
+	```
 	
+	Lists of resources like textures, fonts, sounds
 	font-list.ini - list of fonts
+	texture.list.ini - list of textures
 	```
 	[assets]
 	main_font=assets/font/brushtype.ttf
 	```
-
+	
+	strings.ini - all game's text
+	```
+	[strings]
+	about_app_content=The template for the minimal DisReality Engine application
+	back_button=BACK
+	
 [parent_folder]/assets -> all assets:
 	/font - fonts
+	/img - images
 
 # Create the new app
 - Create an engine class (for example GameEngine)  derived from dr::Engine class

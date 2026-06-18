@@ -25,6 +25,13 @@ namespace dr
 					}
 					else {
 						size_t pos = str.find("=");
+						/*std::string key1 = str.substr(0, pos);
+						std::string key2 = str.substr(pos + 1);
+						if (key2.back() == '\r')
+						{
+							std::cout << "!!!\n";
+						}
+						section->insert({ key1, key2 });*/
 						section->insert({ str.substr(0, pos), str.substr(pos + 1) });
 					}
 				}

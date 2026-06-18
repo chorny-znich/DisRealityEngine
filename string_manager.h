@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/System/String.hpp>
 #include <string>
 #include <unordered_map>
 
@@ -14,7 +15,7 @@ namespace dr
     StringManager& operator=(const StringManager&) = delete;
 
     static void init(const std::string& filename);
-    static std::string get(std::string id);
+    static sf::String get(const std::string& id);
   private:
     StringManager() = default;
 

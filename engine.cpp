@@ -2,6 +2,7 @@
 #include "text_manager.h"
 #include "string_manager.h"
 #include "cursor_manager.h"
+#include "imgui_helper.h"
 #include "ini_parser.h"
 #include <iostream>
 
@@ -28,7 +29,9 @@ namespace dr
 		createStartScreen();
 		while (isRunning())
 		{
-			const float dt = clock.restart().asSeconds();
+			const sf::Time time = clock.restart();
+			ImguiHelper::update(time);
+			const float dt = time.asSeconds();
 			processEvents();
 			update(dt);
 			render();
@@ -62,6 +65,8 @@ namespace dr
 		{
 			std::cout << err.what() << std::endl;
 		}
+
+		ImguiHelper::init(&mWindow);
 	}
 
 	/**

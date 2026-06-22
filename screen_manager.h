@@ -20,8 +20,8 @@ namespace dr
 		 * @brief Add game screen to stack
 		 * @param shared_ptr on game screen
 		*/
-		template <typename ScreenPointer, typename... Args >
-		static void addScreen(std::string screenId, Args&&... args)
+		template <typename ScreenPointer>
+		static void addScreen(std::string screenId)
 		{
 			auto& manager = instance();
 			std::shared_ptr<ScreenPointer> pScreen = std::make_shared<ScreenPointer>();

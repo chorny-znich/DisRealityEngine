@@ -75,6 +75,9 @@
     <ClInclude Include="cursor_manager.h">
       <Filter>Файлы заголовков\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="imgui_helper.h">
+      <Filter>Файлы заголовков\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -103,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="cursor_manager.cpp">
       <Filter>Исходные файлы\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_helper.cpp">
+      <Filter>Исходные файлы\Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

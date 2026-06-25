@@ -78,6 +78,9 @@
     <ClInclude Include="imgui_helper.h">
       <Filter>Файлы заголовков\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="ui_helper.h">
+      <Filter>Файлы заголовков\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -108,6 +111,9 @@
       <Filter>Исходные файлы\Manager</Filter>
     </ClCompile>
     <ClCompile Include="imgui_helper.cpp">
+      <Filter>Исходные файлы\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="ui_helper.cpp">
       <Filter>Исходные файлы\Utility</Filter>
     </ClCompile>
   </ItemGroup>

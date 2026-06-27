@@ -144,6 +144,7 @@ xcopy "$(OutDir)$(TargetName).lib" "D:\vargar\repository\lib\DisRealityEngine\li
     <ClInclude Include="imgui_helper.h" />
     <ClInclude Include="ini_parser.h" />
     <ClInclude Include="location.h" />
+    <ClInclude Include="map.h" />
     <ClInclude Include="screen.h" />
     <ClInclude Include="screen_manager.h" />
     <ClInclude Include="string_manager.h" />
@@ -157,6 +158,7 @@ xcopy "$(OutDir)$(TargetName).lib" "D:\vargar\repository\lib\DisRealityEngine\li
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="imgui_helper.cpp" />
     <ClCompile Include="ini_parser.cpp" />
+    <ClCompile Include="map.cpp" />
     <ClCompile Include="process_events.cpp" />
     <ClCompile Include="screen_manager.cpp" />
     <ClCompile Include="string_manager.cpp" />

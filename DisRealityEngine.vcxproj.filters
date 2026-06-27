@@ -87,6 +87,9 @@
     <ClInclude Include="location.h">
       <Filter>Файлы заголовков\Map</Filter>
     </ClInclude>
+    <ClInclude Include="map.h">
+      <Filter>Файлы заголовков\Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -121,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="ui_helper.cpp">
       <Filter>Исходные файлы\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="map.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

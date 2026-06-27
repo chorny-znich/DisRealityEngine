@@ -37,6 +37,9 @@
     <Filter Include="Исходные файлы\UI">
       <UniqueIdentifier>{97cbd5d9-125d-41cf-9e2c-0aea8582e1b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Map">
+      <UniqueIdentifier>{bf74c8f5-21f4-4c6d-a0b9-76f6092cebf3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -80,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="ui_helper.h">
       <Filter>Файлы заголовков\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="location.h">
+      <Filter>Файлы заголовков\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -15,4 +15,6 @@
 #include "imgui_helper.h"
 #include "ui_helper.h"
 
+#include "location.h"
+
 #include <SFML/Graphics.hpp>

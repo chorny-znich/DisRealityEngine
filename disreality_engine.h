@@ -16,5 +16,6 @@
 #include "ui_helper.h"
 
 #include "location.h"
+#include "map.h"
 
 #include <SFML/Graphics.hpp>

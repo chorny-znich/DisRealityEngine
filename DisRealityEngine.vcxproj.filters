@@ -40,6 +40,9 @@
     <Filter Include="Файлы заголовков\Map">
       <UniqueIdentifier>{bf74c8f5-21f4-4c6d-a0b9-76f6092cebf3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Map">
+      <UniqueIdentifier>{444fe9d9-3a39-4d46-83c2-2068b078b933}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -126,7 +129,7 @@
       <Filter>Исходные файлы\Utility</Filter>
     </ClCompile>
     <ClCompile Include="map.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

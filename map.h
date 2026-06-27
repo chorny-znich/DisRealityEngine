@@ -20,6 +20,7 @@ namespace dr
     private:
         uint16_t mMapIndex{ 0 };
         sf::Vector2u mMapSize{ 3, 3 };
+        sf::Vector2f mTileSize{ 128.f, 128.f };
         sf::VertexArray mFloorMap;
         //LevelObjects mLevelObjects;
         //StaticObjects mStaticObjects;
@@ -28,6 +29,7 @@ namespace dr
 
         void setMapIndex(uint16_t index);
         void setMapSize(sf::Vector2u size);
+        void setTileSize(sf::Vector2f tileSize);
 
         //size_t findEntryId(sf::Vector2u pos) const;
 
@@ -51,8 +53,6 @@ namespace dr
         //void deleteStaticObject(size_t id);
         //void createEntry(size_t id, MapEntry entry);
         //void deleteEntry(size_t id);
-        //void saveEntries(const std::string& filename);
-        //void loadEntries(const std::string& filename);
         //MapEntry& getEntry(sf::Vector2u pos);
         //MapEntry& getEntry(size_t id);
         //const std::map<size_t, MapEntry>& getEntries() const;

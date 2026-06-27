@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 
 /**
  * @brief map's unit, usually a tile. The set of locations forms level's map.

@@ -25,60 +25,66 @@ namespace dr
 
     void Map::createFloorMap()
     {
-        const int VERTEX_IN_QUAD = 4;
+        const int VERTEX_IN_QUAD = 6;
 
         int vertexCounter = 0;
-        mFloorMap.setPrimitiveType(sf::Quads);
+        mFloorMap.setPrimitiveType(sf::PrimitiveType::Triangles);
         mFloorMap.resize(mMapSize.x * mMapSize.y * VERTEX_IN_QUAD);
 
         for (size_t y{ 0 }; y < mMapSize.y; y++) {
             for (size_t x{ 0 }; x < mMapSize.x; x++) {
-                mFloorMap[vertexCounter + 0].position = sf::Vector2f(x * TILE_SIZE.x, y * TILE_SIZE.y);
-                mFloorMap[vertexCounter + 1].position = sf::Vector2f(x * TILE_SIZE.x + TILE_SIZE.y,
-                    y * TILE_SIZE.y);
-                mFloorMap[vertexCounter + 2].position = sf::Vector2f(x * TILE_SIZE.x + TILE_SIZE.x,
-                    y * TILE_SIZE.y + TILE_SIZE.y);
-                mFloorMap[vertexCounter + 3].position = sf::Vector2f(x * TILE_SIZE.x,
-                    y * TILE_SIZE.y + TILE_SIZE.y);
+                mFloorMap[vertexCounter + 0].position = sf::Vector2f(x * mTileSize.x, y * mTileSize.y);
+                mFloorMap[vertexCounter + 1].position = sf::Vector2f(x * mTileSize.x + mTileSize.x,
+                    y * mTileSize.y);
+                mFloorMap[vertexCounter + 2].position = sf::Vector2f(x * mTileSize.x + mTileSize.x,
+                    mTileSize.y + y * mTileSize.y);
+                mFloorMap[vertexCounter + 3].position = sf::Vector2f(x * mTileSize.x + mTileSize.x,
+                    y * mTileSize.y + mTileSize.y);
+                mFloorMap[vertexCounter + 4].position = sf::Vector2f(x * mTileSize.x,
+                    y * mTileSize.y + mTileSize.y);
+                mFloorMap[vertexCounter + 5].position = sf::Vector2f(x * mTileSize.x, y * mTileSize.y);
 
-                const std::string id = mLocations.at(y * mMapSize.x + x).getFloorLayerId();
-                sf::Vector2f textCoord = Database::getSprite(id);
+                const uint16_t id = mLocations.at(y * mMapSize.x + x).mFloorLayerId;
+                /*sf::Vector2f textCoord = Database::getSprite(id);
                 mFloorMap[vertexCounter + 0].texCoords = sf::Vector2f(textCoord.x, textCoord.y);
-                mFloorMap[vertexCounter + 1].texCoords = sf::Vector2f(textCoord.x + TILE_SIZE.x,
+                mFloorMap[vertexCounter + 1].texCoords = sf::Vector2f(textCoord.x + mTileSize.x,
                     textCoord.y);
-                mFloorMap[vertexCounter + 2].texCoords = sf::Vector2f(textCoord.x + TILE_SIZE.x,
-                    textCoord.y + TILE_SIZE.y);
-                mFloorMap[vertexCounter + 3].texCoords = sf::Vector2f(textCoord.x,
-                    textCoord.y + TILE_SIZE.y);
-
+                mFloorMap[vertexCounter + 2].texCoords = sf::Vector2f(textCoord.x + mTileSize.x,
+                    textCoord.y + mTileSize.y);
+                mFloorMap[vertexCounter + 3].texCoords = sf::Vector2f(textCoord.x + mTileSize.x,
+                    textCoord.y + mTileSize.y);              
+                mFloorMap[vertexCounter + 4].texCoords = sf::Vector2f(textCoord.x,
+                    textCoord.y + mTileSize.y);
+                mFloorMap[vertexCounter + 5].texCoords = sf::Vector2f(textCoord.x, textCoord.y);
+                */
                 vertexCounter += VERTEX_IN_QUAD;
             }
         }
     }
-
+    /*
     void Map::updateFloorMap(size_t index, const std::string& id)
     {
         sf::Vector2f textCoord = dr::Database::getSprite(id);
         int pos = static_cast<int>(index) * 4;
         mFloorMap[pos + 0].texCoords = sf::Vector2f(textCoord.x, textCoord.y);
-        mFloorMap[pos + 1].texCoords = sf::Vector2f(textCoord.x + TILE_SIZE.x,
+        mFloorMap[pos + 1].texCoords = sf::Vector2f(textCoord.x + mTileSize.x,
             textCoord.y);
-        mFloorMap[pos + 2].texCoords = sf::Vector2f(textCoord.x + TILE_SIZE.x,
-            textCoord.y + TILE_SIZE.y);
+        mFloorMap[pos + 2].texCoords = sf::Vector2f(textCoord.x + mTileSize.x,
+            textCoord.y + mTileSize.y);
         mFloorMap[pos + 3].texCoords = sf::Vector2f(textCoord.x,
-            textCoord.y + TILE_SIZE.y);
+            textCoord.y + mTileSize.y);
     }
-
-    void Map::setMapIndex(int index)
+    */
+    void Map::setMapIndex(uint16_t index)
     {
         mMapIndex = index;
     }
 
-    void Map::setMapSize(sf::Vector2i size)
+    void Map::setMapSize(sf::Vector2u size)
     {
         mMapSize = size;
     }
-
+    /*
     size_t Map::findEntryId(sf::Vector2u pos) const
     {
         auto iter = std::find_if(mEntries.begin(), mEntries.end(), [pos](const auto& entry) {
@@ -88,12 +94,12 @@ namespace dr
         return id;
 
     }
-
+    */
     const sf::VertexArray& Map::getFloorMap() const
     {
         return mFloorMap;
     }
-
+    /*
     void Map::createLevelObjects()
     {
         for (auto& loc : mLocations) {
@@ -133,7 +139,8 @@ namespace dr
     Location& Map::getLocation(size_t id)
     {
         return mLocations.at(id);
-    }
+    }*/
+    /*
     std::shared_ptr<LevelObject> Map::createLevelObject(size_t id)
     {
         Location loc = getLocation(id);
@@ -141,9 +148,9 @@ namespace dr
         sf::Sprite sprite;
         sprite.setTexture(Textures::get(tile.mTextureId));
         sprite.setTextureRect({ static_cast<int>(dr::Database::getSprite(tile.mSpriteId).x),
-          static_cast<int>(dr::Database::getSprite(tile.mSpriteId).y), static_cast<int>(TILE_SIZE.x),
-          static_cast<int>(TILE_SIZE.y) });
-        sprite.setPosition({ loc.getPosition().x * TILE_SIZE.x, loc.getPosition().y * TILE_SIZE.y });
+          static_cast<int>(dr::Database::getSprite(tile.mSpriteId).y), static_cast<int>(mTileSize.x),
+          static_cast<int>(mTileSize.y) });
+        sprite.setPosition({ loc.getPosition().x * mTileSize.x, loc.getPosition().y * mTileSize.y });
         std::shared_ptr<LevelObject> pLevelObject = std::make_shared<LevelObject>(sprite);
         pLevelObject->setId(id);
 
@@ -168,9 +175,9 @@ namespace dr
         sf::Sprite sprite;
         sprite.setTexture(Textures::get(tile.mTextureId));
         sprite.setTextureRect({ static_cast<int>(dr::Database::getSprite(tile.mSpriteId).x),
-          static_cast<int>(dr::Database::getSprite(tile.mSpriteId).y), static_cast<int>(TILE_SIZE.x),
-          static_cast<int>(TILE_SIZE.y) });
-        sprite.setPosition({ loc.getPosition().x * TILE_SIZE.x, loc.getPosition().y * TILE_SIZE.y });
+          static_cast<int>(dr::Database::getSprite(tile.mSpriteId).y), static_cast<int>(mTileSize.x),
+          static_cast<int>(mTileSize.y) });
+        sprite.setPosition({ loc.getPosition().x * mTileSize.x, loc.getPosition().y * mTileSize.y });
         std::shared_ptr<StaticObject> pStaticObject = std::make_shared<StaticObject>(sprite);
         pStaticObject->setId(id);
 
@@ -198,114 +205,14 @@ namespace dr
         mEntries.erase(id);
     }
 
-    void Map::saveMap(const std::string& filename)
-    {
-        const std::string FILENAME = path::MapsFolder + filename + ".ini";
-        std::ofstream ofs(FILENAME);
-        if (ofs) {
-            ofs << "[map_info]\n";
-            ofs << "id=" << mMapIndex << '\n';
-            ofs << "[map_size]\n";
-            ofs << "width=" << mMapSize.x << '\n';
-            ofs << "height=" << mMapSize.y << '\n';
-            for (size_t i = 0; i < mMapSize.y; i++) {
-                for (size_t j = 0; j < mMapSize.x; j++) {
-                    ofs << std::format("[loc_{}_{}]\n", i, j);
-                    ofs << std::format("floor_layer={}\n", mLocations[i * mMapSize.x + j].getFloorLayerId());
-                    ofs << std::format("level_object={}\n", mLocations[i * mMapSize.x + j].getLevelLayerId());
-                    ofs << std::format("static_object={}\n", mLocations[i * mMapSize.x + j].getObjectLayerId());
-                    if (mLocations[i * mMapSize.x + j].isPassable()) {
-                        ofs << std::format("passable=1\n");
-                    }
-                    else {
-                        ofs << std::format("passable=0\n");
-                    }
-                    if (mLocations[i * mMapSize.x + j].isEntry()) {
-                        ofs << std::format("entry=1\n");
-                    }
-                    else {
-                        ofs << std::format("entry=0\n");
-                    }
-                }
-            }
-        }
-        else {
-            std::cerr << std::format("can't open file: {}\n\n", FILENAME);
-        }
-    }
-
-    // load a map from the ini file
-    void Map::loadFromFile(const std::string& filename)
-    {
-        IniDocument doc = loadIniDocument(filename);
-        Section mapInfoSection = doc.getSection("map_info");
-        mMapIndex = std::stoul(mapInfoSection.at("id"));
-        Section section = doc.getSection("map_size");
-        mMapSize.x = std::stoul(section.at("width"));
-        mMapSize.y = std::stoul(section.at("height"));
-
-        for (size_t y = 0; y < mMapSize.y; y++) {
-            for (size_t x = 0; x < mMapSize.x; x++) {
-                Section section = doc.getSection("loc_" + std::to_string(y) + "_" + std::to_string(x));
-                Location loc;
-                loc.setId(y * mMapSize.x + x);
-                loc.setPosition({ static_cast<unsigned int>(x), static_cast<unsigned int>(y) });
-                loc.setFloorLayerId(section.at("floor_layer"));
-                loc.setLevelLayerId(section.at("level_object"));
-                loc.setObjectLayerId(section.at("static_object"));
-                loc.setPassability(std::stoi(section.at("passable")));
-                loc.setEntry(std::stoi(section.at("entry")));
-                mLocations.push_back(std::move(loc));
-            }
-        }
-    }
+   */
 
     const std::vector<Location>& Map::getLocations() const
     {
         return mLocations;
     }
 
-    void Map::saveEntries(const std::string& filename)
-    {
-        const std::string FILENAME = path::MapsFolder + filename + ".ini";
-        int index{ 1 };
-        std::ofstream ofs(FILENAME);
-        if (ofs) {
-            ofs << "[general]\n";
-            ofs << "number_of_entries=" << mEntries.size() << '\n';
-            for (const auto& [key, value] : mEntries) {
-                ofs << std::format("[entry_{}]\n", index);
-                ofs << std::format("id={}\n", value.getId());
-                ofs << std::format("map_id={}\n", value.getPosition().y);
-                ofs << std::format("position_x={}\n", value.getPosition().x);
-                ofs << std::format("position_y={}\n", value.getPosition().y);
-                ofs << std::format("linked_entry_id={}\n", value.getLinkedEntryId());
-                ofs << std::format("visibility={}\n", value.getVisibility());
-                index++;
-            }
-        }
-        else {
-            std::cerr << std::format("can't open file: {}\n\n", FILENAME);
-        }
-    }
-    void Map::loadEntries(const std::string& filename)
-    {
-        IniDocument doc = loadIniDocument(filename);
-        Section general = doc.getSection("general");
-        size_t entriesNumber = std::stoul(general.at("number_of_entries"));
-
-        for (size_t x = 1; x <= entriesNumber; x++) {
-            Section section = doc.getSection("entry_" + std::to_string(x));
-            MapEntry entry;
-            entry.setId(section.at("id"));
-            entry.setMapId(std::stoul(section.at("map_id")));
-            size_t posX = std::stoul(section.at("position_x"));
-            size_t posY = std::stoul(section.at("position_y"));
-            entry.setPosition({ static_cast<unsigned int>(posX), static_cast<unsigned int>(posY) });
-            entry.setLinkedEntryId(section.at("linked_entry_id"));
-            createEntry(posY * mMapSize.x + posX, entry);
-        }
-    }
+    /*
     MapEntry& Map::getEntry(sf::Vector2u pos)
     {
         return mEntries.at(findEntryId(pos));
@@ -324,5 +231,5 @@ namespace dr
     size_t Map::getNumberOfEntries() const
     {
         return mEntries.size();
-    }
+    }*/
 }

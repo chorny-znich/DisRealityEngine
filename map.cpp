@@ -1,5 +1,5 @@
 #include "map.h"
-//#include "database.h"
+#include "tile_database.h"
 #include "engine_data.h"
 #include <fstream>
 #include <format>
@@ -45,7 +45,7 @@ namespace dr
                 mFloorMap[vertexCounter + 5].position = sf::Vector2f(x * mTileSize.x, y * mTileSize.y);
 
                 const uint16_t id = mLocations.at(y * mMapSize.x + x).mFloorLayerId;
-                /*sf::Vector2f textCoord = Database::getSprite(id);
+                sf::Vector2f textCoord = TileDatabase::instance().getSprite(id);
                 mFloorMap[vertexCounter + 0].texCoords = sf::Vector2f(textCoord.x, textCoord.y);
                 mFloorMap[vertexCounter + 1].texCoords = sf::Vector2f(textCoord.x + mTileSize.x,
                     textCoord.y);
@@ -56,7 +56,7 @@ namespace dr
                 mFloorMap[vertexCounter + 4].texCoords = sf::Vector2f(textCoord.x,
                     textCoord.y + mTileSize.y);
                 mFloorMap[vertexCounter + 5].texCoords = sf::Vector2f(textCoord.x, textCoord.y);
-                */
+                
                 vertexCounter += VERTEX_IN_QUAD;
             }
         }

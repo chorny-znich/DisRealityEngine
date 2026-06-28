@@ -7,6 +7,12 @@
 
 namespace dr
 {
+    void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
+    {
+        states.texture = &Textures::get(mFloorTextureId);
+        target.draw(mFloorMap, states);
+    }
+
     void Map::createMap(uint16_t index, sf::Vector2u size, uint16_t groundLayerId)
     {
         setMapIndex(index);
@@ -15,7 +21,7 @@ namespace dr
         for (size_t y{ 0 }; y < mMapSize.y; y++) {
             for (size_t x{ 0 }; x < mMapSize.x; x++) {
                 Location loc;
-                loc.mId = y * mMapSize.x + x;
+                loc.mId = static_cast<uint16_t>(y * mMapSize.x + x);
                 loc.mFloorLayerId = groundLayerId;
                 mLocations.emplace_back(loc);
             }
@@ -94,12 +100,7 @@ namespace dr
         return id;
 
     }
-    */
-    const sf::VertexArray& Map::getFloorMap() const
-    {
-        return mFloorMap;
-    }
-    /*
+   
     void Map::createLevelObjects()
     {
         for (auto& loc : mLocations) {
@@ -128,18 +129,37 @@ namespace dr
     {
         return mStaticObjects;
     }
-    size_t Map::getMapIndex() const
+    */
+
+    uint16_t Map::getMapIndex() const
     {
         return mMapIndex;
     }
-    sf::Vector2i Map::getMapSize() const
+
+    sf::Vector2u Map::getMapSize() const
     {
         return mMapSize;
     }
-    Location& Map::getLocation(size_t id)
+
+    void Map::setTileSize(sf::Vector2f tileSize)
+    {
+        mTileSize = tileSize;
+    }
+
+    void Map::setFloorTextureId(const std::string& id)
+    {
+        mFloorTextureId = id;
+    }
+
+    void Map::addLocation(Location loc)
+    {
+        mLocations.push_back(std::move(loc));
+    }
+
+    Location& Map::getLocation(uint16_t id)
     {
         return mLocations.at(id);
-    }*/
+    }
     /*
     std::shared_ptr<LevelObject> Map::createLevelObject(size_t id)
     {

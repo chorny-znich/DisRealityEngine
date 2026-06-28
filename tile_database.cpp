@@ -7,7 +7,7 @@ namespace dr
 {
 	void TileDatabase::init()
 	{
-        IniDocument doc = loadIniDocument(path::TextureMap.data());
+        IniDocument doc = loadIniDocument(path::TileMap.data());
         Section section = doc.getSection("size");
         const size_t TEXTURE_MAP_SIZE = std::stoul(section.at("size"));
         for (size_t i = 0; i < TEXTURE_MAP_SIZE; i++) {

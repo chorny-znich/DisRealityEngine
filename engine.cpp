@@ -2,6 +2,7 @@
 #include "text_manager.h"
 #include "string_manager.h"
 #include "cursor_manager.h"
+#include "tile_database.h"
 #include "imgui_helper.h"
 #include "ini_parser.h"
 #include <iostream>
@@ -60,6 +61,7 @@ namespace dr
 			TextManager::init(path::TextStyle.data());
 			StringManager::init(path::Strings.data());
 			CursorManager::init();
+			TileDatabase::instance().init();
 		}
 		catch (const std::runtime_error& err)
 		{

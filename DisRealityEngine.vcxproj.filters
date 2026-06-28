@@ -94,6 +94,9 @@
       <Filter>Файлы заголовков\Map</Filter>
     </ClInclude>
     <ClInclude Include="tile_database.h">
+      <Filter>Файлы заголовков\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="map_manager.h">
       <Filter>Файлы заголовков\Map</Filter>
     </ClInclude>
   </ItemGroup>
@@ -134,8 +137,11 @@
     <ClCompile Include="map.cpp">
       <Filter>Исходные файлы\Map</Filter>
     </ClCompile>
-    <ClCompile Include="tile_database.cpp">
+    <ClCompile Include="map_manager.cpp">
       <Filter>Исходные файлы\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="tile_database.cpp">
+      <Filter>Исходные файлы\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -16,6 +16,8 @@
 #include "ui_helper.h"
 
 #include "location.h"
+#include "tile_database.h"
 #include "map.h"
+#include "map_manager.h"
 
 #include <SFML/Graphics.hpp>

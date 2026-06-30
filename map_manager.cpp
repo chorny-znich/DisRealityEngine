@@ -37,6 +37,7 @@ namespace dr
                     mMaps[mapIndex]->addLocation(std::move(loc));
                 }
             }
+            mMaps[mapIndex]->createFloorMap();
         }
 
         mCurrentMapIndex = mapIndex;

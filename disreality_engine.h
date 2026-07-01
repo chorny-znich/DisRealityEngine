@@ -20,4 +20,6 @@
 #include "map.h"
 #include "map_manager.h"
 
+#include "game_actor.h"
+
 #include <SFML/Graphics.hpp>

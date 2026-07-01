@@ -11,6 +11,12 @@ namespace dr
     {
         states.texture = &Textures::get(mFloorTextureId);
         target.draw(mFloorMap, states);
+        states.texture = nullptr;
+
+        for (const auto& obj : mLevelObjects)
+        {
+          target.draw(*obj, states);
+        }
     }
 
     void Map::createMap(uint16_t index, sf::Vector2u size, uint16_t groundLayerId)
@@ -100,17 +106,17 @@ namespace dr
         return id;
 
     }
-   
+   */
     void Map::createLevelObjects()
     {
         for (auto& loc : mLocations) {
-            if (loc.getLevelLayerId() != "none") {
-                loc.changePlacementStatus(false);
-                mLevelObjects.push_back(std::move(createLevelObject(loc.getId())));
+            if (loc.mLevelLayerId != 0) {
+                loc.mPlaceRandomObject = false;
+                mLevelObjects.push_back(std::move(createLevelObject(loc.mId)));
             }
         }
     }
-
+    /*
     void Map::createStaticObjects()
     {
         for (auto& loc : mLocations) {
@@ -160,22 +166,22 @@ namespace dr
     {
         return mLocations.at(id);
     }
-    /*
-    std::shared_ptr<LevelObject> Map::createLevelObject(size_t id)
+    
+    // Create a single LevelObject
+    std::shared_ptr<LevelObject> Map::createLevelObject(uint16_t id)
     {
-        Location loc = getLocation(id);
-        Tile tile = dr::Database::getTile(loc.getLevelLayerId());
-        sf::Sprite sprite;
-        sprite.setTexture(Textures::get(tile.mTextureId));
-        sprite.setTextureRect({ static_cast<int>(dr::Database::getSprite(tile.mSpriteId).x),
-          static_cast<int>(dr::Database::getSprite(tile.mSpriteId).y), static_cast<int>(mTileSize.x),
-          static_cast<int>(mTileSize.y) });
-        sprite.setPosition({ loc.getPosition().x * mTileSize.x, loc.getPosition().y * mTileSize.y });
-        std::shared_ptr<LevelObject> pLevelObject = std::make_shared<LevelObject>(sprite);
-        pLevelObject->setId(id);
+        Location& loc = getLocation(id);
+        Tile tile = TileDatabase::instance().getTile(loc.mLevelLayerId);
+        sf::Texture& texture = Textures::get(tile.mTextureId);
+        sf::IntRect rect = { {static_cast<int>(tile.x), static_cast<int>(tile.y)},
+          {static_cast<int>(mTileSize.x), static_cast<int>(mTileSize.y)} };
+        
+        std::shared_ptr<LevelObject> pLevelObject = std::make_shared<LevelObject>(id, rect, texture);
+        pLevelObject->setPosition({ loc.mPosition.x * mTileSize.x, loc.mPosition.y * mTileSize.y });;
 
         return pLevelObject;
     }
+    /*
     void Map::addLevelObject(LevelObjectPtr lop)
     {
         mLevelObjects.push_back(lop);

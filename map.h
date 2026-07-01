@@ -1,5 +1,6 @@
 #pragma once
 #include "location.h"
+#include "level_object.h"
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics/VertexArray.hpp>
 #include <SFML/Graphics/Drawable.hpp>
@@ -27,7 +28,7 @@ namespace dr
         sf::Vector2f mTileSize{ 128.f, 128.f };
         std::string mFloorTextureId{};
         sf::VertexArray mFloorMap;
-        //LevelObjects mLevelObjects;
+        LevelObjects mLevelObjects;
         //StaticObjects mStaticObjects;
         std::vector<Location> mLocations;
         //std::unordered_map<uint16_t, MapEntry> mEntries;
@@ -38,7 +39,7 @@ namespace dr
         void createMap(uint16_t index, sf::Vector2u size, uint16_t groundLayerId);
         void createFloorMap();
         //void updateFloorMap(uint16_t index, uint16_t id);
-        //void createLevelObjects();
+        void createLevelObjects();
         //void createStaticObjects();
         //LevelObjects& getLevelObjects();
         //StaticObjects& getStaticObjects();
@@ -50,7 +51,7 @@ namespace dr
         void setFloorTextureId(const std::string& id);
         void addLocation(Location loc);
         Location& getLocation(uint16_t id);
-        //LevelObjectPtr createLevelObject(size_t id);
+        LevelObjectPtr createLevelObject(uint16_t id);
         //void addLevelObject(LevelObjectPtr lop);
         //void deleteLevelObject(size_t id);
         //StaticObjectPtr createStaticObject(size_t id);

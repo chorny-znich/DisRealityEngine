@@ -29,8 +29,9 @@ namespace dr
                     Section section = doc.getSection(std::format("loc_{}_{}", y, x));
                     Location loc;
                     loc.mId = static_cast<uint16_t>(y * mapSize.x + x);
+                    loc.mPosition = { static_cast<unsigned int>(x), static_cast<unsigned int>(y) };
                     loc.mFloorLayerId = static_cast<uint16_t>(std::stoul(section.at("floor_layer")));
-                    //loc.setLevelLayerId(section.at("level_object"));
+                    loc.mLevelLayerId = static_cast<uint16_t>(std::stoul(section.at("level_object")));
                     //loc.setObjectLayerId(section.at("static_object"));
                     loc.mPassable = std::stoi(section.at("passable"));
                     //loc.setEntry(std::stoi(section.at("entry")));
@@ -38,6 +39,7 @@ namespace dr
                 }
             }
             mMaps[mapIndex]->createFloorMap();
+            mMaps[mapIndex]->createLevelObjects();
         }
 
         mCurrentMapIndex = mapIndex;

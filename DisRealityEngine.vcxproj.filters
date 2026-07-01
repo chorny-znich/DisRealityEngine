@@ -99,6 +99,9 @@
     <ClInclude Include="map_manager.h">
       <Filter>Файлы заголовков\Map</Filter>
     </ClInclude>
+    <ClInclude Include="level_object.h">
+      <Filter>Файлы заголовков\Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -142,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="tile_database.cpp">
       <Filter>Исходные файлы\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="level_object.cpp">
+      <Filter>Исходные файлы\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

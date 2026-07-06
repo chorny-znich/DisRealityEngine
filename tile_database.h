@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <cstdint>
 #include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics/Sprite.hpp>
 
 namespace dr
 {
@@ -27,9 +28,11 @@ namespace dr
 		}
 
 		void init();
-		sf::Vector2f getSprite(uint16_t id) const;
+		sf::Vector2f getSpriteCoords(uint16_t id) const;
+		sf::Sprite getSprite(uint16_t id) const;
 		Tile getTile(uint16_t id) const;
 	private:
+		sf::Vector2i mTileSize{ 0, 0 };
 		std::unordered_map<uint16_t, Tile> mTileMap;
 	};
 }

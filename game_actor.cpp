@@ -1,11 +1,10 @@
 #include "game_actor.h"
 #include "SFML/Graphics/RenderTarget.hpp"
 
-dr::GameActor::GameActor(const sf::Texture& texture, sf::IntRect rect) :
-  mSprite(texture),
+dr::GameActor::GameActor(sf::Sprite sprite) :
+  mSprite(std::move(sprite)),
   mIsVisible{true}
 {
-  mSprite.setTextureRect(rect);
 }
 
 void dr::GameActor::draw(sf::RenderTarget& target, sf::RenderStates states) const

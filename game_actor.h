@@ -16,7 +16,7 @@ namespace dr
   class GameActor : public sf::Drawable, sf::Transformable
   {
   public:
-    GameActor(const sf::Texture& texture, sf::IntRect rect);
+    GameActor(sf::Sprite sprite);
     virtual ~GameActor() = default;
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

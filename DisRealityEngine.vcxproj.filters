@@ -46,6 +46,9 @@
     <Filter Include="Файлы заголовков\Object">
       <UniqueIdentifier>{2c0b4407-4812-4052-9faf-9490314cc212}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Object">
+      <UniqueIdentifier>{da4325c2-1369-4292-9f7a-0f09fcebacf6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -106,7 +109,7 @@
       <Filter>Файлы заголовков\Map</Filter>
     </ClInclude>
     <ClInclude Include="game_actor.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +159,7 @@
       <Filter>Исходные файлы\Map</Filter>
     </ClCompile>
     <ClCompile Include="game_actor.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -57,7 +57,7 @@ namespace dr
                 mFloorMap[vertexCounter + 5].position = sf::Vector2f(x * mTileSize.x, y * mTileSize.y);
 
                 const uint16_t id = mLocations.at(y * mMapSize.x + x).mFloorLayerId;
-                sf::Vector2f textCoord = TileDatabase::instance().getSprite(id);
+                sf::Vector2f textCoord = TileDatabase::instance().getSpriteCoords(id);
                 mFloorMap[vertexCounter + 0].texCoords = sf::Vector2f(textCoord.x, textCoord.y);
                 mFloorMap[vertexCounter + 1].texCoords = sf::Vector2f(textCoord.x + mTileSize.x,
                     textCoord.y);

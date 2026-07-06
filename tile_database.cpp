@@ -8,6 +8,8 @@ namespace dr
 	void TileDatabase::init()
 	{
         IniDocument doc = loadIniDocument(path::TileMap.data());
+        Section tileSizeSection = doc.getSection("tile_size");
+        mTileSize = {std::stoi(tileSizeSection.at("width")), std::stoi(tileSizeSection.at("height"))};
         Section section = doc.getSection("size");
         const size_t TEXTURE_MAP_SIZE = std::stoul(section.at("size"));
         for (size_t i = 0; i < TEXTURE_MAP_SIZE; i++) {
@@ -21,9 +23,22 @@ namespace dr
         }
 	}
 
-    sf::Vector2f TileDatabase::getSprite(uint16_t id) const
+    sf::Vector2f TileDatabase::getSpriteCoords(uint16_t id) const
     {
         return { mTileMap.at(id).x, mTileMap.at(id).y };
+    }
+
+    /**
+     * @brief Create a sf::Sprite
+     * @return  
+     */
+    sf::Sprite TileDatabase::getSprite(uint16_t id) const
+    {
+      Tile tile = getTile(id);
+      sf::Sprite sprite(dr::Textures::get(tile.mTextureId));
+      sprite.setTextureRect({ { static_cast<int>(getSpriteCoords(id).x), static_cast<int>(getSpriteCoords(id).y) },
+        { mTileSize.x, mTileSize.y }});
+      return sprite;
     }
 
     Tile TileDatabase::getTile(uint16_t id) const

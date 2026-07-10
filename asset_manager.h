@@ -19,10 +19,10 @@ namespace dr
   {
   public:
     AssetManager(const AssetManager&) = delete;
-	AssetManager& operator=(AssetManager&) = delete;
+		AssetManager& operator=(AssetManager&) = delete;
     
-	static void init(const std::string& filename);
-    static Asset& get(Id id);
+		static void init(const std::string& filename);
+    static Asset& get(const Id& id);
   private:
 	AssetManager() = default;
 
@@ -35,7 +35,7 @@ namespace dr
     std::map<Id, std::unique_ptr<Asset>> mAssets;
 
     static bool createAssetList(const std::string& path);
-    static void load(Id id, const std::string& filename);
+    static Asset& load(const Id& id, const std::string& filename);
   };
 
 	// Realisation
@@ -53,23 +53,22 @@ namespace dr
 		if (!createAssetList(filename)) {
 			throw std::runtime_error("Failed to open the file with the list of assets");
 		}
-
-		for (const auto& asset : assetList) {
-			load(asset.first, asset.second);
-		}
 	}
 
 	/**
-	 * @brief load the asset from the file
-	 * @tparam Id: asset name
-	 * @tparam Asset: SFML asset type (texture, font)
-	 * @param id of the asset
-	 * @param the filename of the asset
-	*/
+ * @brief Dynamically loads and compiles an asset from a file on the disk.
+ * @tparam Id The asset identifier type.
+ * @tparam Asset The SFML resource type (e.g., sf::Texture, sf::Font).
+ * @param id The unique identifier to register the loaded asset.
+ * @param filename The path to the source file on the disk.
+ * @return Asset& A live reference to the newly cached resource.
+ * @throws std::runtime_error If the file cannot be opened or parsed by SFML.
+ */
 	template <typename Id, typename Asset>
-	void AssetManager<Id, Asset>::load(Id id, const std::string& filename) {
+	Asset& AssetManager<Id, Asset>::load(const Id& id, const std::string& filename) {
 		auto& assets = instance().mAssets;
 		std::unique_ptr<Asset> pAsset = std::make_unique<Asset>();
+		Asset& result = *pAsset;
 		bool success = false;
 
 		if constexpr (std::is_same_v<Asset, sf::Font>)
@@ -86,20 +85,33 @@ namespace dr
 		}
 		auto iter = assets.insert(std::make_pair(id, std::move(pAsset)));
 		assert(iter.second);
+		return result;
 	}
 
 	/**
-		 * @brief get reference to the asset
-		 * @tparam Asset name
-		 * @tparam Asset type
-		 * @param id of the asset
-		 * @return reference to the asset
-		*/
+ * @brief Retrieves a reference to the requested asset, loading it on-demand if necessary.
+ *
+ * Implements a Lazy Loading strategy. If the asset is already resident in memory,
+ * it returns instantly. Otherwise, it looks up the file path in the registry,
+ * compiles the resource via the load() method, and caches it for future frames.
+ *
+ * @param id The unique identifier assigned to the asset in the configuration registry.
+ * @return Asset& A live reference to the requested SFML resource type.
+ *
+ * @note Triggers an assertion if the requested ID exists neither in active memory
+ *       nor in the parsed initialization configuration file.
+ */
 	template <typename Id, typename Asset>
-	Asset& AssetManager<Id, Asset>::get(Id id) {
+	Asset& AssetManager<Id, Asset>::get(const Id& id) {
 		auto& assets = instance().mAssets;
 		auto iter = assets.find(id);
-		assert(iter != assets.end());
+		if (iter == assets.end())
+		{
+			auto& assetList = instance().mAssetList;
+			auto iterList = assetList.find(id);
+			assert(iterList != assetList.end());
+			return load(id, iterList->second);
+		}
 
 		return *iter->second;
 	}

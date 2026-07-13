@@ -20,6 +20,7 @@ namespace dr
   public:
     Section& addSection(const std::string& name);
     const Section& getSection(const std::string& name) const;
+    bool hasSection(const std::string& name) const;
   };
 
   IniDocument loadIniDocument(const std::string& filename);

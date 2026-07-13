@@ -55,4 +55,8 @@ namespace dr
 	{
 		return mSections.at(name);
 	}
+	bool IniDocument::hasSection(const std::string& name) const
+	{
+		return mSections.contains(name);
+	}
 }

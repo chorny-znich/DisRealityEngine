@@ -99,7 +99,7 @@
     <ClInclude Include="map.h">
       <Filter>Файлы заголовков\Map</Filter>
     </ClInclude>
-    <ClInclude Include="tile_database.h">
+    <ClInclude Include="sprite_database.h">
       <Filter>Файлы заголовков\Manager</Filter>
     </ClInclude>
     <ClInclude Include="map_manager.h">
@@ -152,7 +152,7 @@
     <ClCompile Include="map_manager.cpp">
       <Filter>Исходные файлы\Map</Filter>
     </ClCompile>
-    <ClCompile Include="tile_database.cpp">
+    <ClCompile Include="sprite_database.cpp">
       <Filter>Исходные файлы\Manager</Filter>
     </ClCompile>
     <ClCompile Include="level_object.cpp">

@@ -1,5 +1,5 @@
 #include "map.h"
-#include "tile_database.h"
+#include "sprite_database.h"
 #include "engine_data.h"
 #include <fstream>
 #include <format>
@@ -57,7 +57,7 @@ namespace dr
                 mFloorMap[vertexCounter + 5].position = sf::Vector2f(x * mTileSize.x, y * mTileSize.y);
 
                 const uint16_t id = mLocations.at(y * mMapSize.x + x).mFloorLayerId;
-                sf::Vector2f textCoord = TileDatabase::instance().getSpriteCoords(id);
+                sf::Vector2f textCoord = SpriteDatabase::instance().getSpriteCoords(id);
                 mFloorMap[vertexCounter + 0].texCoords = sf::Vector2f(textCoord.x, textCoord.y);
                 mFloorMap[vertexCounter + 1].texCoords = sf::Vector2f(textCoord.x + mTileSize.x,
                     textCoord.y);
@@ -171,9 +171,9 @@ namespace dr
     std::shared_ptr<LevelObject> Map::createLevelObject(uint16_t id)
     {
         Location& loc = getLocation(id);
-        Tile tile = TileDatabase::instance().getTile(loc.mLevelLayerId);
-        sf::Texture& texture = Textures::get(tile.mTextureId);
-        sf::IntRect rect = { {static_cast<int>(tile.x), static_cast<int>(tile.y)},
+        SpriteInfo info = SpriteDatabase::instance().getSpriteInfo(loc.mLevelLayerId);
+        sf::Texture& texture = Textures::get(info.textureId);
+        sf::IntRect rect = { {static_cast<int>(info.x), static_cast<int>(info.y)},
           {static_cast<int>(mTileSize.x), static_cast<int>(mTileSize.y)} };
         
         std::shared_ptr<LevelObject> pLevelObject = std::make_shared<LevelObject>(id, rect, texture);

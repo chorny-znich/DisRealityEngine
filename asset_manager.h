@@ -50,6 +50,9 @@ namespace dr
 	void AssetManager<Id, Asset>::init(const std::string& filename) 
 	{
 		auto& assetList = instance().mAssetList;
+		assetList.clear();
+		auto& assets = instance().mAssets;
+		assets.clear();
 		if (!createAssetList(filename)) {
 			throw std::runtime_error("Failed to open the file with the list of assets");
 		}

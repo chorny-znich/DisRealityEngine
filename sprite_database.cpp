@@ -6,7 +6,7 @@
 
 namespace dr
 {
-	void SpriteDatabase::init()
+	void SpriteDatabase::init(std::string_view filepath)
 	{
     std::unordered_map<std::string, SpriteCategory> idToType
     {
@@ -17,8 +17,9 @@ namespace dr
       {"ui", SpriteCategory::UI},
       {"unknown", SpriteCategory::Unknown}
     };
+    mSpriteMap.clear();
 
-    IniDocument doc = loadIniDocument(path::TileMap.data());
+    IniDocument doc = loadIniDocument(filepath.data());
     Section tileSizeSection = doc.getSection("tile_size");
     mTileSize = {std::stoi(tileSizeSection.at("width")), std::stoi(tileSizeSection.at("height"))};
     Section section = doc.getSection("size");

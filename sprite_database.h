@@ -1,5 +1,7 @@
 #pragma once
+#include "engine_data.h"
 #include <string>
+#include <string_view>
 #include <unordered_map>
 #include <cstdint>
 #include <SFML/System/Vector2.hpp>
@@ -38,7 +40,7 @@ namespace dr
 			return database;
 		}
 
-		void init();
+		void init(std::string_view filepath = path::TileMap);
 		sf::Vector2f getSpriteCoords(uint16_t id) const;
 		sf::Sprite getSprite(uint16_t id) const;
 		SpriteInfo getSpriteInfo(uint16_t id) const;

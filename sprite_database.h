@@ -45,6 +45,7 @@ namespace dr
 		sf::Sprite getSprite(uint16_t id) const;
 		SpriteInfo getSpriteInfo(uint16_t id) const;
 		std::vector<std::uint16_t> getIdByCategory(SpriteCategory);
+		sf::Vector2i getTileSize() const;
 	private:
 		sf::Vector2i mTileSize{ 0, 0 };
 		std::unordered_map<uint16_t, SpriteInfo> mSpriteMap;

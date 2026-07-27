@@ -1,4 +1,5 @@
 #include "text_button.h"
+#include "cursor_component.h"
 
 namespace dr
 {

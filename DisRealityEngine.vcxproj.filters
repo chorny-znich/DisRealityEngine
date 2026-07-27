@@ -49,6 +49,12 @@
     <Filter Include="Исходные файлы\Object">
       <UniqueIdentifier>{da4325c2-1369-4292-9f7a-0f09fcebacf6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Component">
+      <UniqueIdentifier>{bb543f0d-c0bc-4637-be00-9adc5d2f4d5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Component">
+      <UniqueIdentifier>{49b1f18a-fa5d-40e7-ba01-a2657682755c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -111,6 +117,9 @@
     <ClInclude Include="game_actor.h">
       <Filter>Файлы заголовков\Object</Filter>
     </ClInclude>
+    <ClInclude Include="cursor_component.h">
+      <Filter>Файлы заголовков\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -160,6 +169,9 @@
     </ClCompile>
     <ClCompile Include="game_actor.cpp">
       <Filter>Исходные файлы\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cursor_component.cpp">
+      <Filter>Исходные файлы\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

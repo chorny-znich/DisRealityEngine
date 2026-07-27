@@ -21,5 +21,6 @@
 #include "map_manager.h"
 
 #include "game_actor.h"
+#include "cursor_component.h"
 
 #include <SFML/Graphics.hpp>

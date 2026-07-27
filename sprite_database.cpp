@@ -77,4 +77,13 @@ namespace dr
       }
       return result;
     }
+
+    /**
+     * @brief 
+     * @return 
+     */
+    sf::Vector2i SpriteDatabase::getTileSize() const
+    {
+        return mTileSize;
+    }
 }

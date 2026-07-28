@@ -32,16 +32,19 @@ namespace dr
    */
   void CursorComponent::update(float dt)
   {
-    int rawX = static_cast<int>(mMousePosition.x / mTileSize);
-    rawX = std::clamp(rawX, 0, mMapSize.x - 1);
-    int rawY = static_cast<int>(mMousePosition.y / mTileSize);
-    rawY = std::clamp(rawY, 0, mMapSize.y - 1);
-    sf::Vector2i tileCoords = { rawX, rawY };
-    mSquareCursor[0].setPosition({ tileCoords.x * mTileSize, tileCoords.y * mTileSize });
-    mSquareCursor[1].setPosition({ tileCoords.x * mTileSize, tileCoords.y * mTileSize });
-    mSquareCursor[2].setPosition({ tileCoords.x * mTileSize, tileCoords.y * mTileSize + mTileSize });
-    mSquareCursor[3].setPosition({ tileCoords.x * mTileSize + mTileSize - CURSOR_WIDTH, tileCoords.y * mTileSize });
-    mTilePosition = { tileCoords.x, tileCoords.y };
+    if (mCursorMode == CursorMode::MOVE)
+    {
+      int rawX = static_cast<int>(mMousePosition.x / mTileSize);
+      rawX = std::clamp(rawX, 0, mMapSize.x - 1);
+      int rawY = static_cast<int>(mMousePosition.y / mTileSize);
+      rawY = std::clamp(rawY, 0, mMapSize.y - 1);
+      sf::Vector2i tileCoords = { rawX, rawY };
+      mSquareCursor[0].setPosition({ tileCoords.x * mTileSize, tileCoords.y * mTileSize });
+      mSquareCursor[1].setPosition({ tileCoords.x * mTileSize, tileCoords.y * mTileSize });
+      mSquareCursor[2].setPosition({ tileCoords.x * mTileSize, tileCoords.y * mTileSize + mTileSize });
+      mSquareCursor[3].setPosition({ tileCoords.x * mTileSize + mTileSize - CURSOR_WIDTH, tileCoords.y * mTileSize });
+      mTilePosition = { tileCoords.x, tileCoords.y };
+    }
   }
 
   /**
@@ -82,5 +85,22 @@ namespace dr
     for (auto& elem : mSquareCursor) {
       elem.setFillColor(color);
     }
+  }
+
+  void CursorComponent::startEdit()
+  {
+    mCursorMode = CursorMode::EDIT;
+    changeCursorColor(sf::Color(0, 255, 127, 225));
+  }
+
+  /**
+   * @brief 
+   */
+  void CursorComponent::finishEdit()
+  {
+    mCursorMode = CursorMode::MOVE;
+    changeCursorColor(sf::Color::Black);
+    mMousePosition.x = mTilePosition.x * mTileSize;
+    mMousePosition.y = mTilePosition.y * mTileSize;
   }
 }

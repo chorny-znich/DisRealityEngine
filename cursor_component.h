@@ -6,6 +6,12 @@
 
 namespace dr
 {
+	enum class CursorMode
+	{
+		MOVE,
+		EDIT
+	};
+
 	/**
 	 * @brief Component for handling the rectangle cursor
 	 */
@@ -25,7 +31,8 @@ namespace dr
 		//void setCursorMode(CursorMode mode);
 		//CursorMode getCursorMode();
 		void changeCursorColor(sf::Color color);
-		//void finishEditMode();
+		void startEdit();
+		void finishEdit();
 	protected:
 		sf::View& mGameView;
 		sf::Vector2f mMousePosition;
@@ -37,6 +44,6 @@ namespace dr
 
 		sf::Vector2i mMapSize;
 		std::array<sf::RectangleShape, 4> mSquareCursor;
-		//CursorMode mCursorMode{ CursorMode::MOVE };
+		CursorMode mCursorMode{ CursorMode::MOVE };
 	};
 }

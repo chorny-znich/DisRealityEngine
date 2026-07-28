@@ -73,20 +73,28 @@ namespace dr
             }
         }
     }
-    /*
-    void Map::updateFloorMap(size_t index, const std::string& id)
+    
+    /**
+     * @brief 
+     * @param index 
+     * @param id 
+     */
+    void Map::updateFloorMap(uint16_t index, uint16_t id)
     {
-        sf::Vector2f textCoord = dr::Database::getSprite(id);
-        int pos = static_cast<int>(index) * 4;
+        sf::Vector2f textCoord = SpriteDatabase::instance().getSpriteCoords(id);
+        int pos = static_cast<int>(index) * 6;
         mFloorMap[pos + 0].texCoords = sf::Vector2f(textCoord.x, textCoord.y);
         mFloorMap[pos + 1].texCoords = sf::Vector2f(textCoord.x + mTileSize.x,
             textCoord.y);
         mFloorMap[pos + 2].texCoords = sf::Vector2f(textCoord.x + mTileSize.x,
-            textCoord.y + mTileSize.y);
-        mFloorMap[pos + 3].texCoords = sf::Vector2f(textCoord.x,
-            textCoord.y + mTileSize.y);
+          textCoord.y + mTileSize.y);
+        mFloorMap[pos + 3].texCoords = sf::Vector2f(textCoord.x + mTileSize.x,
+          textCoord.y + mTileSize.y);
+        mFloorMap[pos + 4].texCoords = sf::Vector2f(textCoord.x,
+          textCoord.y + mTileSize.y);
+        mFloorMap[pos + 5].texCoords = sf::Vector2f(textCoord.x, textCoord.y);
     }
-    */
+    
     void Map::setMapIndex(uint16_t index)
     {
         mMapIndex = index;

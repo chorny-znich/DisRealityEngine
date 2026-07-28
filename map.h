@@ -38,7 +38,7 @@ namespace dr
         void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
         void createMap(uint16_t index, sf::Vector2u size, uint16_t groundLayerId);
         void createFloorMap();
-        //void updateFloorMap(uint16_t index, uint16_t id);
+        void updateFloorMap(uint16_t index, uint16_t id);
         void createLevelObjects();
         //void createStaticObjects();
         //LevelObjects& getLevelObjects();

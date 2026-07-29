@@ -20,4 +20,8 @@ namespace dr
 	{
 		mSprite.setPosition(pos);
 	}
+	uint16_t LevelObject::getID() const
+	{
+		return mId;
+	}
 }

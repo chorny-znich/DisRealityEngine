@@ -52,8 +52,8 @@ namespace dr
         void addLocation(Location loc);
         Location& getLocation(uint16_t id);
         LevelObjectPtr createLevelObject(uint16_t id);
-        //void addLevelObject(LevelObjectPtr lop);
-        //void deleteLevelObject(size_t id);
+        void addLevelObject(LevelObjectPtr lop);
+        void deleteLevelObject(uint16_t id);
         //StaticObjectPtr createStaticObject(size_t id);
         //void addStaticObject(StaticObjectPtr sop);
         //void deleteStaticObject(size_t id);

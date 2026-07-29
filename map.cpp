@@ -189,19 +189,23 @@ namespace dr
 
         return pLevelObject;
     }
-    /*
+
+    /**
+     * @brief 
+     * @param lop Pointer to the object of the level architecture 
+     */
     void Map::addLevelObject(LevelObjectPtr lop)
     {
         mLevelObjects.push_back(lop);
     }
-
-    void Map::deleteLevelObject(size_t id)
+    
+    void Map::deleteLevelObject(uint16_t id)
     {
         mLevelObjects.erase(std::remove_if(mLevelObjects.begin(), mLevelObjects.end(), [id](auto& obj) {
-            return obj->getId() == id;
+            return obj->getID() == id;
             }), mLevelObjects.end());
     }
-
+/*
     StaticObjectPtr Map::createStaticObject(size_t id)
     {
         Location loc = getLocation(id);

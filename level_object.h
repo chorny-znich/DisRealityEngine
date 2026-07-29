@@ -17,6 +17,7 @@ namespace dr
     LevelObject(uint16_t id, sf::IntRect rect, sf::Texture& texture);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     void setPosition(sf::Vector2f pos);
+    uint16_t getID() const;
   private:
     uint16_t mId;
     sf::Sprite mSprite;

@@ -28,6 +28,7 @@ namespace dr
             for (size_t x{ 0 }; x < mMapSize.x; x++) {
                 Location loc;
                 loc.mId = static_cast<uint16_t>(y * mMapSize.x + x);
+                loc.mPosition = { static_cast<uint16_t>(x), static_cast<uint16_t>(y) };
                 loc.mFloorLayerId = groundLayerId;
                 mLocations.emplace_back(loc);
             }
@@ -185,7 +186,7 @@ namespace dr
           {static_cast<int>(mTileSize.x), static_cast<int>(mTileSize.y)} };
         
         std::shared_ptr<LevelObject> pLevelObject = std::make_shared<LevelObject>(id, rect, texture);
-        pLevelObject->setPosition({ loc.mPosition.x * mTileSize.x, loc.mPosition.y * mTileSize.y });;
+        pLevelObject->setPosition({ loc.mPosition.x * mTileSize.x, loc.mPosition.y * mTileSize.y });
 
         return pLevelObject;
     }

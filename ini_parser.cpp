@@ -37,6 +37,33 @@ namespace dr
 	}
 
 	/**
+	 * @brief Save IniDocement content to the file
+	 * @param filename Path to the file
+	 * @param doc Document objects that must be saved
+	 */
+	void saveIniDocument(std::string_view filename, const IniDocument& doc)
+	{
+		std::ofstream ofs(filename.data());
+		if (ofs)
+		{
+			for (const auto& [sectionName, sectionData] : doc.getSections())
+			{
+				ofs << std::format("[{}]\n", sectionName);
+
+				for (const auto& [key, value] : sectionData)
+				{
+					ofs << std::format("{}={}\n", key, value);
+				}
+				ofs << "\n";
+			}
+		}
+		else
+		{
+			std::cout << std::format("Can't save file {} to the disk\n", filename);
+		}
+	}
+
+	/**
 	 * @brief Create the new empty section in the document and return it
 	 * @param The name of the new section
 	 * @return The empty section
@@ -58,5 +85,13 @@ namespace dr
 	bool IniDocument::hasSection(const std::string& name) const
 	{
 		return mSections.contains(name);
+	}
+	const std::unordered_map<std::string, Section>& IniDocument::getSections() const
+	{
+		return mSections;
+	}
+	void IniDocument::addKeyValuePair(std::string_view section, std::string_view key, std::string_view value)
+	{
+		addSection(section.data())[key.data()] = value.data();
 	}
 }

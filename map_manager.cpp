@@ -1,5 +1,6 @@
 #include "map_manager.h"
 #include "map.h"
+#include "sprite_database.h"
 #include "ini_parser.h"
 #include "engine_data.h"
 #include <format>
@@ -38,6 +39,9 @@ namespace dr
                     mMaps[mapIndex]->addLocation(std::move(loc));
                 }
             }
+            uint16_t floorSpriteId = currentMap.getLocation(0).mFloorLayerId;
+            auto spriteInfo = SpriteDatabase::instance().getSpriteInfo(floorSpriteId);
+
             mMaps[mapIndex]->createFloorMap();
             mMaps[mapIndex]->createLevelObjects();
         }

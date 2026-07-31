@@ -45,10 +45,37 @@ namespace dr
         mCurrentMapIndex = mapIndex;
 	}
 
-    const Map& MapManager::getCurrentMap() const
+  /**
+   * @brief 
+   * @param mapIndex 
+   */
+  void MapManager::saveMap(const Map& map) const
+  {
+    dr::IniDocument doc;
+    doc.addKeyValuePair("map_info", "id", std::to_string(map.getMapIndex()));
+    doc.addKeyValuePair("map_size", "width", std::to_string(map.getMapSize().x));
+    doc.addKeyValuePair("map_size", "height", std::to_string(map.getMapSize().y));
+    for (const auto& loc : map.getLocations())
     {
-        return *mMaps.at(mCurrentMapIndex);
+      std::string sectionName = std::format("loc_{}_{}", loc.mPosition.y, loc.mPosition.x);
+      doc.addKeyValuePair(sectionName, "floor_layer", std::to_string(loc.mFloorLayerId));
+      doc.addKeyValuePair(sectionName, "level_object", std::to_string(loc.mLevelLayerId));
+      doc.addKeyValuePair(sectionName, "static_object", std::to_string(loc.mObjectLayerId));
+      doc.addKeyValuePair(sectionName, "passable", std::to_string(loc.mPassable));
     }
+    std::string projectPath = std::filesystem::current_path().string();
+    saveIniDocument(std::format("{}/data/maps/map_{}.ini", projectPath, map.getMapIndex()), doc);
+  }
+
+  bool MapManager::hasMap(uint16_t mapIndex) const
+  {
+    return mMaps.contains(mapIndex);
+  }
+
+  const Map& MapManager::getCurrentMap() const
+  {
+      return *mMaps.at(mCurrentMapIndex);
+  }
 
     //
 	Map& dr::MapManager::getCurrentMap()

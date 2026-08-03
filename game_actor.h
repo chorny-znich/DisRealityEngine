@@ -17,6 +17,7 @@ namespace dr
   {
   public:
     GameActor(sf::Sprite sprite);
+    GameActor(sf::IntRect rect, const sf::Texture& texture);
     virtual ~GameActor() = default;
 
     virtual void update(float dt) = 0;

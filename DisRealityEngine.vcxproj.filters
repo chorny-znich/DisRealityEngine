@@ -43,17 +43,17 @@
     <Filter Include="Исходные файлы\Map">
       <UniqueIdentifier>{444fe9d9-3a39-4d46-83c2-2068b078b933}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Object">
-      <UniqueIdentifier>{2c0b4407-4812-4052-9faf-9490314cc212}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\Object">
-      <UniqueIdentifier>{da4325c2-1369-4292-9f7a-0f09fcebacf6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\Component">
       <UniqueIdentifier>{bb543f0d-c0bc-4637-be00-9adc5d2f4d5e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Исходные файлы\Component">
       <UniqueIdentifier>{49b1f18a-fa5d-40e7-ba01-a2657682755c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Actor">
+      <UniqueIdentifier>{2c0b4407-4812-4052-9faf-9490314cc212}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Actor">
+      <UniqueIdentifier>{da4325c2-1369-4292-9f7a-0f09fcebacf6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -111,14 +111,14 @@
     <ClInclude Include="map_manager.h">
       <Filter>Файлы заголовков\Map</Filter>
     </ClInclude>
-    <ClInclude Include="level_object.h">
-      <Filter>Файлы заголовков\Map</Filter>
-    </ClInclude>
     <ClInclude Include="game_actor.h">
-      <Filter>Файлы заголовков\Object</Filter>
+      <Filter>Файлы заголовков\Actor</Filter>
     </ClInclude>
     <ClInclude Include="cursor_component.h">
       <Filter>Файлы заголовков\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="architecture_actor.h">
+      <Filter>Файлы заголовков\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -164,14 +164,14 @@
     <ClCompile Include="sprite_database.cpp">
       <Filter>Исходные файлы\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="level_object.cpp">
-      <Filter>Исходные файлы\Map</Filter>
-    </ClCompile>
     <ClCompile Include="game_actor.cpp">
-      <Filter>Исходные файлы\Object</Filter>
+      <Filter>Исходные файлы\Actor</Filter>
     </ClCompile>
     <ClCompile Include="cursor_component.cpp">
       <Filter>Исходные файлы\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="architecture_actor.cpp">
+      <Filter>Исходные файлы\Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

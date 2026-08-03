@@ -7,6 +7,18 @@ dr::GameActor::GameActor(sf::Sprite sprite) :
 {
 }
 
+/**
+ * @brief 
+ * @param rect 
+ * @param texture 
+ */
+dr::GameActor::GameActor(sf::IntRect rect, const sf::Texture& texture) :
+  mSprite(texture),
+  mIsVisible{true}
+{
+  mSprite.setTextureRect(rect);
+}
+
 void dr::GameActor::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
   if (mIsVisible)

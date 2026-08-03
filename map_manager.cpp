@@ -32,7 +32,7 @@ namespace dr
                     loc.mId = static_cast<uint16_t>(y * mapSize.x + x);
                     loc.mPosition = { static_cast<unsigned int>(x), static_cast<unsigned int>(y) };
                     loc.mFloorLayerId = static_cast<uint16_t>(std::stoul(section.at("floor_layer")));
-                    loc.mLevelLayerId = static_cast<uint16_t>(std::stoul(section.at("level_object")));
+                    loc.mArchitectureLayerId = static_cast<uint16_t>(std::stoul(section.at("architecture_layer")));
                     //loc.setObjectLayerId(section.at("static_object"));
                     loc.mPassable = std::stoi(section.at("passable"));
                     //loc.setEntry(std::stoi(section.at("entry")));
@@ -43,7 +43,7 @@ namespace dr
             auto spriteInfo = SpriteDatabase::instance().getSpriteInfo(floorSpriteId);
 
             mMaps[mapIndex]->createFloorMap();
-            mMaps[mapIndex]->createLevelObjects();
+            mMaps[mapIndex]->createArchitectureLayer();
         }
 
         mCurrentMapIndex = mapIndex;
@@ -63,7 +63,7 @@ namespace dr
     {
       std::string sectionName = std::format("loc_{}_{}", loc.mPosition.y, loc.mPosition.x);
       doc.addKeyValuePair(sectionName, "floor_layer", std::to_string(loc.mFloorLayerId));
-      doc.addKeyValuePair(sectionName, "level_object", std::to_string(loc.mLevelLayerId));
+      doc.addKeyValuePair(sectionName, "level_object", std::to_string(loc.mArchitectureLayerId));
       doc.addKeyValuePair(sectionName, "static_object", std::to_string(loc.mObjectLayerId));
       doc.addKeyValuePair(sectionName, "passable", std::to_string(loc.mPassable));
     }

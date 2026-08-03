@@ -13,7 +13,7 @@ namespace dr
         target.draw(mFloorMap, states);
         states.texture = nullptr;
 
-        for (const auto& obj : mLevelObjects)
+        for (const auto& obj : mArchitecture)
         {
           target.draw(*obj, states);
         }
@@ -116,12 +116,12 @@ namespace dr
 
     }
    */
-    void Map::createLevelObjects()
+    void Map::createArchitectureLayer()
     {
         for (auto& loc : mLocations) {
-            if (loc.mLevelLayerId != 0) {
+            if (loc.mArchitectureLayerId != 0) {
                 loc.mPlaceRandomObject = false;
-                mLevelObjects.push_back(std::move(createLevelObject(loc.mId)));
+                mArchitecture.push_back(std::move(createArchitectureActor(loc.mId)));
             }
         }
     }
@@ -176,35 +176,39 @@ namespace dr
         return mLocations.at(id);
     }
     
-    // Create a single LevelObject
-    std::shared_ptr<LevelObject> Map::createLevelObject(uint16_t id)
+    /**
+     * @brief 
+     * @param id 
+     * @return  
+     */
+    ArchitectureActorPtr Map::createArchitectureActor(uint16_t id)
     {
         Location& loc = getLocation(id);
-        SpriteInfo info = SpriteDatabase::instance().getSpriteInfo(loc.mLevelLayerId);
+        SpriteInfo info = SpriteDatabase::instance().getSpriteInfo(loc.mArchitectureLayerId);
         sf::Texture& texture = Textures::get(info.textureId);
         sf::IntRect rect = { {static_cast<int>(info.x), static_cast<int>(info.y)},
           {static_cast<int>(mTileSize.x), static_cast<int>(mTileSize.y)} };
         
-        std::shared_ptr<LevelObject> pLevelObject = std::make_shared<LevelObject>(id, rect, texture);
-        pLevelObject->setPosition({ loc.mPosition.x * mTileSize.x, loc.mPosition.y * mTileSize.y });
+        std::unique_ptr<ArchitectureActor> architectureActor = std::make_unique<ArchitectureActor>(id, rect, texture);
+        architectureActor->setPosition({ loc.mPosition.x * mTileSize.x, loc.mPosition.y * mTileSize.y });
 
-        return pLevelObject;
+        return architectureActor;
     }
 
     /**
      * @brief 
      * @param lop Pointer to the object of the level architecture 
      */
-    void Map::addLevelObject(LevelObjectPtr lop)
+    void Map::addArchitectureActor(ArchitectureActorPtr lop)
     {
-        mLevelObjects.push_back(lop);
+      mArchitecture.push_back(std::move(lop));
     }
     
-    void Map::deleteLevelObject(uint16_t id)
+    void Map::deleteArchitectureActor(uint16_t id)
     {
-        mLevelObjects.erase(std::remove_if(mLevelObjects.begin(), mLevelObjects.end(), [id](auto& obj) {
+        mArchitecture.erase(std::remove_if(mArchitecture.begin(), mArchitecture.end(), [id](auto& obj) {
             return obj->getID() == id;
-            }), mLevelObjects.end());
+            }), mArchitecture.end());
     }
 /*
     StaticObjectPtr Map::createStaticObject(size_t id)

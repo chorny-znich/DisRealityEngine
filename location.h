@@ -14,7 +14,7 @@ namespace dr
 		sf::Vector2u mPosition{ 0, 0 };
 		uint16_t mFloorLayerId{0};
 		uint16_t mArchitectureLayerId{0};
-		uint16_t mObjectLayerId{0};
+		uint16_t mDecorationLayerId{0};
 		bool mPassable{ true };
 		bool mEntry{ false };
 		bool mPlaceRandomObject{ true };

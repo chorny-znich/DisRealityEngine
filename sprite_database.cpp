@@ -11,7 +11,7 @@ namespace dr
     std::unordered_map<std::string, SpriteCategory> idToType
     {
       {"floor", SpriteCategory::Floor},
-      {"wall", SpriteCategory::Wall},
+      {"architecture", SpriteCategory::Architecture},
       {"decoration", SpriteCategory::Decoration},
       {"item", SpriteCategory::Item},
       {"ui", SpriteCategory::UI},

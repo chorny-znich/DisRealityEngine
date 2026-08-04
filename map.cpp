@@ -17,6 +17,11 @@ namespace dr
         {
           target.draw(*obj, states);
         }
+
+        for (const auto& obj : mDecorations)
+        {
+          target.draw(*obj, states);
+        }
     }
 
     void Map::createMap(uint16_t index, sf::Vector2u size, uint16_t groundLayerId)
@@ -118,24 +123,31 @@ namespace dr
    */
     void Map::createArchitectureLayer()
     {
-        for (auto& loc : mLocations) {
-            if (loc.mArchitectureLayerId != 0) {
+        for (auto& loc : mLocations) 
+        {
+            if (loc.mArchitectureLayerId != 0) 
+            {
                 loc.mPlaceRandomObject = false;
                 mArchitecture.push_back(std::move(createArchitectureActor(loc.mId)));
             }
         }
     }
-    /*
-    void Map::createStaticObjects()
+    
+    /**
+     * @brief 
+     */
+    void Map::createDecorationLayer()
     {
-        for (auto& loc : mLocations) {
-            if (loc.getObjectLayerId() != "none") {
-                loc.changePlacementStatus(false);
-                mStaticObjects.push_back(std::move(createStaticObject(loc.getId())));
+        for (auto& loc : mLocations) 
+        {
+            if (loc.mDecorationLayerId != 0) 
+            {
+                loc.mPlaceRandomObject = false;
+                mDecorations.push_back(std::move(createDecorationActor(loc.mId)));
             }
         }
     }
-
+    /*
     LevelObjects& Map::getLevelObjects()
     {
         return mLevelObjects;
@@ -210,35 +222,33 @@ namespace dr
             return obj->getID() == id;
             }), mArchitecture.end());
     }
+
+    DecorationActorPtr Map::createDecorationActor(uint16_t id)
+    {
+        Location& loc = getLocation(id);
+        SpriteInfo info = SpriteDatabase::instance().getSpriteInfo(loc.mDecorationLayerId);
+        sf::Texture& texture = Textures::get(info.textureId);
+        sf::IntRect rect = { {static_cast<int>(info.x), static_cast<int>(info.y)},
+           {static_cast<int>(mTileSize.x), static_cast<int>(mTileSize.y)} };
+        
+        std::unique_ptr<DecorationActor> decorationActor = std::make_unique<DecorationActor>(id, rect, texture);
+        decorationActor->setPosition({ loc.mPosition.x * mTileSize.x, loc.mPosition.y * mTileSize.y });
+
+        return decorationActor;
+    }
+
+    void Map::addDecorationActor(DecorationActorPtr dap)
+    {
+        mDecorations.push_back(std::move(dap));
+    }
+
+    void Map::deleteDecorationActor(uint16_t id)
+    {
+        mDecorations.erase(std::remove_if(mDecorations.begin(), mDecorations.end(), [id](auto& obj) {
+            return obj->getID() == id;
+            }), mDecorations.end());
+    }
 /*
-    StaticObjectPtr Map::createStaticObject(size_t id)
-    {
-        Location loc = getLocation(id);
-        Tile tile = dr::Database::getTile(loc.getObjectLayerId());
-        sf::Sprite sprite;
-        sprite.setTexture(Textures::get(tile.mTextureId));
-        sprite.setTextureRect({ static_cast<int>(dr::Database::getSprite(tile.mSpriteId).x),
-          static_cast<int>(dr::Database::getSprite(tile.mSpriteId).y), static_cast<int>(mTileSize.x),
-          static_cast<int>(mTileSize.y) });
-        sprite.setPosition({ loc.getPosition().x * mTileSize.x, loc.getPosition().y * mTileSize.y });
-        std::shared_ptr<StaticObject> pStaticObject = std::make_shared<StaticObject>(sprite);
-        pStaticObject->setId(id);
-
-        return pStaticObject;
-    }
-
-    void Map::addStaticObject(StaticObjectPtr sop)
-    {
-        mStaticObjects.push_back(sop);
-    }
-
-    void Map::deleteStaticObject(size_t id)
-    {
-        mStaticObjects.erase(std::remove_if(mStaticObjects.begin(), mStaticObjects.end(), [id](auto& obj) {
-            return obj->getId() == id;
-            }), mStaticObjects.end());
-    }
-
     void Map::createEntry(size_t id, MapEntry entry)
     {
         mEntries.emplace(id, entry);

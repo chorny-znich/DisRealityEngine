@@ -1,6 +1,7 @@
 #pragma once
 #include "location.h"
 #include "architecture_actor.h"
+#include "decoration_actor.h"
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics/VertexArray.hpp>
 #include <SFML/Graphics/Drawable.hpp>
@@ -28,7 +29,7 @@ namespace dr
     void createFloorMap();
     void updateFloorMap(uint16_t index, uint16_t id);
     void createArchitectureLayer();
-    //void createStaticObjects();
+    void createDecorationLayer();
     //LevelObjects& getLevelObjects();
     //StaticObjects& getStaticObjects();
     void setMapIndex(uint16_t index);
@@ -42,9 +43,9 @@ namespace dr
     ArchitectureActorPtr createArchitectureActor(uint16_t id);
     void addArchitectureActor(ArchitectureActorPtr lop);
     void deleteArchitectureActor(uint16_t id);
-    //StaticObjectPtr createStaticObject(size_t id);
-    //void addStaticObject(StaticObjectPtr sop);
-    //void deleteStaticObject(size_t id);
+    DecorationActorPtr createDecorationActor(uint16_t id);
+    void addDecorationActor(DecorationActorPtr sop);
+    void deleteDecorationActor(uint16_t id);
     //void createEntry(size_t id, MapEntry entry);
     //void deleteEntry(size_t id);
     //MapEntry& getEntry(sf::Vector2u pos);
@@ -59,7 +60,7 @@ namespace dr
         std::string mFloorTextureId{};
         sf::VertexArray mFloorMap;
         ArchitectureLayer mArchitecture;
-        //StaticObjects mStaticObjects;
+        DecorationLayer mDecorations;
         std::vector<Location> mLocations;
         //std::unordered_map<uint16_t, MapEntry> mEntries;
         //size_t findEntryId(sf::Vector2u pos) const;

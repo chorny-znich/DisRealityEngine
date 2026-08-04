@@ -1,4 +1,5 @@
 #include "architecture_actor.h"
+#include "decoration_actor.h"
 
 namespace dr
 {

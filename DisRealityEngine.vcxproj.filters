@@ -120,6 +120,9 @@
     <ClInclude Include="architecture_actor.h">
       <Filter>Файлы заголовков\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="decoration_actor.h">
+      <Filter>Файлы заголовков\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -171,6 +174,9 @@
       <Filter>Исходные файлы\Component</Filter>
     </ClCompile>
     <ClCompile Include="architecture_actor.cpp">
+      <Filter>Исходные файлы\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="decoration_actor.cpp">
       <Filter>Исходные файлы\Actor</Filter>
     </ClCompile>
   </ItemGroup>

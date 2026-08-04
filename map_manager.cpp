@@ -64,7 +64,7 @@ namespace dr
       std::string sectionName = std::format("loc_{}_{}", loc.mPosition.y, loc.mPosition.x);
       doc.addKeyValuePair(sectionName, "floor_layer", std::to_string(loc.mFloorLayerId));
       doc.addKeyValuePair(sectionName, "level_object", std::to_string(loc.mArchitectureLayerId));
-      doc.addKeyValuePair(sectionName, "static_object", std::to_string(loc.mObjectLayerId));
+      doc.addKeyValuePair(sectionName, "static_object", std::to_string(loc.mDecorationLayerId));
       doc.addKeyValuePair(sectionName, "passable", std::to_string(loc.mPassable));
     }
     std::string projectPath = std::filesystem::current_path().string();

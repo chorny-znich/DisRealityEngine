@@ -11,7 +11,7 @@ namespace dr
 	class MapManager
 	{
 	public:
-		void loadMap(uint16_t mapIndex, const std::string& groundLayerId);
+		void loadMap(uint16_t mapIndex);
 		void saveMap(const Map& map) const;
 		bool hasMap(uint16_t mapIndex) const ;
 		const Map& getCurrentMap() const;

@@ -8,14 +8,14 @@
 
 namespace dr
 {
-	void dr::MapManager::loadMap(uint16_t mapIndex, const std::string& floorTextureId)
+	void dr::MapManager::loadMap(uint16_t mapIndex)
 	{
         auto iter = mMaps.find(mapIndex);
         if (iter == mMaps.end())
         {
             mMaps[mapIndex] = std::make_unique<Map>();
             Map& currentMap = *mMaps[mapIndex];
-            currentMap.setFloorTextureId(floorTextureId);
+            
             const std::string filename = std::format("{}map_{}.ini", path::MapsFolder, mapIndex);
             IniDocument doc = loadIniDocument(filename);
             Section mapInfoSection = doc.getSection("map_info");
@@ -33,7 +33,7 @@ namespace dr
                     loc.mPosition = { static_cast<unsigned int>(x), static_cast<unsigned int>(y) };
                     loc.mFloorLayerId = static_cast<uint16_t>(std::stoul(section.at("floor_layer")));
                     loc.mArchitectureLayerId = static_cast<uint16_t>(std::stoul(section.at("architecture_layer")));
-                    //loc.setObjectLayerId(section.at("static_object"));
+                    loc.mDecorationLayerId = static_cast<uint16_t>(std::stoul(section.at("decoration_layer")));
                     loc.mPassable = std::stoi(section.at("passable"));
                     //loc.setEntry(std::stoi(section.at("entry")));
                     mMaps[mapIndex]->addLocation(std::move(loc));
@@ -41,9 +41,11 @@ namespace dr
             }
             uint16_t floorSpriteId = currentMap.getLocation(0).mFloorLayerId;
             auto spriteInfo = SpriteDatabase::instance().getSpriteInfo(floorSpriteId);
+            currentMap.setFloorTextureId(spriteInfo.textureId);
 
             mMaps[mapIndex]->createFloorMap();
             mMaps[mapIndex]->createArchitectureLayer();
+            mMaps[mapIndex]->createDecorationLayer();
         }
 
         mCurrentMapIndex = mapIndex;
@@ -63,8 +65,8 @@ namespace dr
     {
       std::string sectionName = std::format("loc_{}_{}", loc.mPosition.y, loc.mPosition.x);
       doc.addKeyValuePair(sectionName, "floor_layer", std::to_string(loc.mFloorLayerId));
-      doc.addKeyValuePair(sectionName, "level_object", std::to_string(loc.mArchitectureLayerId));
-      doc.addKeyValuePair(sectionName, "static_object", std::to_string(loc.mDecorationLayerId));
+      doc.addKeyValuePair(sectionName, "architecture_layer", std::to_string(loc.mArchitectureLayerId));
+      doc.addKeyValuePair(sectionName, "decoration_layer", std::to_string(loc.mDecorationLayerId));
       doc.addKeyValuePair(sectionName, "passable", std::to_string(loc.mPassable));
     }
     std::string projectPath = std::filesystem::current_path().string();

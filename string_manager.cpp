@@ -19,13 +19,24 @@ namespace dr
 	 * @return sf::String encoded in UTF-32, decoded from internal UTF-8 storage
 	 * @note Triggers an assertion if the requested ID does not exist in the map 
 	 */
-	sf::String StringManager::get(const std::string& id)
+	sf::String& StringManager::get(const std::string& id)
 	{
 		auto& strings = instance().mStrings;
+		auto& cashedStrings = instance().mCashedStrings;
+
+		auto cashedIter = cashedStrings.find(id);
+		if (cashedIter != cashedStrings.end())
+		{
+			return cashedIter->second;
+		}
 
 		auto iter = strings.find(id);
-		assert(iter != strings.end());
+		if (iter != strings.end())
+		{
+			cashedStrings[id] = sf::String::fromUtf8(iter->second.begin(), iter->second.end());
+			return cashedStrings.at(id);
+		}
 
-		return sf::String::fromUtf8(iter->second.begin(), iter->second.end());
+		return DEFAULT_TEXT;
 	}
 }

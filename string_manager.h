@@ -15,7 +15,7 @@ namespace dr
     StringManager& operator=(const StringManager&) = delete;
 
     static void init(const std::string& filename);
-    static sf::String get(const std::string& id);
+    static sf::String& get(const std::string& id);
   private:
     StringManager() = default;
 
@@ -24,6 +24,8 @@ namespace dr
       static StringManager manager;
       return manager;
     }
+    inline static sf::String DEFAULT_TEXT{ "[MISSING_TEXT]" };
     std::unordered_map<std::string, std::string> mStrings;
+    std::unordered_map<std::string, sf::String> mCashedStrings;
   };
 }

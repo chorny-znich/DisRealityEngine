@@ -135,6 +135,7 @@ xcopy "$(OutDir)$(TargetName).lib" "D:\vargar\repository\lib\DisRealityEngine\li
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="animation_component.h" />
     <ClInclude Include="asset_manager.h" />
     <ClInclude Include="button.h" />
     <ClInclude Include="cursor_component.h" />
@@ -159,6 +160,7 @@ xcopy "$(OutDir)$(TargetName).lib" "D:\vargar\repository\lib\DisRealityEngine\li
     <ClInclude Include="ui_helper.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="animation_component.cpp" />
     <ClCompile Include="button.cpp" />
     <ClCompile Include="cursor_component.cpp" />
     <ClCompile Include="cursor_manager.cpp" />

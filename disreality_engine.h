@@ -20,7 +20,8 @@
 #include "map.h"
 #include "map_manager.h"
 
-#include "game_actor.h"
+#include "entity.h"
 #include "cursor_component.h"
+#include "animation_component.h"
 
 #include <SFML/Graphics.hpp>

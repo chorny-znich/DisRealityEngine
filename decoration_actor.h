@@ -1,12 +1,12 @@
 #pragma once
-#include "game_actor.h"
+#include "entity.h"
 
 namespace dr
 {
   /**
    * @brief 
    */
-  class DecorationActor : public GameActor
+  class DecorationActor : public Entity
   {
   public:
     DecorationActor(uint16_t id, sf::IntRect rect, sf::Texture& texture);

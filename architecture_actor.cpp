@@ -4,7 +4,7 @@
 namespace dr
 {
 	ArchitectureActor::ArchitectureActor(uint16_t id, sf::IntRect rect, sf::Texture& texture) :
-		GameActor(rect, texture),
+		Entity(rect, texture),
 		mId{id}
 	{
 	}

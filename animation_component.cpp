@@ -46,7 +46,7 @@ namespace dr
     mCurrentFrameIndex = 0;
     mTimer = 0;
   }
-
+  
   /**
    * @brief Load a list of animations from the file
    * @param filename Path to the file

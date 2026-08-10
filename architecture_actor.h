@@ -1,5 +1,5 @@
 #pragma once
-#include "game_actor.h"
+#include "entity.h"
 
 namespace dr
 {
@@ -9,7 +9,7 @@ namespace dr
     * Inherits from dr::GameActor to integrate seamlessly with the SFML 3 rendering pipeline.
     * Enforces unique identification for every map asset via a tracking ID.
     */
-  class ArchitectureActor : public GameActor
+  class ArchitectureActor : public Entity
   {
   public:
     ArchitectureActor(uint16_t id, sf::IntRect rect, sf::Texture& texture);

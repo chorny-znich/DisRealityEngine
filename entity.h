@@ -13,12 +13,12 @@ namespace dr
      * transformation matrices and rendering pipeline. Manages positioning, spatial states,
      * and visual sprite dispatching without enforcing specific gameplay mechanics.
      */
-  class GameActor : public sf::Drawable, public sf::Transformable
+  class Entity : public sf::Drawable, public sf::Transformable
   {
   public:
-    GameActor(sf::Sprite sprite);
-    GameActor(sf::IntRect rect, const sf::Texture& texture);
-    virtual ~GameActor() = default;
+    Entity(sf::Sprite sprite);
+    Entity(sf::IntRect rect, const sf::Texture& texture);
+    virtual ~Entity() = default;
 
     virtual void update(float dt) = 0;
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

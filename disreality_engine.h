@@ -21,6 +21,7 @@
 #include "map_manager.h"
 
 #include "entity.h"
+#include "dynamic_entity.h"
 #include "cursor_component.h"
 #include "animation_component.h"
 

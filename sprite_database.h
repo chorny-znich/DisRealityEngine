@@ -11,6 +11,7 @@ namespace dr
 {
 	enum class SpriteCategory : std::uint8_t
 	{
+		Entity,
 		Floor,
 		Architecture,
 		Decoration,

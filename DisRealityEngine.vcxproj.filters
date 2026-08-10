@@ -49,10 +49,10 @@
     <Filter Include="Исходные файлы\Component">
       <UniqueIdentifier>{49b1f18a-fa5d-40e7-ba01-a2657682755c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Actor">
+    <Filter Include="Файлы заголовков\Entity">
       <UniqueIdentifier>{2c0b4407-4812-4052-9faf-9490314cc212}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Исходные файлы\Actor">
+    <Filter Include="Исходные файлы\Entity">
       <UniqueIdentifier>{da4325c2-1369-4292-9f7a-0f09fcebacf6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -111,20 +111,23 @@
     <ClInclude Include="map_manager.h">
       <Filter>Файлы заголовков\Map</Filter>
     </ClInclude>
-    <ClInclude Include="game_actor.h">
-      <Filter>Файлы заголовков\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="cursor_component.h">
       <Filter>Файлы заголовков\Component</Filter>
     </ClInclude>
     <ClInclude Include="architecture_actor.h">
-      <Filter>Файлы заголовков\Actor</Filter>
+      <Filter>Файлы заголовков\Entity</Filter>
     </ClInclude>
     <ClInclude Include="decoration_actor.h">
-      <Filter>Файлы заголовков\Actor</Filter>
+      <Filter>Файлы заголовков\Entity</Filter>
     </ClInclude>
     <ClInclude Include="animation_component.h">
       <Filter>Файлы заголовков\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="entity.h">
+      <Filter>Файлы заголовков\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="dynamic_entity.h">
+      <Filter>Файлы заголовков\Entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,20 +173,23 @@
     <ClCompile Include="sprite_database.cpp">
       <Filter>Исходные файлы\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="game_actor.cpp">
-      <Filter>Исходные файлы\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="cursor_component.cpp">
       <Filter>Исходные файлы\Component</Filter>
     </ClCompile>
     <ClCompile Include="architecture_actor.cpp">
-      <Filter>Исходные файлы\Actor</Filter>
+      <Filter>Исходные файлы\Entity</Filter>
     </ClCompile>
     <ClCompile Include="decoration_actor.cpp">
-      <Filter>Исходные файлы\Actor</Filter>
+      <Filter>Исходные файлы\Entity</Filter>
     </ClCompile>
     <ClCompile Include="animation_component.cpp">
       <Filter>Исходные файлы\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="dynamic_entity.cpp">
+      <Filter>Исходные файлы\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="entity.cpp">
+      <Filter>Исходные файлы\Entity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -44,6 +44,7 @@ namespace dr
       mSquareCursor[2].setPosition({ tileCoords.x * mTileSize, tileCoords.y * mTileSize + mTileSize });
       mSquareCursor[3].setPosition({ tileCoords.x * mTileSize + mTileSize - CURSOR_WIDTH, tileCoords.y * mTileSize });
       mTilePosition = { tileCoords.x, tileCoords.y };
+      mTileId = mTilePosition.y * mMapSize.x + mTilePosition.x;
     }
   }
 
@@ -65,6 +66,11 @@ namespace dr
   sf::Vector2i CursorComponent::getTilePosition() const
   {
     return mTilePosition;
+  }
+
+  uint16_t CursorComponent::getTileId() const
+  {
+    return mTileId;
   }
 
   /**

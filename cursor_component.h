@@ -26,6 +26,7 @@ namespace dr
 
 		//GameData::MoveDirections getDirection(const sf::Vector2i& pos) const;
 		sf::Vector2i getTilePosition() const;
+		uint16_t getTileId() const;
 		//sf::Vector2f getMousePosition() const;*/
 		void setMapSize(sf::Vector2i size);
 		//void setCursorMode(CursorMode mode);
@@ -37,6 +38,7 @@ namespace dr
 		sf::View& mGameView;
 		sf::Vector2f mMousePosition;
 		sf::Vector2i mTilePosition;
+		uint16_t mTileId;
 	private:
 		const sf::Color DEFAULT_CURSOR_COLOR{ sf::Color::Black };
 		const float CURSOR_WIDTH{ 3.f };

@@ -35,7 +35,12 @@ namespace dr
                     loc.mArchitectureLayerId = static_cast<uint16_t>(std::stoul(section.at("architecture_layer")));
                     loc.mDecorationLayerId = static_cast<uint16_t>(std::stoul(section.at("decoration_layer")));
                     loc.mPassable = std::stoi(section.at("passable"));
-                    //loc.setEntry(std::stoi(section.at("entry")));
+                    loc.isTransfer = std::stoi(section.at("is_transfer"));
+                    if (loc.isTransfer)
+                    {
+                      loc.mapTransfer = {static_cast<uint16_t>(std::stoul(section.at("target_map"))), 
+                        {std::stoi(section.at("target_x")), std::stoi(section.at("target_y"))}};
+                    }
                     mMaps[mapIndex]->addLocation(std::move(loc));
                 }
             }
@@ -68,6 +73,13 @@ namespace dr
       doc.addKeyValuePair(sectionName, "architecture_layer", std::to_string(loc.mArchitectureLayerId));
       doc.addKeyValuePair(sectionName, "decoration_layer", std::to_string(loc.mDecorationLayerId));
       doc.addKeyValuePair(sectionName, "passable", std::to_string(loc.mPassable));
+      doc.addKeyValuePair(sectionName, "is_transfer", std::to_string(loc.isTransfer));
+      if (loc.isTransfer)
+      {
+        doc.addKeyValuePair(sectionName, "target_map", std::to_string(loc.mapTransfer.targetMapId));
+        doc.addKeyValuePair(sectionName, "target_x", std::to_string(loc.mapTransfer.targetTilePos.x));
+        doc.addKeyValuePair(sectionName, "target_y", std::to_string(loc.mapTransfer.targetTilePos.y));
+      }
     }
     std::string projectPath = std::filesystem::current_path().string();
     saveIniDocument(std::format("{}/data/maps/map_{}.ini", projectPath, map.getMapIndex()), doc);

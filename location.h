@@ -8,6 +8,15 @@
 
 namespace dr
 {
+	/**
+	 * @brief 
+	 */
+	struct MapTransfer
+	{
+		uint16_t targetMapId{ 0 };
+		sf::Vector2i targetTilePos{ 0, 0 };
+	};
+
 	struct Location
 	{
 		uint16_t mId{ 0 };
@@ -18,5 +27,7 @@ namespace dr
 		bool mPassable{ true };
 		bool mEntry{ false };
 		bool mPlaceRandomObject{ true };
+		bool isTransfer{ false };
+		MapTransfer mapTransfer;
 	};
 }

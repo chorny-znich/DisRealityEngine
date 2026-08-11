@@ -6,7 +6,8 @@ namespace dr
 {
   CursorComponent::CursorComponent(sf::View& view) :
     mGameView{view},
-    mTilePosition{0, 0}
+    mTilePosition{0, 0},
+    mTileId{ 0 }
   {
     mSquareCursor = {
         sf::RectangleShape{{mTileSize, CURSOR_WIDTH}},

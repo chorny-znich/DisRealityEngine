@@ -55,6 +55,9 @@
     <Filter Include="Исходные файлы\Entity">
       <UniqueIdentifier>{da4325c2-1369-4292-9f7a-0f09fcebacf6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Graphics">
+      <UniqueIdentifier>{7c61568d-f22b-4dc6-ac40-8c514d3888ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -128,6 +131,9 @@
     </ClInclude>
     <ClInclude Include="dynamic_entity.h">
       <Filter>Файлы заголовков\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="LightSource.h">
+      <Filter>Файлы заголовков\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

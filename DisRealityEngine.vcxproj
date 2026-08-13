@@ -149,6 +149,7 @@ xcopy "$(OutDir)$(TargetName).lib" "D:\vargar\repository\lib\DisRealityEngine\li
     <ClInclude Include="imgui_helper.h" />
     <ClInclude Include="ini_parser.h" />
     <ClInclude Include="architecture_actor.h" />
+    <ClInclude Include="LightSource.h" />
     <ClInclude Include="location.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="map_manager.h" />

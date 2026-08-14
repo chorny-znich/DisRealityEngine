@@ -132,7 +132,7 @@
     <ClInclude Include="dynamic_entity.h">
       <Filter>Файлы заголовков\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="LightSource.h">
+    <ClInclude Include="light_source.h">
       <Filter>Файлы заголовков\Graphics</Filter>
     </ClInclude>
   </ItemGroup>

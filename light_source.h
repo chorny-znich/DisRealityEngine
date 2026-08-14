@@ -9,7 +9,6 @@ namespace dr
    */
   struct LightSource
   {
-    sf::Vector2f position{ 0.f, 0.f };
     float radius{ 128.f };
     sf::Color color{ sf::Color::White };
     float intensity{ 1.0f };

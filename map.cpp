@@ -1,9 +1,11 @@
 #include "map.h"
 #include "sprite_database.h"
 #include "engine_data.h"
+#include <SFML/Graphics/Sprite.hpp>
 #include <fstream>
 #include <format>
 #include <algorithm>
+#include <memory>
 
 namespace dr
 {
@@ -248,41 +250,19 @@ namespace dr
             return obj->getID() == id;
             }), mDecorations.end());
     }
-/*
-    void Map::createEntry(size_t id, MapEntry entry)
-    {
-        mEntries.emplace(id, entry);
-    }
-    void Map::deleteEntry(size_t id)
-    {
-        mEntries.erase(id);
-    }
-
-   */
 
     const std::vector<Location>& Map::getLocations() const
     {
         return mLocations;
     }
 
-    /*
-    MapEntry& Map::getEntry(sf::Vector2u pos)
+    /**
+     * @brief Initialize the lighting map
+     * @param windowSize Display size 
+     */
+    void Map::initLighting(sf::Vector2u windowSize)
     {
-        return mEntries.at(findEntryId(pos));
+      (void)mLightMapTexture.resize(windowSize);
+      mLightMapSprite = std::make_unique<sf::Sprite>(mLightMapTexture.getTexture());
     }
-
-    MapEntry& Map::getEntry(size_t id)
-    {
-        return mEntries.at(id);
-    }
-
-    const std::map<size_t, MapEntry>& Map::getEntries() const
-    {
-        return mEntries;
-    }
-
-    size_t Map::getNumberOfEntries() const
-    {
-        return mEntries.size();
-    }*/
 }

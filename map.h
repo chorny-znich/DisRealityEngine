@@ -7,6 +7,7 @@
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
+#include <SFML/Graphics/RenderTexture.hpp>
 #include <cstdint>
 #include <string>
 #include <vector>
@@ -30,8 +31,6 @@ namespace dr
     void updateFloorMap(uint16_t index, uint16_t id);
     void createArchitectureLayer();
     void createDecorationLayer();
-    //LevelObjects& getLevelObjects();
-    //StaticObjects& getStaticObjects();
     void setMapIndex(uint16_t index);
     uint16_t getMapIndex() const;
     void setMapSize(sf::Vector2u size);
@@ -46,24 +45,20 @@ namespace dr
     DecorationActorPtr createDecorationActor(uint16_t id);
     void addDecorationActor(DecorationActorPtr sop);
     void deleteDecorationActor(uint16_t id);
-    //void createEntry(size_t id, MapEntry entry);
-    //void deleteEntry(size_t id);
-    //MapEntry& getEntry(sf::Vector2u pos);
-    //MapEntry& getEntry(size_t id);
-    //const std::map<size_t, MapEntry>& getEntries() const;
-    //size_t getNumberOfEntries() const;
     const std::vector<Location>& getLocations() const;
-    private:
-        uint16_t mMapIndex{ 0 };
-        sf::Vector2u mMapSize{ 3, 3 };
-        sf::Vector2f mTileSize{ 128.f, 128.f };
-        std::string mFloorTextureId{};
-        sf::VertexArray mFloorMap;
-        ArchitectureLayer mArchitecture;
-        DecorationLayer mDecorations;
-        std::vector<Location> mLocations;
-        //std::unordered_map<uint16_t, MapEntry> mEntries;
-        //size_t findEntryId(sf::Vector2u pos) const;
+  private:
+    uint16_t mMapIndex{ 0 };
+    sf::Vector2u mMapSize{ 3, 3 };
+    sf::Vector2f mTileSize{ 128.f, 128.f };
+    std::string mFloorTextureId{};
+    sf::VertexArray mFloorMap;
+    ArchitectureLayer mArchitecture;
+    DecorationLayer mDecorations;
+    std::vector<Location> mLocations;
+
+    sf::RenderTexture mLightMapTexture;
+    std::unique_ptr<sf::Sprite> mLightMapSprite{ nullptr };
+
+    void initLighting(sf::Vector2u windowSize);
 	};
 }
-

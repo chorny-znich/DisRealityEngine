@@ -19,6 +19,7 @@ namespace dr
         mIsVisible{ true }
     {
         mSprite.setTextureRect(rect);
+        mSprite.setPosition({ 0.f, 0.f });
     }
 
     void Entity::draw(sf::RenderTarget& target, sf::RenderStates states) const

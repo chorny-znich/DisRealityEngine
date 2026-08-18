@@ -141,6 +141,9 @@
     <ClInclude Include="engine_utility.h">
       <Filter>Файлы заголовков\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="image_button.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp">
@@ -208,6 +211,9 @@
     </ClCompile>
     <ClCompile Include="engine_utility.cpp">
       <Filter>Исходные файлы\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="image_button.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

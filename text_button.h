@@ -4,6 +4,9 @@
 
 namespace dr
 {
+  /**
+   * @brief 
+   */
   class TextButton : public Button
   {
   public:

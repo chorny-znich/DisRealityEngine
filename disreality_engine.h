@@ -14,6 +14,7 @@
 #include "text_button.h"
 #include "imgui_helper.h"
 #include "ui_helper.h"
+#include "engine_utility.h"
 
 #include "location.h"
 #include "sprite_database.h"

@@ -2,6 +2,7 @@
 #include "sprite_database.h"
 #include "engine_data.h"
 #include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/Color.hpp>
 #include <fstream>
 #include <format>
 #include <algorithm>
@@ -11,9 +12,31 @@ namespace dr
 {
     void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
-        states.texture = &Textures::get(mFloorTextureId);
-        target.draw(mFloorMap, states);
-        states.texture = nullptr;
+      // Prepare a light map
+      sf::BlendMode subtractAlpha;
+      subtractAlpha.colorSrcFactor = sf::BlendMode::Factor::Zero;
+      subtractAlpha.colorDstFactor = sf::BlendMode::Factor::One;
+      subtractAlpha.colorEquation = sf::BlendMode::Equation::Add;
+      subtractAlpha.alphaSrcFactor = sf::BlendMode::Factor::SrcAlpha;
+      subtractAlpha.alphaDstFactor = sf::BlendMode::Factor::One;
+      subtractAlpha.alphaEquation = sf::BlendMode::Equation::ReverseSubtract;
+
+      mLightMapTexture.clear(sf::Color(15, 15, 25, 235));
+      const sf::Texture& lightTexture = dr::Textures::get("light_texture");
+      std::unique_ptr<sf::Sprite> lightSprite = std::make_unique<sf::Sprite>(lightTexture);
+      lightSprite->setOrigin({128.f, 128.f});
+      lightSprite->setPosition({ 100.f, 100.f });
+
+      sf::RenderStates lightSourceStates;
+      lightSourceStates.blendMode = subtractAlpha;
+      lightSourceStates.transform = states.transform;
+      mLightMapTexture.draw(*lightSprite, lightSourceStates);
+      mLightMapTexture.display();
+
+      // Draw floor layer
+      states.texture = &Textures::get(mFloorTextureId);
+      target.draw(mFloorMap, states);
+      states.texture = nullptr;
 
         for (const auto& obj : mArchitecture)
         {
@@ -23,6 +46,15 @@ namespace dr
         for (const auto& obj : mDecorations)
         {
           target.draw(*obj, states);
+        }
+
+        // Draw a light map
+        if (mLightMapSprite != nullptr)
+        {
+          sf::RenderStates mapLightStates = states;
+          //mapLightStates.transform = sf::Transform::Identity;
+          mapLightStates.blendMode = sf::BlendMultiply;
+          target.draw(*mLightMapSprite, mapLightStates);
         }
     }
 

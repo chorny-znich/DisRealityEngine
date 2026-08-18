@@ -1,4 +1,5 @@
 #pragma once
+#include "graph_helper.h"
 #include "ini_parser.h"
 #include <string>
 #include <map>
@@ -36,6 +37,7 @@ namespace dr
 
     static bool createAssetList(const std::string& path);
     static Asset& load(const Id& id, const std::string& filename);
+		static void loadEngineAssets();
   };
 
 	// Realisation
@@ -56,6 +58,7 @@ namespace dr
 		if (!createAssetList(filename)) {
 			throw std::runtime_error("Failed to open the file with the list of assets");
 		}
+		loadEngineAssets();
 	}
 
 	/**
@@ -150,5 +153,21 @@ namespace dr
 		}
 
 		return false;
+	}
+
+	/**
+	 * @brief add assets from the engine
+	 */
+	template<typename id, typename Asset>
+	void AssetManager<id, Asset>::loadEngineAssets()
+	{
+		if constexpr (std::is_same_v <Asset, sf::Texture>)
+		{
+			auto& assets = instance().mAssets;
+			std::unique_ptr<Asset> lightTexture = std::make_unique<Asset>();
+			lightTexture->loadFromImage(GraphHelper::getLightImage());
+			auto iter = assets.insert(std::make_pair("light_texture", std::move(lightTexture)));
+			assert(iter.second);
+		}
 	}
 }

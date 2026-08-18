@@ -31,6 +31,7 @@ namespace dr
     void updateFloorMap(uint16_t index, uint16_t id);
     void createArchitectureLayer();
     void createDecorationLayer();
+    void initLighting(sf::Vector2u windowSize);
     void setMapIndex(uint16_t index);
     uint16_t getMapIndex() const;
     void setMapSize(sf::Vector2u size);
@@ -56,9 +57,7 @@ namespace dr
     DecorationLayer mDecorations;
     std::vector<Location> mLocations;
 
-    sf::RenderTexture mLightMapTexture;
+    mutable sf::RenderTexture mLightMapTexture;
     std::unique_ptr<sf::Sprite> mLightMapSprite{ nullptr };
-
-    void initLighting(sf::Vector2u windowSize);
 	};
 }

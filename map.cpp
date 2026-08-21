@@ -161,7 +161,7 @@ namespace dr
         {
             if (loc.mArchitectureLayerId != 0) 
             {
-                loc.mPlaceRandomObject = false;
+                loc.mEmpty = false;
                 mArchitecture.push_back(std::move(createArchitectureActor(loc.mId)));
             }
         }
@@ -176,7 +176,7 @@ namespace dr
         {
             if (loc.mDecorationLayerId != 0) 
             {
-                loc.mPlaceRandomObject = false;
+                loc.mEmpty = false;
                 mDecorations.push_back(std::move(createDecorationActor(loc.mId)));
             }
         }

@@ -16,6 +16,7 @@ namespace dr
   {
   public:
     GameObject(GameObjectType type, GameObjectSubType subType, uint16_t spriteID, uint16_t inventorySpriteID);
+    virtual ~GameObject() = default;
     void setId(size_t id);
     size_t getId() const;
     void setType(GameObjectType type);

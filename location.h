@@ -26,7 +26,7 @@ namespace dr
 		uint16_t mDecorationLayerId{0};
 		bool mPassable{ true };
 		bool mEntry{ false };
-		bool mPlaceRandomObject{ true };
+		bool mEmpty{ true };
 		bool isTransfer{ false };
 		MapTransfer mapTransfer;
 	};

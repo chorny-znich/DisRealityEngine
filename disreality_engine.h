@@ -27,4 +27,6 @@
 #include "cursor_component.h"
 #include "animation_component.h"
 
+#include "game_object.h"
+
 #include <SFML/Graphics.hpp>

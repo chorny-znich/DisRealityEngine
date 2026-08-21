@@ -58,6 +58,12 @@
     <Filter Include="Файлы заголовков\Graphics">
       <UniqueIdentifier>{7c61568d-f22b-4dc6-ac40-8c514d3888ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Loot">
+      <UniqueIdentifier>{7580f0ef-79d5-4af3-9c73-91bc81dd00c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Loot">
+      <UniqueIdentifier>{1358d057-173a-46ca-b6e6-aa195e046bbc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -145,10 +151,10 @@
       <Filter>Файлы заголовков\UI</Filter>
     </ClInclude>
     <ClInclude Include="game_object.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Loot</Filter>
     </ClInclude>
     <ClInclude Include="game_object_type.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Loot</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

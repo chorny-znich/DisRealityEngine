@@ -228,7 +228,7 @@
       <Filter>Исходные файлы\UI</Filter>
     </ClCompile>
     <ClCompile Include="game_object.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Loot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

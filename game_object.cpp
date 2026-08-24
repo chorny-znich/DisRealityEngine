@@ -59,7 +59,7 @@ namespace dr
   {
     mPosition = pos;
     mCurrentSprite.setPosition({ static_cast<float>(dr::SpriteDatabase::instance().getTileSize().x * mPosition.x), 
-      static_cast<float>(dr::SpriteDatabase::instance().getTileSize().y) });
+      static_cast<float>(dr::SpriteDatabase::instance().getTileSize().y * mPosition.y) });
   }
 
   sf::Vector2i GameObject::getPosition() const

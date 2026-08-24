@@ -16,6 +16,7 @@
 #include "imgui_helper.h"
 #include "ui_helper.h"
 #include "engine_utility.h"
+#include "log.h"
 
 #include "location.h"
 #include "sprite_database.h"

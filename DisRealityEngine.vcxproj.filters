@@ -64,6 +64,12 @@
     <Filter Include="Исходные файлы\Loot">
       <UniqueIdentifier>{1358d057-173a-46ca-b6e6-aa195e046bbc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\UI\Button">
+      <UniqueIdentifier>{cd1ad436-41da-4842-9b83-09a0a363549e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\UI\Button">
+      <UniqueIdentifier>{f45e68a4-01fc-425c-ba4f-56673587b5f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -87,14 +93,8 @@
     <ClInclude Include="asset_manager.h">
       <Filter>Файлы заголовков\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="button.h">
-      <Filter>Файлы заголовков\UI</Filter>
-    </ClInclude>
     <ClInclude Include="string_manager.h">
       <Filter>Файлы заголовков\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="text_button.h">
-      <Filter>Файлы заголовков\UI</Filter>
     </ClInclude>
     <ClInclude Include="screen_manager.h">
       <Filter>Файлы заголовков\Manager</Filter>
@@ -147,14 +147,23 @@
     <ClInclude Include="engine_utility.h">
       <Filter>Файлы заголовков\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="image_button.h">
-      <Filter>Файлы заголовков\UI</Filter>
-    </ClInclude>
     <ClInclude Include="game_object.h">
       <Filter>Файлы заголовков\Loot</Filter>
     </ClInclude>
     <ClInclude Include="game_object_type.h">
       <Filter>Файлы заголовков\Loot</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>Файлы заголовков\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="image_button.h">
+      <Filter>Файлы заголовков\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="text_button.h">
+      <Filter>Файлы заголовков\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>Файлы заголовков\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -172,12 +181,6 @@
     </ClCompile>
     <ClCompile Include="text_manager.cpp">
       <Filter>Исходные файлы\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="button.cpp">
-      <Filter>Исходные файлы\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="text_button.cpp">
-      <Filter>Исходные файлы\UI</Filter>
     </ClCompile>
     <ClCompile Include="process_events.cpp">
       <Filter>Исходные файлы\Engine</Filter>
@@ -224,11 +227,20 @@
     <ClCompile Include="engine_utility.cpp">
       <Filter>Исходные файлы\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="image_button.cpp">
-      <Filter>Исходные файлы\UI</Filter>
-    </ClCompile>
     <ClCompile Include="game_object.cpp">
       <Filter>Исходные файлы\Loot</Filter>
+    </ClCompile>
+    <ClCompile Include="text_button.cpp">
+      <Filter>Исходные файлы\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>Исходные файлы\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="image_button.cpp">
+      <Filter>Исходные файлы\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>Исходные файлы\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

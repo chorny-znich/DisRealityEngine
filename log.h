@@ -15,9 +15,19 @@ namespace dr
   */
   class Log
   {
+  private:
+    Log() = default;
   public:
-    Log(sf::Vector2f panelSize);
-    void init(std::string_view textStyle);
+    Log(const Log&) = delete;
+    Log& operator=(const Log&) = delete;
+
+    static Log& instance()
+    {
+      static Log log;
+      return log;
+    }
+
+    void init(sf::Vector2f panelSize, sf::Vector2f pos, std::string_view textStyle);
     void update();
     void render(sf::RenderWindow& window);
 
@@ -27,7 +37,7 @@ namespace dr
     const sf::Color PANEL_BACKGROUND_COLOR{ 0, 0, 0, 225 };
     const float PANEL_OUTLINE_THICKNESS{ 5.f };
     const sf::Color PANEL_OUTLINE_COLOR{ 178, 34, 34, 250 };
-    const float TEXT_HEIGHT{ 50.f };
+    const float TEXT_HEIGHT{ 25.f };
     const uint8_t HISTORY_SIZE{ 25 };
 
     sf::RectangleShape mPanel;

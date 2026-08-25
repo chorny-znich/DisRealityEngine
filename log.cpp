@@ -4,19 +4,13 @@
 namespace dr
 {
   /**
- * @brief
- */
-  Log::Log(sf::Vector2f panelSize) :
-    mPanelSize{ panelSize }
-  {
-    mPanel.setSize(mPanelSize);
-  }
-
-  /**
    * @brief
    */
-  void Log::init(std::string_view textStyle)
+  void Log::init(sf::Vector2f panelSize, sf::Vector2f pos, std::string_view textStyle)
   {
+    mPanelSize = panelSize;
+    mPanel.setSize(mPanelSize);
+    setPosition(pos);
     mPanel.setFillColor(PANEL_BACKGROUND_COLOR);
     mPanel.setOutlineThickness(PANEL_OUTLINE_THICKNESS);
     mPanel.setOutlineColor(PANEL_OUTLINE_COLOR);

@@ -4,7 +4,7 @@
 namespace dr
 {
   /**
-   * @brief
+   * @brief 
    */
   void Log::init(sf::Vector2f panelSize, sf::Vector2f pos, std::string_view textStyle)
   {
@@ -18,10 +18,11 @@ namespace dr
     mRenderedLines = static_cast<uint8_t>(mPanelSize.y / TEXT_HEIGHT);
     mRenderText.reserve(mRenderedLines);
     float currentLinePos = mPosition.y;
+    const std::string style{ std::string(textStyle) };
     for (size_t i{ 0 }; i < mRenderedLines; i++)
     {
-      sf::Text text = dr::TextManager::get(std::string(textStyle));
-      text.setPosition({ mPosition.x, currentLinePos });
+      sf::Text text = dr::TextManager::get(style);
+      text.setPosition({ mPosition.x + LEFT_PADDING, currentLinePos });
       mRenderText.push_back(std::move(text));
       currentLinePos += TEXT_HEIGHT;
     }
@@ -34,23 +35,19 @@ namespace dr
   {
     if (mIsNeedUpdate)
     {
-      size_t counter = 0;
-      if (mLogStrings.size() <= mRenderedLines)
+      size_t counter = mRenderedLines - 1;
+      for (const auto& str : mLogStrings)
       {
-        for (const auto& str : mLogStrings)
+        if (mLogStrings.size() == mRenderedLines)
         {
           mRenderText[counter].setString(str);
-          counter++;
         }
-      }
-      else
-      {
-        const auto iter = mLogStrings.begin() + HISTORY_SIZE - mRenderedLines;
-        for (auto i = iter; i < mLogStrings.end(); i++)
+        else
         {
-          mRenderText[counter].setString(*iter);
-          counter++;
+          mRenderText[counter - (mRenderedLines - mLogStrings.size())].setString(str);
         }
+        
+        counter--;
       }
       mIsNeedUpdate = false;
     }
@@ -82,7 +79,7 @@ namespace dr
   void Log::addMessage(std::string_view msg)
   {
     mLogStrings.emplace_back(msg);
-    if (mLogStrings.size() > HISTORY_SIZE)
+    if (mLogStrings.size() > mRenderedLines)
     {
       mLogStrings.pop_front();
     }

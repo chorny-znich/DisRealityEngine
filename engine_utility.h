@@ -6,6 +6,6 @@ namespace dr
 {
   namespace EngineUtility
   {
-    uint32_t getRandomInRange(uint32_t min, uint32_t max);
+    int16_t getRandomInRange(int16_t min, int16_t max);
   }
 }

@@ -87,12 +87,12 @@ namespace dr
     return mVisible;
   }
 
-  void GameObject::setVisibility(size_t value)
+  void GameObject::setVisibility(int16_t value)
   {
     mVisibility = value;
   }
 
-  size_t GameObject::getVisibility() const
+  int16_t GameObject::getVisibility() const
   {
     return mVisibility;
   }

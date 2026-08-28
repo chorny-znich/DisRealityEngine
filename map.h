@@ -47,6 +47,7 @@ namespace dr
     void addDecorationActor(DecorationActorPtr sop);
     void deleteDecorationActor(uint16_t id);
     const std::vector<Location>& getLocations() const;
+    std::uint16_t getLocationID(sf::Vector2i coords) const;
   private:
     uint16_t mMapIndex{ 0 };
     sf::Vector2u mMapSize{ 3, 3 };

@@ -289,6 +289,16 @@ namespace dr
     }
 
     /**
+    * @brief Get a flat index of the tile
+    * @param pos Position in the 2 dimension grid
+    * @return
+    */
+    std::uint16_t Map::getLocationID(sf::Vector2i coords) const
+    {
+        return coords.y * mMapSize.x + coords.x;
+    }
+
+    /**
      * @brief Initialize the lighting map
      * @param windowSize Display size 
      */

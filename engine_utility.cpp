@@ -22,16 +22,5 @@ namespace dr
       std::uniform_int_distribution distr(min, max);
       return distr(rn);
     }
-
-    /**
-     * @brief Get a flat index of the tile
-     * @param pos Position in the 2 dimension grid
-     * @param mapWidth Width of the current map
-     * @return 
-     */
-    uint16_t getTileID(sf::Vector2i pos, int16_t mapWidth)
-    {
-        return static_cast<uint16_t>(pos.y * mapWidth + pos.x);
-    }
   }
 }

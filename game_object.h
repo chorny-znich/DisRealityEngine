@@ -31,8 +31,8 @@ namespace dr
     size_t getPrice() const;
     void setVisibleStatus(bool value);
     bool isVisible() const;
-    void setVisibility(size_t value);
-    size_t getVisibility() const;
+    void setVisibility(int16_t value);
+    int16_t getVisibility() const;
     void setAmount(size_t value);
     size_t getAmount() const;
     void setSprite(sf::Sprite sprite);
@@ -51,7 +51,7 @@ namespace dr
     
     size_t mPrice;
     bool mVisible;
-    size_t mVisibility;
+    int16_t mVisibility;
     size_t mAmount;
   };
   using GameObjectPtr = std::shared_ptr<GameObject>;

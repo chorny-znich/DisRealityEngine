@@ -30,7 +30,7 @@ namespace dr
                     Section section = doc.getSection(std::format("loc_{}_{}", y, x));
                     Location loc;
                     loc.mId = static_cast<uint16_t>(y * mapSize.x + x);
-                    loc.mPosition = { static_cast<unsigned int>(x), static_cast<unsigned int>(y) };
+                    loc.mPosition = { static_cast<int16_t>(x), static_cast<int16_t>(y) };
                     loc.mFloorLayerId = static_cast<uint16_t>(std::stoul(section.at("floor_layer")));
                     loc.mArchitectureLayerId = static_cast<uint16_t>(std::stoul(section.at("architecture_layer")));
                     loc.mDecorationLayerId = static_cast<uint16_t>(std::stoul(section.at("decoration_layer")));

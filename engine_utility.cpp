@@ -11,5 +11,9 @@ namespace dr
       std::uniform_int_distribution distr(min, max);
       return distr(rn);
     }
+    uint16_t getMapID(sf::Vector2f pos)
+    {
+        return 0;
+    }
   }
 }

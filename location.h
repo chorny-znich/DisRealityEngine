@@ -13,17 +13,17 @@ namespace dr
 	 */
 	struct MapTransfer
 	{
-		uint16_t targetMapId{ 0 };
+		std::uint16_t targetMapId{ 0 };
 		sf::Vector2i targetTilePos{ 0, 0 };
 	};
 
 	struct Location
 	{
-		uint16_t mId{ 0 };
-		sf::Vector2u mPosition{ 0, 0 };
-		uint16_t mFloorLayerId{0};
-		uint16_t mArchitectureLayerId{0};
-		uint16_t mDecorationLayerId{0};
+		sf::Vector2i mPosition{ 0, 0 };
+		std::uint16_t mId{ 0 };
+		std::uint16_t mDecorationLayerId{0};
+		std::uint16_t mFloorLayerId{0};
+		std::uint16_t mArchitectureLayerId{0};
 		bool mPassable{ true };
 		bool mEntry{ false };
 		bool mEmpty{ true };

@@ -95,7 +95,6 @@ namespace dr
       return *mMaps.at(mCurrentMapIndex);
   }
 
-    //
 	Map& dr::MapManager::getCurrentMap()
 	{
 		return *mMaps.at(mCurrentMapIndex);
@@ -105,4 +104,14 @@ namespace dr
 	{
 		return mCurrentMapIndex;
 	}
+
+  /**
+   * @brief Get location ID on the current map for map coordinates
+   * @param locCoords Integer coordinates of the location on the current map
+   * @return integer ID of the location
+   */
+  std::uint16_t MapManager::getLocationID(sf::Vector2i locCoords) const
+  {
+      return locCoords.y * getCurrentMap().getMapSize().x + locCoords.x;
+  }
 }

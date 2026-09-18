@@ -1,6 +1,5 @@
 #pragma once
 #include "game_object_type.h"
-//#include "game_data.h"
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <string>
@@ -37,11 +36,17 @@ namespace dr
     size_t getAmount() const;
     void setSprite(sf::Sprite sprite);
     sf::Sprite getSprite();
+    void setItemSpriteID(std::uint16_t id);
+    std::uint16_t getItemSpriteID() const;
     void setInventoryIcon(sf::Sprite sprite);
     sf::Sprite getInventoryIcon();
+    void setIconSpriteID(std::uint16_t id);
+    std::uint16_t getIconSpriteID() const;
   protected:
     GameObjectType mType;
     GameObjectSubType mSubType;
+    std::uint16_t mItemSpriteID;
+    std::uint16_t mIconSpriteID;
     sf::Sprite mCurrentSprite;
     sf::Sprite mInventoryIcon;
   private:
@@ -54,6 +59,6 @@ namespace dr
     int16_t mVisibility;
     size_t mAmount;
   };
-  using GameObjectPtr = std::shared_ptr<GameObject>;
-  using GameObjects = std::vector<std::shared_ptr<GameObject>>;
+  using GameObjectPtr = std::unique_ptr<GameObject>;
+  using GameObjects = std::vector<std::unique_ptr<GameObject>>;
 }

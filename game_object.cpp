@@ -117,6 +117,16 @@ namespace dr
     return mCurrentSprite;
   }
 
+  void GameObject::setItemSpriteID(std::uint16_t id)
+  {
+    mItemSpriteID = id;
+  }
+
+  std::uint16_t GameObject::getItemSpriteID() const
+  {
+    return mItemSpriteID;
+  }
+
   void GameObject::setInventoryIcon(sf::Sprite sprite)
   {
     mInventoryIcon = sprite;
@@ -125,5 +135,13 @@ namespace dr
   sf::Sprite GameObject::getInventoryIcon()
   {
     return mInventoryIcon;
+  }
+  void GameObject::setIconSpriteID(std::uint16_t id)
+  {
+    mIconSpriteID = id;
+  }
+  std::uint16_t GameObject::getIconSpriteID() const
+  {
+    return mIconSpriteID;
   }
 }
